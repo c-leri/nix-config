@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -10,11 +10,16 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/vda";
-    useOSProber = true;
+  boot = {
+    bootspec.enable = true;
+
+    # Bootloader
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+    loader.efi.canTouchEfiVariables = true;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -94,8 +99,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     helix
     xclip
     nil
@@ -107,6 +110,9 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["CascadiaCode"]; })
   ];
+
+  # Nix settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable QEMU Gest Agent
   services.qemuGuest.enable = true;

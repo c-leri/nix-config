@@ -18,7 +18,7 @@
       set fish_cursor_visual block
     '';
     shellAbbrs = {
-      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/config-flake#nixos'";
+      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#nixos'";
     };
     shellAliases = {
       ls = "eza --classify --icons --group-directories-first --sort=extension";
