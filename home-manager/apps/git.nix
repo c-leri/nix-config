@@ -1,4 +1,5 @@
 {
+  programs.gitui.enable = true;
   programs.git = {
     enable = true;
     userName = "celeri";
