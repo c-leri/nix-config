@@ -1,5 +1,18 @@
 {
-  programs.gitui.enable = true;
+  programs.gitui = {
+    enable = true;
+    theme = ''
+    (
+      selection_bg: Some(Reset),
+      selection_fg: Some(Blue),
+      cmdbar_bg: Some(Reset),
+      cmdbar_extra_lines_bg: Some(Reset),
+      push_gauge_bg: Some(Reset),
+      push_gauge_fg: Some(Blue),
+    )
+    '';
+  };
+
   programs.git = {
     enable = true;
     userName = "celeri";
