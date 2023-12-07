@@ -1,4 +1,15 @@
+{ pkgs, ... }:
+
 {
+  home.packages = with pkgs; [
+    nil
+    nixpkgs-fmt
+    taplo
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+    nodePackages.vscode-langservers-extracted
+  ];
+
   programs.helix = {
     enable = true;
     defaultEditor = true;

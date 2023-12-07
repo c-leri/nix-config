@@ -22,6 +22,10 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+  '';
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -93,15 +97,14 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # Nixpkgs config
+  nixpkgs.config = import ../nixpkgs-config.nix;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     helix
     xclip
-    nil
     git
   ];
   
@@ -110,9 +113,6 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["CascadiaCode"]; })
   ];
-
-  # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable QEMU Gest Agent
   services.qemuGuest.enable = true;
@@ -144,5 +144,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
