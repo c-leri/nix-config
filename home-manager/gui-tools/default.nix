@@ -8,7 +8,7 @@
   ];
 
   home.packages = with pkgs; [
-    jetbrains-toolbox
+    jetbrains.idea-ultimate
     godot_4
 
     logseq
@@ -23,7 +23,6 @@
     stremio
 
     keepassxc
-    mullvad-vpn
   ];
 
   # Vesktop Config

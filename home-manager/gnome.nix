@@ -7,7 +7,6 @@
     gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.caffeine
-    gnomeExtensions.ddterm
     gnomeExtensions.dash-to-dock
     gnomeExtensions.gnome-40-ui-improvements
     gnomeExtensions.noannoyance-fork

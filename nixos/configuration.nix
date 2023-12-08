@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports =
@@ -26,7 +26,7 @@
     Defaults pwfeedback
   '';
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "TRONC-Linux"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -125,12 +125,17 @@
   # Nixpkgs config
   nixpkgs.config = import ../nixpkgs-config.nix;
 
+  # Nix settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     helix
     xclip
     git
+    zip
+    unzip
   ];
   
   programs.fish.enable = true;

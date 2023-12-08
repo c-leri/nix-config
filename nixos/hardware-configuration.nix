@@ -5,23 +5,23 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "vmd" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/55a78eb5-a6ef-483a-ab06-21d25432f0fa";
+    { device = "/dev/disk/by-uuid/a3adefcc-0f9b-472b-a2da-f5d8ce953a7e";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-a14f3d6c-f836-4f15-9e0e-02e2e61dadb7".device = "/dev/disk/by-uuid/a14f3d6c-f836-4f15-9e0e-02e2e61dadb7";
+  boot.initrd.luks.devices."luks-47481322-ba2c-428c-9abe-c82197f8e32b".device = "/dev/disk/by-uuid/47481322-ba2c-428c-9abe-c82197f8e32b";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6FDE-9CE0";
+    { device = "/dev/disk/by-uuid/92FC-F358";
       fsType = "vfat";
     };
 
@@ -32,7 +32,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

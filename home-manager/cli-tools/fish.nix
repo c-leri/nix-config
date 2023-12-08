@@ -21,7 +21,7 @@
       any-nix-shell fish --info-right | source
     '';
     shellAbbrs = {
-      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#nixos'";
+      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC-Linux'";
     };
     shellAliases = {
       ls = "eza --classify --icons --group-directories-first --sort=extension";

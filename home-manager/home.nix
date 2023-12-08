@@ -12,7 +12,4 @@
 
   # Nixpkgs config
   xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs-config.nix;
-
-  # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
