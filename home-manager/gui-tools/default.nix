@@ -18,6 +18,7 @@
     etcher
     prismlauncher
     qbittorrent
+    vlc
     spotify
     stremio
 

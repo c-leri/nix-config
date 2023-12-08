@@ -49,6 +49,28 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Disable some gnome core apps
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    pkgs.gnome-tour
+    epiphany
+    pkgs.gnome-text-editor
+    gnome-calculator
+    gnome-characters
+    pkgs.gnome-console
+    gnome-contacts
+    gnome-maps
+    gnome-music
+    pkgs.gnome-connections
+    simple-scan
+    pkgs.snapshot
+    totem
+    yelp
+    geary
+  ];
+
+  # Disable xterm
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
   # Configure keymap in X11
   services.xserver = {
     layout = "fr";
@@ -60,6 +82,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable flatpak
+  services.flatpak.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
