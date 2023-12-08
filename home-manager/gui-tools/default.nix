@@ -17,10 +17,8 @@
     vesktop
     etcher
     prismlauncher
-    qbittorrent
     vlc
     spotify
-    stremio
 
     keepassxc
   ];

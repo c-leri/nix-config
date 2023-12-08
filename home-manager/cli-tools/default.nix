@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     any-nix-shell
     fd
+    glow
     hyfetch
     mprocs
     pipx

@@ -26,6 +26,13 @@
     Defaults pwfeedback
   '';
 
+  # Mount the Shared partition
+  boot.supportedFilesystems = [ "ntfs" ];
+  fileSystems."/mnt/Shared" = {
+    label = "Shared";
+    fsType = "ntfs";
+  };
+
   networking.hostName = "TRONC-Linux"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
