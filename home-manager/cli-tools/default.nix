@@ -12,6 +12,7 @@
     fd
     glow
     hyfetch
+    lazydocker
     mprocs
     pipx
     viu
