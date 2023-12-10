@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./shared-partition.nix
       ./docker.nix
+      ./auto-upgrade.nix
     ];
 
   boot = {

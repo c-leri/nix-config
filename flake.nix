@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { nixpkgs, lanzaboote, rust-overlay, home-manager, ... }:
+  outputs = { self, nixpkgs, lanzaboote, rust-overlay, home-manager }:
     {
       nixosConfigurations = {
         TRONC-Linux = nixpkgs.lib.nixosSystem {
