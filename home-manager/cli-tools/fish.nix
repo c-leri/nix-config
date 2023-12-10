@@ -1,4 +1,11 @@
+{ pkgs, ... }:
+
 {
+  home.packages = with pkgs.fishPlugins; [
+    autopair
+    puffer
+  ];
+
   programs.eza.enable = true;
   programs.starship.enable = true;
 

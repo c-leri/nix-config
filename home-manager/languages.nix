@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     bun
     elixir
+    jdk21
     nodejs_20
     nodePackages.pnpm
     python3

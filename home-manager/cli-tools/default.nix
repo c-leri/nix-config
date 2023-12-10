@@ -9,7 +9,9 @@
 
   home.packages = with pkgs; [
     any-nix-shell
+    imagemagick
     fd
+    ffmpeg
     glow
     hyfetch
     lazydocker

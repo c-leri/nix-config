@@ -26,9 +26,6 @@
     mullvad-vpn
   ];
 
-  # Vesktop Config
-  xdg.configFile."VencordDesktop/VencordDesktop/settings/settings.json".source = ./vesktop-settings.json;
-
   programs = {
     firefox.enable = true;
   };
