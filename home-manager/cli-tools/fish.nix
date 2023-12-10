@@ -22,6 +22,10 @@
     '';
     shellAbbrs = {
       rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC-Linux'";
+      remove-old-generations = ''
+        sudo nix-collect-garbage -d
+        sudo /run/current-system/bin/switch-to-configuration boot
+      '';
     };
     shellAliases = {
       ls = "eza --classify --icons --group-directories-first --sort=extension";

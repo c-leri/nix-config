@@ -16,10 +16,13 @@
     mprocs
     pipx
     viu
+    wasmer
   ];
 
   programs = {
     bat.enable = true;
     bottom.enable = true;
+    direnv.enable = true;
+    ripgrep.enable = true;
   };
 }

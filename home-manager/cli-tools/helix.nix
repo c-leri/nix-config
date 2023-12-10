@@ -2,12 +2,14 @@
 
 {
   home.packages = with pkgs; [
+    gopls
     nil
     nixpkgs-fmt
     taplo
-    nodePackages.typescript-language-server
     nodePackages.typescript
+    nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
+    zls
   ];
 
   programs.helix = {

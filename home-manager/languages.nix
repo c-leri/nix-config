@@ -7,7 +7,9 @@
     nodejs_20
     nodePackages.pnpm
     python3
-    rustup
+    (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+    cargo-watch
+    zig
   ];
 
   programs = {
@@ -15,6 +17,7 @@
       enable = true;
       settings = { };
     };
+    go.enable = true;
   };
 
   # Set the PNPM_HOME env variable

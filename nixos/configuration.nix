@@ -24,6 +24,10 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
+  # Enable zram
+  zramSwap.enable = true;  
+
+  # Sudo password stars hint
   security.sudo.extraConfig = ''
     Defaults pwfeedback
   '';
@@ -135,9 +139,12 @@
   environment.systemPackages = with pkgs; [
     helix
     xclip
+
     git
     zip
     unzip
+
+    gcc
   ];
   
   programs.fish.enable = true;
