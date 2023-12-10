@@ -12,12 +12,15 @@
     gnomeExtensions.noannoyance-fork
     gnomeExtensions.transparent-window-moving
   ];
-  
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       cursor-theme = "GoogleDot-Black";
       icon-theme = "Papirus";
+    };
+    "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
     };
   };
 

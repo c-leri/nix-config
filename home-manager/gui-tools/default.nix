@@ -14,13 +14,16 @@
     logseq
     onlyoffice-bin
 
-    vesktop
     etcher
     prismlauncher
+    qbittorrent
+    vesktop
     vlc
     spotify
+    stremio
 
     keepassxc
+    mullvad-vpn
   ];
 
   # Vesktop Config
