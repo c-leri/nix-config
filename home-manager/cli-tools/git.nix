@@ -27,6 +27,7 @@
     };
 
     extraConfig = {
+      core.autocrlf = true;
       init.defaultBranch = "main";
     };
   };
