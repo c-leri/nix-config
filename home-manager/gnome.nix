@@ -35,6 +35,11 @@
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
+
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome.gnome-themes-extra;
+    };
   };
 
   qt = {
