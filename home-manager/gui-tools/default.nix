@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     jetbrains.idea-ultimate
+    jetbrains.phpstorm
     godot_4
 
     logseq
