@@ -20,7 +20,6 @@
       enable = true;
       settings = { };
     };
-    go.enable = true;
   };
 
   home.sessionVariables = {
