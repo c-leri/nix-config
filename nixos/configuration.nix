@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./shared-partition.nix
       ./docker.nix
@@ -26,7 +27,7 @@
   };
 
   # Enable zram
-  zramSwap.enable = true;  
+  zramSwap.enable = true;
 
   # Sudo password stars hint
   security.sudo.extraConfig = ''
@@ -150,11 +151,11 @@
 
     gcc
   ];
-  
+
   programs.fish.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["CascadiaCode"]; })
+    (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
 
   # Enable QEMU Gest Agent

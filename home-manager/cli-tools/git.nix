@@ -2,14 +2,14 @@
   programs.gitui = {
     enable = true;
     theme = ''
-    (
-      selection_bg: Some(Reset),
-      selection_fg: Some(Blue),
-      cmdbar_bg: Some(Reset),
-      cmdbar_extra_lines_bg: Some(Reset),
-      push_gauge_bg: Some(Reset),
-      push_gauge_fg: Some(Blue),
-    )
+      (
+        selection_bg: Some(Reset),
+        selection_fg: Some(Blue),
+        cmdbar_bg: Some(Reset),
+        cmdbar_extra_lines_bg: Some(Reset),
+        push_gauge_bg: Some(Reset),
+        push_gauge_fg: Some(Blue),
+      )
     '';
   };
 
@@ -28,6 +28,9 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      gpg.format = "ssh";
+      user.signingkey = "/home/celeri/.ssh/id_ed25519.pub";
+      commit.gpgsign = true;
     };
   };
 }

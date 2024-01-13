@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    clang-tools
+
     nil
     nixpkgs-fmt
 
