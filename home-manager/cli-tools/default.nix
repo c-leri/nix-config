@@ -16,7 +16,6 @@
     hyfetch
     lazydocker
     mprocs
-    pipx
     tldr
     viu
     wasmer

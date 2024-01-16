@@ -16,6 +16,8 @@
 
     logseq
     onlyoffice-bin
+    teams-for-linux
+    zoom-us
 
     etcher
     prismlauncher
