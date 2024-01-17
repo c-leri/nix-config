@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscode.nix
-    ./gnome-terminal.nix
+    ./alacritty.nix
     ./thunderbird.nix
     ./unity+rider.nix
   ];
@@ -20,6 +20,7 @@
     zoom-us
 
     etcher
+    floorp
     prismlauncher
     qbittorrent
     vesktop
@@ -30,8 +31,4 @@
     keepassxc
     mullvad-vpn
   ];
-
-  programs = {
-    firefox.enable = true;
-  };
 }
