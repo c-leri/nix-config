@@ -8,7 +8,6 @@
   ];
 
   home.packages = with pkgs; [
-    any-nix-shell
     imagemagick
     fd
     ffmpeg
@@ -16,6 +15,7 @@
     hyfetch
     lazydocker
     mprocs
+    nix-your-shell
     tldr
     viu
     wasmer

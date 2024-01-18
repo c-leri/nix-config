@@ -24,8 +24,8 @@
       set fish_cursor_replace_one underscore blink
       set fish_cursor_visual block
 
-      # nix-shell
-      any-nix-shell fish --info-right | source
+      # nix-your-shell
+      nix-your-shell fish | source
     '';
     shellAbbrs = {
       rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC-Linux'";
