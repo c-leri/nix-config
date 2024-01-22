@@ -31,4 +31,8 @@
     keepassxc
     mullvad-vpn
   ];
+
+  home.sessionVariables = {
+    BROWSER = "${pkgs.floorp}/bin/floorp";
+  };
 }

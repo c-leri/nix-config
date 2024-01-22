@@ -30,7 +30,7 @@
       init.defaultBranch = "main";
       gpg.format = "ssh";
       user.signingkey = "/home/celeri/.ssh/id_ed25519.pub";
-      commit.gpgsign = true;
+      commit.gpgSign = true;
     };
   };
 }

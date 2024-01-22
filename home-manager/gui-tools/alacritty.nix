@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.zellij = {
     enable = true;
@@ -20,7 +21,7 @@
         ZELLIJ_AUTO_EXIT = "true";
       };
       shell = {
-        program = "fish";
+        program = "${pkgs.fish}/bin/fish";
         args = [
           "--init-command"
           "eval (zellij setup --generate-auto-start fish | string collect)"

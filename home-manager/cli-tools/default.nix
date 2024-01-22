@@ -15,7 +15,6 @@
     hyfetch
     lazydocker
     mprocs
-    nix-your-shell
     tldr
     viu
     wasmer

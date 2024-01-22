@@ -6,7 +6,6 @@
     puffer
   ];
 
-  programs.eza.enable = true;
   programs.starship.enable = true;
 
   programs.fish = {
@@ -25,7 +24,7 @@
       set fish_cursor_visual block
 
       # nix-your-shell
-      nix-your-shell fish | source
+      ${pkgs.nix-your-shell}/bin/nix-your-shell fish | source
     '';
     shellAbbrs = {
       rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC-Linux'";
@@ -35,7 +34,7 @@
       '';
     };
     shellAliases = {
-      ls = "eza --classify --icons --group-directories-first --sort=extension";
+      ls = "${pkgs.eza}/bin/eza --classify --icons --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";
       la = "ls --all";
       ll = "l --all";
