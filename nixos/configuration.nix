@@ -124,6 +124,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
+  programs.fish.enable = true;
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
@@ -143,7 +144,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     helix
-    xclip
+    wl-clipboard
 
     git
     zip
@@ -152,15 +153,9 @@
     gcc
   ];
 
-  programs.fish.enable = true;
-
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
-
-  # Enable QEMU Gest Agent
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

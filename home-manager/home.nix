@@ -11,5 +11,5 @@
   home.stateVersion = "23.11";
 
   # Nixpkgs config
-  nixpkgs.config = import ../nixpkgs-config.nix;
+  xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs-config.nix;
 }

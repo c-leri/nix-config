@@ -1,16 +1,16 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with gnomeExtensions; [
     gnome.gnome-tweaks
-    gnomeExtensions.app-icons-taskbar
-    gnomeExtensions.appindicator
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.caffeine
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.gnome-40-ui-improvements
-    gnomeExtensions.noannoyance-fork
-    gnomeExtensions.transparent-window-moving
+    app-icons-taskbar
+    appindicator
+    blur-my-shell
+    caffeine
+    dash-to-dock
+    gnome-40-ui-improvements
+    noannoyance-fork
+    transparent-window-moving
   ];
 
   dconf.settings = {
