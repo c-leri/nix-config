@@ -1,29 +1,25 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    clang-tools
-
-    nil
-    nixpkgs-fmt
-
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-
-    black
-    python3Packages.python-lsp-server
-    python3Packages.python-lsp-ruff
-    ruff-lsp
-
-    taplo
-
-    zls
-  ];
-
   programs.helix = {
     enable = true;
     defaultEditor = true;
+    extraPackages = with pkgs; [
+      clang-tools
+
+      nil
+
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+
+      python3Packages.python-lsp-server
+      python3Packages.python-lsp-ruff
+
+      taplo
+
+      zls
+    ];
     settings = {
       theme = "catppuccin_macchiato";
       editor = {
@@ -44,19 +40,19 @@
     };
     languages = {
       language-server.ruff-lsp = {
-        command = "ruff-lsp";
+        command = "${pkgs.ruff-lsp}/bin/ruff-lsp";
       };
 
       language = [
         {
           name = "nix";
-          formatter = { command = "nixpkgs-fmt"; };
+          formatter = { command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"; };
           auto-format = true;
         }
         {
           name = "python";
           language-servers = [ "pylsp" "ruff-lsp" ];
-          formatter = { command = "black"; args = [ "--quiet" "-" ]; };
+          formatter = { command = "${pkgs.black}/bin/black"; args = [ "--quiet" "-" ]; };
           auto-format = true;
         }
       ];
