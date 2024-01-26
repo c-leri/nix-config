@@ -34,7 +34,7 @@
     Defaults pwfeedback
   '';
 
-  networking.hostName = "TRONC-Linux"; # Define your hostname.
+  networking.hostName = "TRONC"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

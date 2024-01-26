@@ -16,6 +16,7 @@
 
       # vi mode
       fish_vi_key_bindings
+      set fish_vi_force_cursor 1
 
       # Set the cursor shape for the different vi modes
       set fish_cursor_default block blink
@@ -27,9 +28,10 @@
       ${pkgs.nix-your-shell}/bin/nix-your-shell fish | source
     '';
     shellAbbrs = {
-      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC-Linux'";
+      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC'";
       remove-old-generations = ''
         sudo nix-collect-garbage -d
+        nix-collect-garbage -d
         sudo /run/current-system/bin/switch-to-configuration boot
       '';
     };

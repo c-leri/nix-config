@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscode.nix
-    ./alacritty.nix
+    ./wezterm.nix
     ./thunderbird.nix
     ./unity+rider.nix
   ];

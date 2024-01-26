@@ -12,7 +12,6 @@
     fd
     ffmpeg
     glow
-    hyfetch
     lazydocker
     mprocs
     tldr

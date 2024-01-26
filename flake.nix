@@ -14,7 +14,7 @@
   outputs = { self, nixpkgs, lanzaboote, rust-overlay, home-manager }:
     {
       nixosConfigurations = {
-        TRONC-Linux = nixpkgs.lib.nixosSystem {
+        TRONC = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos/configuration.nix
