@@ -15,6 +15,9 @@
     ];
 
   boot = {
+    # Latest kernel
+    kernelPackages = pkgs.linuxPackages_latest;
+
     bootspec.enable = true;
 
     # Bootloader
@@ -42,7 +45,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable mullvad vpn
-  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn = {
+    enable = true;
+    enableExcludeWrapper = false;
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
