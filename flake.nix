@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     lanzaboote.url = "github:nix-community/lanzaboote";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
@@ -11,15 +12,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, rust-overlay, home-manager }:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
+    let
+      inherit (self) outputs;
+    in
     {
+      overlays = import ./overlays.nix { inherit inputs; };
+
       nixosConfigurations = {
         TRONC = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./nixos/configuration.nix
             lanzaboote.nixosModules.lanzaboote
-            ({ nixpkgs.overlays = [ rust-overlay.overlays.default ]; })
             home-manager.nixosModules.home-manager
             {
               home-manager = {

@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nixpkgs.nix
       ./shared-partition.nix
       ./docker.nix
       ./auto-upgrade.nix
@@ -141,16 +142,13 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Nixpkgs config
-  nixpkgs.config = import ../nixpkgs-config.nix;
-
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    helix
+    unstable.helix
     wl-clipboard
 
     git

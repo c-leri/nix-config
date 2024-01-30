@@ -8,11 +8,11 @@
   ];
 
   home.packages = with pkgs; [
-    android-studio
-    jetbrains.idea-ultimate
+    unstable.android-studio
+    unstable.jetbrains.idea-ultimate
     godot_4
 
-    logseq
+    unstable.logseq
     onlyoffice-bin
     teams-for-linux
     zoom-us

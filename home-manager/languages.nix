@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     bun
-    elixir
     jdk21
     nodejs_20
     nodePackages.pnpm
@@ -12,7 +11,6 @@
     python3
     (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
     cargo-watch
-    zig
   ];
 
   programs = {
