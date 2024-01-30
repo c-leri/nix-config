@@ -17,14 +17,13 @@
     teams-for-linux
     zoom-us
 
-    etcher
     floorp
     prismlauncher
     qbittorrent
-    vesktop
+    unstable.vesktop
     vlc
     spotify
-    stremio
+    unstable.stremio
 
     keepassxc
     mullvad-vpn

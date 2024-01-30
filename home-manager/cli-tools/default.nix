@@ -5,6 +5,8 @@
     ./fish.nix
     ./git.nix
     ./helix.nix
+    ./bat.nix
+    ./pandoc.nix
   ];
 
   home.packages = with pkgs; [
@@ -20,7 +22,6 @@
   ];
 
   programs = {
-    bat.enable = true;
     bottom.enable = true;
     direnv.enable = true;
     ripgrep.enable = true;

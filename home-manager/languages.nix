@@ -2,10 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    bun
+    unstable.bun
     jdk21
     nodejs_20
-    nodePackages.pnpm
+    unstable.nodePackages.pnpm
     php83
     php83Packages.composer
     python3

@@ -10,7 +10,7 @@ let
 
   extra-lib = [ ];
 
-  rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
+  rider = pkgs.unstable.jetbrains.rider.overrideAttrs (attrs: {
     postInstall = ''
       # Wrap rider with extra tools and libraries
       touch $out/coucou.txt
@@ -42,7 +42,7 @@ in
 
   home-manager.users.celeri.home = {
     packages = [
-      pkgs.unityhub
+      pkgs.unstable.unityhub
       rider
     ];
 
