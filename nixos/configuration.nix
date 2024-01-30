@@ -12,6 +12,7 @@
       ./shared-partition.nix
       ./docker.nix
       ./auto-upgrade.nix
+      ./unity+rider.nix
     ];
 
   boot = {

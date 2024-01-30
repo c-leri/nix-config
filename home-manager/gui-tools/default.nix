@@ -5,7 +5,6 @@
     ./vscode.nix
     ./wezterm.nix
     ./thunderbird.nix
-    ./unity+rider.nix
   ];
 
   home.packages = with pkgs; [

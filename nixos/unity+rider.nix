@@ -28,11 +28,6 @@ let
   });
 in
 {
-  home.packages = [
-    pkgs.unityhub
-    rider
-  ];
-
   # Allows Unity Login to actually open a browser
   xdg.portal = {
     enable = true;
@@ -45,19 +40,26 @@ in
     ];
   };
 
-  # Dummy .desktop file for the Unity Rider plugin
-  home.file = {
-    ".local/share/applications/jetbrains-rider.desktop".source =
-      let
-        desktopFile = pkgs.makeDesktopItem {
-          name = "jetbrains-rider";
-          desktopName = "Rider";
-          exec = "\"${rider}/bin/rider\"";
-          icon = "rider";
-          type = "Application";
-          extraConfig.NoDisplay = "true";
-        };
-      in
-      "${desktopFile}/share/applications/jetbrains-rider.desktop";
+  home-manager.users.celeri.home = {
+    packages = [
+      pkgs.unityhub
+      rider
+    ];
+
+    # Dummy .desktop file for the Unity Rider plugin
+    file = {
+      ".local/share/applications/jetbrains-rider.desktop".source =
+        let
+          desktopFile = pkgs.makeDesktopItem {
+            name = "jetbrains-rider";
+            desktopName = "Rider";
+            exec = "\"${rider}/bin/rider\"";
+            icon = "rider";
+            type = "Application";
+            extraConfig.NoDisplay = "true";
+          };
+        in
+        "${desktopFile}/share/applications/jetbrains-rider.desktop";
+    };
   };
 }
