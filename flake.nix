@@ -4,15 +4,30 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    lanzaboote.url = "github:nix-community/lanzaboote";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, spicetify-nix, ... } @ inputs:
     let
       inherit (self) outputs;
     in
@@ -30,6 +45,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
+                extraSpecialArgs = { inherit spicetify-nix; };
                 users.celeri = ./home-manager/home.nix;
               };
             }

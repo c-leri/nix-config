@@ -5,6 +5,7 @@
     ./vscode.nix
     ./wezterm.nix
     ./thunderbird.nix
+    ./spotify.nix
   ];
 
   home.packages = with pkgs; [
@@ -22,7 +23,6 @@
     qbittorrent
     unstable.vesktop
     vlc
-    spotify
     unstable.stremio
 
     keepassxc
