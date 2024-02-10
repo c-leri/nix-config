@@ -6,6 +6,7 @@
     ./wezterm.nix
     ./thunderbird.nix
     ./spotify.nix
+    ./pcloud.nix
   ];
 
   home.packages = with pkgs; [
