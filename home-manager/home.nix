@@ -12,4 +12,7 @@
 
   # Nixpkgs config
   xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs-config.nix;
+
+  # Bluetooth media control
+  services.mpris-proxy.enable = true;
 }
