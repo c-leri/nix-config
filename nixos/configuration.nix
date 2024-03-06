@@ -14,6 +14,7 @@
       ./docker.nix
       ./auto-upgrade.nix
       ./unity+rider.nix
+      ./virt-manager.nix
     ];
 
   boot = {
