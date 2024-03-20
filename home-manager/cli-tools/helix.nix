@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs;[
+    texliveFull
+  ];
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -17,6 +20,8 @@
       python3Packages.python-lsp-ruff
 
       taplo
+
+      texlab
 
       zls
     ];
@@ -39,8 +44,17 @@
       };
     };
     languages = {
-      language-server.ruff-lsp = {
-        command = "${pkgs.ruff-lsp}/bin/ruff-lsp";
+      language-server = {
+        ruff-lsp = {
+          command = "${pkgs.ruff-lsp}/bin/ruff-lsp";
+        };
+
+        texlab.config.texlab = {
+          build = {
+            args = [ "-pdf" "-interaction=nonstopmode" "-auxdir=/tmp" "%f" ];
+            onSave = true;
+          };
+        };
       };
 
       language = [

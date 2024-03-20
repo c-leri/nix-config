@@ -6,7 +6,6 @@
     ./git.nix
     ./helix.nix
     ./bat.nix
-    ./pandoc.nix
   ];
 
   home.packages = with pkgs; [
