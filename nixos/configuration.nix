@@ -146,7 +146,10 @@
   systemd.services."autovt@tty1".enable = false;
 
   # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    trusted-users = [ "root" "celeri" ];
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -9,6 +9,7 @@
   ];
 
   home.packages = with pkgs; [
+    cachix
     imagemagick
     fd
     ffmpeg
