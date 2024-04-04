@@ -7,6 +7,8 @@
       "--update-input"
       "nixpkgs"
       "--update-input"
+      "nixpkgs-unstable"
+      "--update-input"
       "lanzaboote"
       "--update-input"
       "rust-overlay"
