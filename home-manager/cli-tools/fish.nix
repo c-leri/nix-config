@@ -36,7 +36,7 @@
       '';
     };
     shellAliases = {
-      ls = "${pkgs.eza}/bin/eza --classify --icons --group-directories-first --sort=extension";
+      ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";
       la = "ls --all";
       ll = "l --all";
