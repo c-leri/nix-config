@@ -150,6 +150,12 @@
     experimental-features = [ "nix-command" "flakes" ];
   };
 
+  # Periodic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

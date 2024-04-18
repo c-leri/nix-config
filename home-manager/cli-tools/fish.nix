@@ -26,15 +26,10 @@
 
       # nix-your-shell
       ${pkgs.nix-your-shell}/bin/nix-your-shell fish | source
+
+      # Tell nh where the nixos config flake is
+      set -x FLAKE /home/celeri/nixos-config
     '';
-    shellAbbrs = {
-      rebuild = "sudo nixos-rebuild switch --flake '/home/celeri/nixos-config#TRONC'";
-      remove-old-generations = ''
-        sudo nix-collect-garbage -d
-        nix-collect-garbage -d
-        sudo /run/current-system/bin/switch-to-configuration boot
-      '';
-    };
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";

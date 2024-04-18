@@ -16,8 +16,9 @@
     glow
     lazydocker
     mprocs
+    unstable.nh
+    nix-output-monitor
     tldr
-    viu
     wasmer
   ];
 
