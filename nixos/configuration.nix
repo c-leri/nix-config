@@ -30,6 +30,9 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
+  # Prevent CPU from overheating
+  services.thermald.enable = true;
+
   # Enable zram
   zramSwap.enable = true;
 
