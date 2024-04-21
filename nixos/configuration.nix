@@ -11,8 +11,8 @@
       ./hardware-configuration.nix
       ./nixpkgs.nix
       ./shared-partition.nix
-      ./docker.nix
       ./auto-upgrade.nix
+      ./docker.nix
     ];
 
   boot = {
@@ -28,6 +28,13 @@
       pkiBundle = "/etc/secureboot";
     };
     loader.efi.canTouchEfiVariables = true;
+  };
+
+  # Power Management
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+    scsiLinkPolicy = "medium_power";
   };
 
   # Enable zram
@@ -148,6 +155,7 @@
   nix.settings = {
     trusted-users = [ "root" "celeri" ];
     experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
   };
 
   # Periodic garbage collection
@@ -165,8 +173,6 @@
     git
     zip
     unzip
-
-    gcc
   ];
 
   fonts.packages = with pkgs; [

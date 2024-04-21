@@ -1,9 +1,10 @@
 {
   imports = [
-    ./gnome.nix
-    ./languages.nix
     ./cli-tools
     ./gui-tools
+    ./languages.nix
+    ./gnome.nix
+    ./theme.nix
   ];
 
   home.username = "celeri";

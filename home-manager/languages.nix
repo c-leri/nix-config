@@ -9,7 +9,9 @@
     php83
     php83Packages.composer
     python3
-    (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+    (rust-bin.stable.latest.default.override {
+      extensions = [ "rust-analyzer" ];
+    })
     cargo-watch
   ];
 

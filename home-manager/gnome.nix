@@ -14,37 +14,8 @@
   ];
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      cursor-theme = "GoogleDot-Black";
-      icon-theme = "Papirus";
-    };
     "org/gnome/mutter" = {
       experimental-features = [ "scale-monitor-framebuffer" ];
     };
-  };
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "GoogleDot-Black";
-      package = pkgs.google-cursor;
-    };
-
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    style.name = "adwaita-dark";
   };
 }

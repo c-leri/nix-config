@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   home.packages = with pkgs.fishPlugins; [
     autopair
@@ -31,6 +30,9 @@
       set -x FLAKE /home/celeri/nixos-config
     '';
     shellAliases = {
+      cl = "clear";
+      lgit = "lazygit";
+      ldocker = "lazydocker";
       ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";
       la = "ls --all";
