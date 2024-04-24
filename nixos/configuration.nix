@@ -33,8 +33,8 @@
   # Power Management
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "ondemand";
-    scsiLinkPolicy = "medium_power";
+    cpuFreqGovernor = "powersave";
+    scsiLinkPolicy = "med_power_with_dipm";
   };
 
   # Enable zram

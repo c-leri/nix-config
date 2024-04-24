@@ -7,10 +7,13 @@
     appindicator
     blur-my-shell
     caffeine
+    coverflow-alt-tab
     dash-to-dock
     gnome-40-ui-improvements
     noannoyance-fork
+    quick-settings-tweaker
     transparent-window-moving
+    user-themes
   ];
 
   dconf.settings = {

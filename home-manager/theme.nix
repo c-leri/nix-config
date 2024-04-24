@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.pointerCursor = {
     gtk.enable = true;
@@ -13,16 +13,24 @@
     enable = true;
 
     theme = {
-      package = pkgs.colloid-gtk-theme.override {
-        tweaks = [ "normal" ];
+      package = pkgs.orchis-theme.override {
+        tweaks = [ "solid" "primary" "submenu" ];
       };
-      name = "Colloid";
+      name = "Orchis-Purple-Dark";
     };
 
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
+      package = pkgs.papirus-icon-theme.override {
+        color = "magenta";
+      };
       name = "Papirus";
     };
+  };
+
+  xdg.configFile = {
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
   qt = {

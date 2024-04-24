@@ -9,6 +9,7 @@
     php83
     php83Packages.composer
     python3
+    gcc
     (rust-bin.stable.latest.default.override {
       extensions = [ "rust-analyzer" ];
     })
