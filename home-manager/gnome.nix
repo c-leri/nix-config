@@ -10,6 +10,7 @@
     coverflow-alt-tab
     dash-to-dock
     gnome-40-ui-improvements
+    just-perfection
     noannoyance-fork
     quick-settings-tweaker
     transparent-window-moving

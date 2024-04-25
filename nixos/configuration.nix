@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./power-management.nix
       ./nixpkgs.nix
       ./shared-partition.nix
       ./auto-upgrade.nix
@@ -28,13 +29,6 @@
       pkiBundle = "/etc/secureboot";
     };
     loader.efi.canTouchEfiVariables = true;
-  };
-
-  # Power Management
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "powersave";
-    scsiLinkPolicy = "med_power_with_dipm";
   };
 
   # Enable zram
