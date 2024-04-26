@@ -28,7 +28,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, spicetify-nix, ... } @ inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
     let
       inherit (self) outputs;
     in
@@ -46,7 +46,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                extraSpecialArgs = { inherit spicetify-nix; };
+                extraSpecialArgs = { inherit inputs; };
                 users.celeri = ./home-manager/home.nix;
               };
             }

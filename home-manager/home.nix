@@ -4,6 +4,7 @@
     ./gui-tools
     ./languages.nix
     ./gnome.nix
+    ./hyprland
     ./theme.nix
   ];
 
