@@ -1,5 +1,8 @@
 {
   imports = [
+    # nixpkgs config
+    ../nixpkgs.nix
+
     ./cli-tools
     ./gui-tools
     ./languages.nix
@@ -11,9 +14,6 @@
   home.username = "celeri";
   home.homeDirectory = "/home/celeri";
   home.stateVersion = "23.11";
-
-  # Nixpkgs config
-  xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs-config.nix;
 
   # Bluetooth media control
   services.mpris-proxy.enable = true;

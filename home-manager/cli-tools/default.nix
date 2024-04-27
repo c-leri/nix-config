@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./fish.nix
     ./git.nix
@@ -28,8 +26,11 @@
     ripgrep.enable = true;
     atuin = {
       enable = true;
-      flags = [ "--disable-up-arrow" ];
-      settings = { dialect = "uk"; update_check = false; };
+      flags = ["--disable-up-arrow"];
+      settings = {
+        dialect = "uk";
+        update_check = false;
+      };
     };
   };
 }

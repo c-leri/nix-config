@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -14,7 +17,7 @@
 
     theme = {
       package = pkgs.orchis-theme.override {
-        tweaks = [ "solid" "primary" "submenu" ];
+        tweaks = ["solid" "primary" "submenu"];
       };
       name = "Orchis-Purple-Dark";
     };

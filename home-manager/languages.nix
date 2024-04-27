@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     unstable.bun
     jdk21
@@ -11,7 +13,7 @@
     python3
     gcc
     (rust-bin.stable.latest.default.override {
-      extensions = [ "rust-analyzer" ];
+      extensions = ["rust-analyzer"];
     })
     cargo-watch
   ];
@@ -19,7 +21,7 @@
   programs = {
     bacon = {
       enable = true;
-      settings = { };
+      settings = {};
     };
   };
 

@@ -1,4 +1,4 @@
 {
   virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "celeri" ];
+  users.extraGroups.docker.members = ["celeri"];
 }

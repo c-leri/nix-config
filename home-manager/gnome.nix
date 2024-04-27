@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; with gnomeExtensions; [
+{pkgs, ...}: {
+  home.packages = with pkgs;
+  with gnomeExtensions; [
     gnome.gnome-tweaks
     app-icons-taskbar
     appindicator
@@ -19,7 +18,7 @@
 
   dconf.settings = {
     "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
+      experimental-features = ["scale-monitor-framebuffer"];
     };
   };
 }

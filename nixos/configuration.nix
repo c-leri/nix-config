@@ -1,20 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./power-management.nix
-      ./nixpkgs.nix
-      ./shared-partition.nix
-      ./auto-upgrade.nix
-      ./docker.nix
-    ];
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # nixpkgs config
+    ../nixpkgs.nix
+
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./power-management.nix
+    ./shared-partition.nix
+    ./auto-upgrade.nix
+    ./docker.nix
+  ];
 
   boot = {
     # Latest kernel
@@ -91,7 +93,7 @@
   ];
 
   # Disable xterm
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [pkgs.xterm];
 
   # Configure keymap in X11
   services.xserver = {
@@ -135,7 +137,7 @@
   users.users.celeri = {
     isNormalUser = true;
     description = "celeri";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
@@ -150,8 +152,8 @@
 
   # Nix settings
   nix.settings = {
-    trusted-users = [ "root" "celeri" ];
-    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = ["root" "celeri"];
+    experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
   };
 
@@ -173,7 +175,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+    (nerdfonts.override {fonts = ["CascadiaCode"];})
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

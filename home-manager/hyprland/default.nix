@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./waybar
     ./rofi.nix
@@ -37,43 +36,44 @@
       "$menu" = "rofi -show drun";
       "$window_picker" = "rofi -show window";
 
-      bind = [
-        "SUPER, A, exec, $terminal"
-        "SUPER, Z, exec, $browser"
-        "SUPER, E, exec, $fileManager"
-        "SUPER, R, exec, $menu"
-        "SUPER, Tab, exec, $window_picker"
-        "SUPER, P, exec, wlogout"
-        "SUPER, F, fullscreen,"
-        "SUPER, W, killactive,"
-      ] ++ (
-        let
-          top_row = [
-            "ampersand"
-            "eacute"
-            "quotedbl"
-            "apostrophe"
-            "parenleft"
-            "minus"
-            "egrave"
-            "underscore"
-            "ccedilla"
-            "agrave"
-          ];
-        in
-        builtins.concatLists (builtins.genList
-          (
-            i:
-            let
-              key = builtins.elemAt top_row i;
-            in
-            [
-              "SUPER, ${key}, workspace, ${toString (i + 1)}"
-            ]
-          )
-          10
-        )
-      );
+      bind =
+        [
+          "SUPER, A, exec, $terminal"
+          "SUPER, Z, exec, $browser"
+          "SUPER, E, exec, $fileManager"
+          "SUPER, R, exec, $menu"
+          "SUPER, Tab, exec, $window_picker"
+          "SUPER, P, exec, wlogout"
+          "SUPER, F, fullscreen,"
+          "SUPER, W, killactive,"
+        ]
+        ++ (
+          let
+            top_row = [
+              "ampersand"
+              "eacute"
+              "quotedbl"
+              "apostrophe"
+              "parenleft"
+              "minus"
+              "egrave"
+              "underscore"
+              "ccedilla"
+              "agrave"
+            ];
+          in
+            builtins.concatLists (
+              builtins.genList
+              (
+                i: let
+                  key = builtins.elemAt top_row i;
+                in [
+                  "SUPER, ${key}, workspace, ${toString (i + 1)}"
+                ]
+              )
+              10
+            )
+        );
 
       general = {
         gaps_out = 10;
