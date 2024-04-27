@@ -70,7 +70,6 @@
 
   # Enable hyprland
   programs.hyprland.enable = true;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Disable some gnome core apps
   environment.gnome.excludePackages = with pkgs.gnome; [
