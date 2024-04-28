@@ -2,30 +2,27 @@
   imports = [
     ./vscode.nix
     ./wezterm.nix
-    ./thunderbird.nix
     ./spotify.nix
     ./pcloud.nix
+    ./thunderbird.nix
   ];
 
   home.packages = with pkgs; [
     unstable.android-studio
-    unstable.jetbrains.idea-ultimate
+    unstable.jetbrains.idea-community
     godot_4
 
-    unstable.logseq
     onlyoffice-bin
     teams-for-linux
     zoom-us
 
     floorp
-    prismlauncher
     qbittorrent
     unstable.vesktop
     vlc
-    unstable.stremio
+    stremio
 
     keepassxc
-    mullvad-vpn
   ];
 
   home.sessionVariables = {

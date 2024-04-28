@@ -6,6 +6,8 @@
     nixpkgs-22_11.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    hardware.url = "github:nixos/nixos-hardware";
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,18 +50,16 @@
       TRONC = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/TRONC
           lanzaboote.nixosModules.lanzaboote
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      "celeri@TRONC" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/home.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              extraSpecialArgs = {inherit inputs;};
+            };
+          }
         ];
       };
     };

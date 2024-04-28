@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   programs.git = {
     enable = true;
     userName = "celeri";
@@ -15,7 +15,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       gpg.format = "ssh";
-      user.signingkey = "/home/celeri/.ssh/id_ed25519.pub";
+      user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       commit.gpgSign = true;
     };
   };

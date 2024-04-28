@@ -24,15 +24,10 @@
 
       # nix-your-shell
       ${pkgs.nix-your-shell}/bin/nix-your-shell fish | source
-
-      # Tell nh where to find the flake
-      # with the nixos and home-manager configs
-      set -x FLAKE /home/celeri/nix-config
     '';
     shellAliases = {
       cl = "clear";
       lgit = "lazygit";
-      ldocker = "lazydocker";
       ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";
       la = "ls --all";

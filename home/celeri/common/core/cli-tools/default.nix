@@ -8,16 +8,17 @@
 
   home.packages = with pkgs; [
     cachix
-    imagemagick
-    fd
-    ffmpeg
-    glow
-    lazydocker
-    mprocs
+    unstable.manix
     unstable.nh
     nix-output-monitor
+
+    fd
+    glow
+    mprocs
     tldr
-    wasmer
+
+    imagemagick
+    ffmpeg
   ];
 
   programs = {
