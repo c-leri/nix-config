@@ -1,0 +1,50 @@
+name: "Build"
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-linux:
+    name: "Build on Linux"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v10
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
+      - run: nix flake check
+      - run: nix build
+      - run: cp -r result/bin/ artifact/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PROJECT_NAME-linux
+          path: ${{ github.workspace }}/artifact/*
+
+  build-macos:
+    name: "Build on MacOS"
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build -r
+      - run: mkdir artifact; cp -R assets artifact/
+      - run: cp target/release/PROJECT_NAME artifact/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PROJECT_NAME-macos
+          path: ${{ github.workspace }}/artifact/*
+
+  build-windows:
+    name: "Build on Windows"
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build -r
+      - run: xcopy ${{ github.workspace }}\assets ${{ github.workspace }}\artifact\assets /s /i
+      - run: xcopy ${{ github.workspace }}\target\release\PROJECT_NAME.exe ${{ github.workspace }}\artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PROJECT_NAME-windows
+          path: ${{ github.workspace }}/artifact/*

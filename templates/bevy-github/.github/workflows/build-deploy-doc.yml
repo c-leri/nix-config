@@ -1,0 +1,33 @@
+name: "Build and Deploy the Documentation"
+
+on: [push]
+
+jobs:
+  build-doc:
+    name: "Build the documentation"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v10
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
+      - run: nix build .#doc
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: result/share/doc
+
+  deploy-doc:
+    name: "Deploy the documentation"
+    needs: build-doc
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
+    
