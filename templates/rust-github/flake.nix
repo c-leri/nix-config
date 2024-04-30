@@ -35,14 +35,10 @@
           strictDeps = true;
 
           # Executables build dependencies
-          nativeBuildInputs = [
-            # FIXME
-          ];
+          nativeBuildInputs = [];
 
           # Libraries build dependecies
-          buildInputs = [
-            # FIXME
-          ];
+          buildInputs = [];
         };
 
         # Build just the cargo dependencies

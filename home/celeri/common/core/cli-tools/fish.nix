@@ -37,5 +37,30 @@
       lat = "la --tree --level=2";
       llt = "ll --tree --level=2";
     };
+    functions = {
+      flake-init = ''
+        if test $(count $argv) = 1
+          nix flake init --template $FLAKE#$argv[1]
+
+          if test $status = 0
+            ${pkgs.rpl}/bin/rpl -R PROJECT_NAME $(path basename -- $PWD) * .*
+
+            # run cargo update if the used template
+            # is a rust template
+            set rust_templates rust rust-github bevy bevy-github
+            if contains -- $argv[1] $rust_templates
+              cargo update
+            end
+
+            git init; git add .
+
+            echo 'use flake' > .envrc
+            direnv allow
+
+            return
+          end
+        end
+      '';
+    };
   };
 }

@@ -36,6 +36,9 @@
           display-inlay-hints = true;
         };
       };
+      keys.normal = {
+        C-g = [":new" ":insert-output ${pkgs.lazygit}/bin/lazygit" ":buffer-close!" ":redraw"];
+      };
     };
     languages = {
       language-server = {
