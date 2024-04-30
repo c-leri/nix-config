@@ -6,6 +6,9 @@
     # Nix config
     ./nix.nix
 
+    # Sops config
+    ./sops.nix
+
     # Auto-upgrade service
     ./services/auto-upgrade.nix
   ];

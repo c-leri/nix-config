@@ -14,6 +14,11 @@
       inputs.rust-overlay.follows = "rust-overlay";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +39,7 @@
     self,
     nixpkgs,
     lanzaboote,
+    sops-nix,
     home-manager,
     ...
   } @ inputs: let
@@ -44,6 +50,16 @@
   in {
     formatter = forAllSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
 
+    devShell = forAllSystem (
+      system: let
+        pkgs = import nixpkgs {inherit system;};
+      in
+        pkgs.mkShell {
+          name = "nix-config";
+          packages = with pkgs; [age sops];
+        }
+    );
+
     overlays = import ./overlays.nix {inherit inputs;};
 
     nixosConfigurations = {
@@ -52,6 +68,7 @@
         modules = [
           ./hosts/TRONC
           lanzaboote.nixosModules.lanzaboote
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager = {

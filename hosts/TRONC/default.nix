@@ -17,16 +17,22 @@
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/hyprland.nix
+    ../common/optional/searx.nix
 
     # User
     ../common/users/celeri.nix
 
     # Host specific
+    ./keymap.nix
+    ./auto-login.nix
     ./power-management.nix
     ./shared-partition.nix
   ];
 
   networking.hostName = "TRONC";
+
+  # Set the sops key
+  sops.age.keyFile = "/home/${config.users.users.celeri.name}/.config/sops/age/keys.txt";
 
   boot = {
     # Bootloader
@@ -39,23 +45,6 @@
       pkiBundle = "/etc/secureboot";
     };
   };
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "fr";
-    xkbVariant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "fr";
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = config.users.users.celeri.name;
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
