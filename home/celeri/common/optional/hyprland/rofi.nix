@@ -6,7 +6,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    terminal = "${pkgs.unstable.wezterm}/bin/wezterm";
+    terminal = "${pkgs.wezterm}/bin/wezterm";
     font = "CaskaydiaCove Nerd Font 14";
     extraConfig = {
       modi = "run,drun,window";
@@ -52,7 +52,10 @@
       };
 
       inputbar = {
-        children = map mkLiteral ["prompt" "entry"];
+        children = map mkLiteral [
+          "prompt"
+          "entry"
+        ];
         background-color = mkLiteral "@bg-col";
         border-radius = mkLiteral "5px";
         padding = mkLiteral "2px";

@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     nodejs_20
-    unstable.nodePackages.pnpm
+    nodePackages.pnpm
   ];
 
   home.sessionVariables = {

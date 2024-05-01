@@ -1,15 +1,17 @@
 {pkgs, ...}: {
   imports = [
+    ./atuin.nix
+    ./bat.nix
+    ./bottom.nix
     ./fish.nix
     ./git.nix
     ./helix.nix
-    ./bat.nix
+    ./starship.nix
   ];
 
   home.packages = with pkgs; [
     cachix
-    unstable.manix
-    unstable.nh
+    manix
     nix-output-monitor
 
     fd
@@ -22,16 +24,7 @@
   ];
 
   programs = {
-    bottom.enable = true;
     direnv.enable = true;
     ripgrep.enable = true;
-    atuin = {
-      enable = true;
-      flags = ["--disable-up-arrow"];
-      settings = {
-        dialect = "uk";
-        update_check = false;
-      };
-    };
   };
 }

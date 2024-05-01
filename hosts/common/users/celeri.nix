@@ -11,7 +11,12 @@ in {
     name = "celeri";
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = ["wheel"] ++ ifTheyExist ["docker" "networkmanager"];
+    extraGroups =
+      ["wheel"]
+      ++ ifTheyExist [
+        "docker"
+        "networkmanager"
+      ];
   };
 
   # Add user to nix trusted users

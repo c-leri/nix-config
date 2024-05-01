@@ -7,7 +7,12 @@
         position = "top";
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["tray" "pulseaudio" "battery" "clock"];
+        modules-right = [
+          "tray"
+          "pulseaudio"
+          "battery"
+          "clock"
+        ];
 
         "hyprland/window".format = "{}";
 
@@ -15,13 +20,19 @@
           disable-scroll = true;
           sort-by-name = true;
           format = "{icon}";
-          format-icons = {default = "";};
+          format-icons = {
+            default = "";
+          };
         };
 
         pulseaudio = {
           format = "{icon}";
           format-muted = "󰝟";
-          format-icons = ["󰕿" "󰖀" "󰕾"];
+          format-icons = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
           tooltip = true;
           tooltip-format = "{volume}%";
         };
@@ -34,7 +45,18 @@
           format = "{icon}";
           format-charging = " {icon}";
           format-plugged = " {icon}";
-          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           tooltip = true;
           tooltip-format = "{capacity}%";
         };

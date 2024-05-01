@@ -11,9 +11,7 @@
     settings = {
       monitor = "eDP-1,1920x1080,0X0,1.25";
 
-      env = [
-        "NIXOS_OZONE_WL,1"
-      ];
+      env = ["NIXOS_OZONE_WL,1"];
 
       exec-once = [
         "${pkgs.dunst}/bin/dunst"
@@ -63,13 +61,10 @@
             ];
           in
             builtins.concatLists (
-              builtins.genList
-              (
+              builtins.genList (
                 i: let
                   key = builtins.elemAt top_row i;
-                in [
-                  "SUPER, ${key}, workspace, ${toString (i + 1)}"
-                ]
+                in ["SUPER, ${key}, workspace, ${toString (i + 1)}"]
               )
               10
             )

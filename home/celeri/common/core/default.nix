@@ -1,5 +1,8 @@
-{config, ...}: {
+{inputs, ...}: {
   imports = [
+    # Catppuccin Module
+    inputs.catppuccin.homeManagerModules.catppuccin
+
     # Services
     ./services/mpris-proxy.nix
 
@@ -13,8 +16,11 @@
     ./languages
   ];
 
-  home.sessionVariables = {
-    # Tell nh where to find the nixos and home-manager config flake
-    FLAKE = "${config.home.homeDirectory}/nix-config";
-  };
+  # Enable the ssh agent
+  services.ssh-agent.enable = true;
+
+  xdg.enable = true;
+
+  # Choose catppuccin flavour
+  catppuccin.flavour = "macchiato";
 }

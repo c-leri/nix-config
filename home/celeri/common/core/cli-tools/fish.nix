@@ -1,13 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs.fishPlugins; [
     autopair
     puffer
   ];
 
-  programs.starship.enable = true;
-
   programs.fish = {
     enable = true;
+    catppuccin.enable = true;
     interactiveShellInit = ''
       # Remove greetings
       set fish_greeting
@@ -40,7 +43,7 @@
     functions = {
       flake-init = ''
         if test $(count $argv) = 1
-          nix flake init --template $FLAKE#$argv[1]
+          nix flake init --template ${config.home.homeDirectory}/nix-config#$argv[1]
 
           if test $status = 0
             ${pkgs.rpl}/bin/rpl -R PROJECT_NAME $(path basename -- $PWD) * .*

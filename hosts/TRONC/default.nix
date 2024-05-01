@@ -16,8 +16,9 @@
     # Optional
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
-    ../common/optional/hyprland.nix
     ../common/optional/searx.nix
+    ../common/optional/flatpak.nix
+    # ../common/optional/hyprland.nix
 
     # User
     ../common/users/celeri.nix
@@ -33,6 +34,9 @@
 
   # Set the sops key
   sops.age.keyFile = "/home/${config.users.users.celeri.name}/.config/sops/age/keys.txt";
+
+  # Set the nixos and home-manager config flake for nh
+  programs.nh.flake = "/home/${config.users.users.celeri.name}/nix-config";
 
   boot = {
     # Bootloader

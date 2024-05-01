@@ -15,7 +15,10 @@
   # Flake outputs
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       perSystem = {
         system,
         self',
@@ -45,10 +48,7 @@
         cargoArtifacts = craneLib.buildDepsOnly commonArgs;
 
         # Build the rust crate itself
-        PROJECT_NAME = craneLib.buildPackage (commonArgs
-          // {
-            inherit cargoArtifacts;
-          });
+        PROJECT_NAME = craneLib.buildPackage (commonArgs // {inherit cargoArtifacts;});
       in {
         # Override the `pkgs` attribute
         _module.args.pkgs = import inputs.nixpkgs {
@@ -71,12 +71,14 @@
           inherit PROJECT_NAME;
 
           # Check that the doc builds without warnings
-          PROJECT_NAME-doc = craneLib.cargoDoc (commonArgs
+          PROJECT_NAME-doc = craneLib.cargoDoc (
+            commonArgs
             // {
               inherit cargoArtifacts;
               cargoDocExtraArgs = "--no-deps --document-private-items";
               RUSTDOCFLAGS = "--deny warnings";
-            });
+            }
+          );
         };
 
         # Packages built with `nix build`
@@ -85,11 +87,13 @@
           default = PROJECT_NAME;
 
           # Build the crate's documentation
-          doc = craneLib.cargoDoc (commonArgs
+          doc = craneLib.cargoDoc (
+            commonArgs
             // {
               inherit cargoArtifacts;
               cargoDocExtraArgs = "--document-private-items";
-            });
+            }
+          );
         };
 
         # Development shell with all needed dependencies

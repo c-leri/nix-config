@@ -4,10 +4,10 @@
     common/core
 
     # Optional
-    common/optional/hyprland
     common/optional/lazydocker.nix
     common/optional/mullvad-vpn.nix
     common/optional/prismlauncher.nix
+    # common/optional/hyprland
   ];
 
   home.username = "celeri";

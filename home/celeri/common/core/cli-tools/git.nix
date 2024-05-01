@@ -22,9 +22,13 @@
 
   programs.lazygit = {
     enable = true;
+    catppuccin.enable = true;
     settings = {
       gui.theme = {
-        activeBorderColor = ["#a6da95" "bold"];
+        activeBorderColor = [
+          "#a6da95"
+          "bold"
+        ];
         inactiveBorderColor = ["#a5adcb"];
         optionsTextColor = ["#8aadf4"];
         selectedLineBgColor = ["#363a4f"];

@@ -2,9 +2,8 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-22_11.url = "github:nixos/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -20,7 +19,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,6 +27,8 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
@@ -56,7 +57,10 @@
       in
         pkgs.mkShell {
           name = "nix-config";
-          packages = with pkgs; [age sops];
+          packages = with pkgs; [
+            age
+            sops
+          ];
         }
     );
 
@@ -64,7 +68,9 @@
 
     nixosConfigurations = {
       TRONC = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit inputs outputs;
+        };
         modules = [
           ./hosts/TRONC
           lanzaboote.nixosModules.lanzaboote
@@ -74,7 +80,9 @@
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {
+                inherit inputs;
+              };
             };
           }
         ];

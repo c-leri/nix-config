@@ -15,7 +15,10 @@
   # Flake outputs
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       perSystem = {
         system,
         self',
@@ -59,7 +62,8 @@
         cargoArtifacts = craneLib.buildDepsOnly commonArgs;
 
         # Build the rust crate itself
-        PROJECT_NAME = craneLib.buildPackage (commonArgs
+        PROJECT_NAME = craneLib.buildPackage (
+          commonArgs
           // {
             inherit cargoArtifacts;
 
@@ -67,7 +71,8 @@
               # Copy the assets to the built output folder
               cp -r assets/ $out/bin/
             '';
-          });
+          }
+        );
 
         # Libraries needed at runtime
         runtimeDependencies = with pkgs; [
@@ -96,12 +101,14 @@
           inherit PROJECT_NAME;
 
           # Check that the doc builds without warnings
-          PROJECT_NAME-doc = craneLib.cargoDoc (commonArgs
+          PROJECT_NAME-doc = craneLib.cargoDoc (
+            commonArgs
             // {
               inherit cargoArtifacts;
               cargoDocExtraArgs = "--no-deps --document-private-items";
               RUSTDOCFLAGS = "--deny warnings";
-            });
+            }
+          );
         };
 
         # Packages built with `nix build`
@@ -124,11 +131,13 @@
           };
 
           # Build the crate's documentation
-          doc = craneLib.cargoDoc (commonArgs
+          doc = craneLib.cargoDoc (
+            commonArgs
             // {
               inherit cargoArtifacts;
               cargoDocExtraArgs = "--document-private-items";
-            });
+            }
+          );
         };
 
         # Application run with `nix run`
@@ -148,7 +157,9 @@
 
           shellHook = ''
             # Environment variable to tell the system where to find the libraries
-            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${lib.makeLibraryPath (runtimeDependencies ++ commonArgs.buildInputs)}"
+            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${
+              lib.makeLibraryPath (runtimeDependencies ++ commonArgs.buildInputs)
+            }"
           '';
         };
       };

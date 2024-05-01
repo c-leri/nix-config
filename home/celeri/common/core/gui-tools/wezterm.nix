@@ -1,7 +1,6 @@
-{pkgs, ...}: {
+{
   programs.wezterm = {
     enable = true;
-    package = pkgs.unstable.wezterm;
     extraConfig = ''
       return {
         color_scheme = "Catppuccin Macchiato",
