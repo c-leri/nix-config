@@ -1,7 +1,7 @@
-{inputs, ...}: {
+{
   imports = [
-    # Catppuccin Module
-    inputs.catppuccin.homeManagerModules.catppuccin
+    # Sops
+    ./sops.nix
 
     # Services
     ./services/mpris-proxy.nix
@@ -20,7 +20,4 @@
   services.ssh-agent.enable = true;
 
   xdg.enable = true;
-
-  # Choose catppuccin flavour
-  catppuccin.flavour = "macchiato";
 }

@@ -1,8 +1,17 @@
 {
+  inputs,
   pkgs,
   config,
   ...
 }: {
+  imports = [
+    # Catppuccin Module
+    inputs.catppuccin.homeManagerModules.catppuccin
+  ];
+
+  # Choose catppuccin flavour
+  catppuccin.flavour = "macchiato";
+
   home.sessionVariables = {
     # Tell QT to use x11 (wayland seems to be broken for now)
     QT_QPA_PLATFORM = "xcb";

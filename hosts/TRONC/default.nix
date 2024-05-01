@@ -32,9 +32,6 @@
 
   networking.hostName = "TRONC";
 
-  # Set the sops key
-  sops.age.keyFile = "/home/${config.users.users.celeri.name}/.config/sops/age/keys.txt";
-
   # Set the nixos and home-manager config flake for nh
   programs.nh.flake = "/home/${config.users.users.celeri.name}/nix-config";
 

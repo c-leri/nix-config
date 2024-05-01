@@ -14,6 +14,10 @@
       "home-manager"
       "--update-input"
       "rust-overlay"
+      "--update-input"
+      "catppuccin"
+      "--update-input"
+      "spicetify-nix"
       "-L"
     ];
     dates = "daily";
