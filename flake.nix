@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-22_11.url = "github:nixos/nixpkgs/nixos-22.11";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -44,8 +43,6 @@
     home-manager,
     ...
   } @ inputs: let
-    inherit (self) outputs;
-
     systems = ["x86_64-linux"];
     forAllSystem = nixpkgs.lib.genAttrs systems;
   in {
@@ -64,12 +61,10 @@
         }
     );
 
-    overlays = import ./overlays.nix {inherit inputs;};
-
     nixosConfigurations = {
       TRONC = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs;
         };
         modules = [
           ./hosts/TRONC

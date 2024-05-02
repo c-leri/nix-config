@@ -1,10 +1,11 @@
 {pkgs, ...}: {
   imports = [
+    ./keepassxc.nix
+    ./mega.nix
+    ./spotify.nix
+    ./thunderbird.nix
     ./vscode.nix
     ./wezterm.nix
-    ./spotify.nix
-    ./pcloud.nix
-    ./thunderbird.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,8 +22,6 @@
     vesktop
     vlc
     stremio
-
-    keepassxc
   ];
 
   home.sessionVariables = {
