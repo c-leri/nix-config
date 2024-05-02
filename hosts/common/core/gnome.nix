@@ -12,21 +12,22 @@
   };
 
   # Disable some gnome core apps
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    pkgs.gnome-tour
+  environment.gnome.excludePackages = with pkgs;
+  with gnome; [
     epiphany
-    pkgs.gnome-text-editor
+    geary
     gnome-calculator
     gnome-characters
-    pkgs.gnome-console
+    gnome-connections
+    gnome-console
     gnome-contacts
     gnome-maps
     gnome-music
-    pkgs.gnome-connections
+    gnome-text-editor
+    gnome-tour
     simple-scan
-    pkgs.snapshot
+    snapshot
     totem
     yelp
-    geary
   ];
 }

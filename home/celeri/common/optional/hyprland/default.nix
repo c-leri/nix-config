@@ -30,7 +30,7 @@
       # Programs
       "$terminal" = "wezterm";
       "$browser" = "floorp";
-      "$fileManager" = "${pkgs.gnome.nautilus}/bin/nautilus";
+      "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun";
       "$window_picker" = "rofi -show window";
 
