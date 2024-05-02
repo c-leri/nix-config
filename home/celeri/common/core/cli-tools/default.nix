@@ -1,12 +1,13 @@
 {pkgs, ...}: {
   imports = [
+    ./helix
     ./atuin.nix
     ./bat.nix
     ./bottom.nix
     ./fish.nix
     ./git.nix
-    ./helix.nix
     ./starship.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [

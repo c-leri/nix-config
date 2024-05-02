@@ -42,6 +42,7 @@
           ":buffer-close!"
           ":redraw"
         ];
+        C-e = ":sh ${./explorer.sh}";
       };
     };
     languages = {

@@ -41,6 +41,14 @@
       llt = "ll --tree --level=2";
     };
     functions = {
+      ycd = ''
+        set chosen_path $(yazi --chooser-file /dev/stdout);
+        if path is -d $chosen_path
+          cd $chosen_path
+        else if path is -f $chosen_path
+          cd $(path dirname $chosen_path)
+        end
+      '';
       flake-init = ''
         if test $(count $argv) = 1
           nix flake init --template ${config.home.homeDirectory}/nix-config#$argv[1]
