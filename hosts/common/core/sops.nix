@@ -5,10 +5,5 @@
       keyFile = "/var/lib/sops-nix/key.txt";
       generateKey = true;
     };
-
-    secrets.searxEnvironmentFile = {
-      sopsFile = ../../../secrets/searx_environment_file;
-      format = "binary";
-    };
   };
 }

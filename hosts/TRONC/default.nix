@@ -16,7 +16,6 @@
     # Optional
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
-    ../common/optional/searx.nix
     ../common/optional/flatpak.nix
 
     # User
@@ -27,6 +26,7 @@
     ./auto-login.nix
     ./power-management.nix
     ./shared-partition.nix
+    ./searx.nix
   ];
 
   networking.hostName = "TRONC";

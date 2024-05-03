@@ -7,8 +7,8 @@
 in {
   users.mutableUsers = false;
   sops.secrets.celeri-password = {
-    key = "password";
-    sopsFile = ../../../secrets/celeri.yaml;
+    key = "celeri";
+    sopsFile = ../../../secrets/hosts/common/passwords.yaml;
     format = "yaml";
     neededForUsers = true;
   };
