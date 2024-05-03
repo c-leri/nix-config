@@ -23,6 +23,8 @@ in {
     extraGroups =
       ["wheel"]
       ++ ifTheyExist [
+        "audio"
+        "video"
         "docker"
         "networkmanager"
       ];

@@ -18,7 +18,6 @@
     ../common/optional/docker.nix
     ../common/optional/searx.nix
     ../common/optional/flatpak.nix
-    # ../common/optional/hyprland.nix
 
     # User
     ../common/users/celeri.nix
