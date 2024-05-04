@@ -1,5 +1,3 @@
-#! /usr/bin/env bash
-
 left_pane_id=$(wezterm cli get-pane-direction left)
 if [ -z $left_pane_id ]; then
   left_pane_id=$(wezterm cli split-pane --left --cells 30)

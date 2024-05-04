@@ -42,7 +42,7 @@
           ":buffer-close!"
           ":redraw"
         ];
-        C-e = ":sh ${./explorer.sh}";
+        C-e = ":sh ${builtins.readFile ./explorer.sh}";
       };
     };
     languages = {

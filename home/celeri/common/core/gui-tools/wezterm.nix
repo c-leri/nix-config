@@ -1,9 +1,16 @@
 {
+  config,
+  lib,
+  ...
+}: let
+  catppuccinFlavour = config.catppuccin.flavour;
+  capitalizedCatppuccinFlavour = (lib.toUpper (builtins.substring 0 1 catppuccinFlavour)) + (builtins.substring 1 (builtins.stringLength catppuccinFlavour) catppuccinFlavour);
+in {
   programs.wezterm = {
     enable = true;
     extraConfig = ''
       return {
-        color_scheme = "Catppuccin Macchiato",
+        color_scheme = "Catppuccin ${capitalizedCatppuccinFlavour}",
         font = wezterm.font("CaskaydiaCove Nerd Font"),
 
         hide_tab_bar_if_only_one_tab = true,

@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -24,14 +23,14 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/a3adefcc-0f9b-472b-a2da-f5d8ce953a7e";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-47481322-ba2c-428c-9abe-c82197f8e32b".device = "/dev/disk/by-uuid/47481322-ba2c-428c-9abe-c82197f8e32b";
+  boot.initrd.luks.devices."luks-47481322-ba2c-428c-9abe-c82197f8e32b".device = "/dev/disk/by-label/NIXROOTX";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/92FC-F358";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
   };
 
