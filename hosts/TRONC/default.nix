@@ -8,6 +8,7 @@
     # Harware modules
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.common-pc-laptop
 
     # Required
     ./hardware-configuration.nix
@@ -22,9 +23,9 @@
     ../common/users/celeri.nix
 
     # Host specific
+    ./power-management
     ./keymap.nix
     ./auto-login.nix
-    ./power-management.nix
     ./shared-partition.nix
     ./searx.nix
   ];

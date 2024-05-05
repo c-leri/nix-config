@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ThermalConfiguration>
+<Platform>
+  <Name>Override Max Temp</Name>
+  <ProductName>*</ProductName>
+  <Preference>QUIET</Preference>
+  <ThermalZones>
+    <ThermalZone>
+      <Type>x86_pkg_temp</Type>
+      <TripPoints>
+        <TripPoint>
+        <SensorType>x86_pkg_temp</SensorType>
+        <Temperature>85000</Temperature>
+        <type>max</type>
+        <ControlType>SEQUENTIAL</ControlType>
+        <CoolingDevice>
+          <type>Processor</type>
+        </CoolingDevice>
+        </TripPoint>
+      </TripPoints>
+    </ThermalZone>
+  </ThermalZones>
+  <CoolingDevices>
+    <CoolingDevice>
+      <Type>Processor</Type>
+      <PidControl>
+        <kp>0.0002</kp>
+        <kd>0</kd>
+        <ki>0</ki>
+      </PidControl>
+    </CoolingDevice>
+  </CoolingDevices>
+</Platform>
+</ThermalConfiguration>

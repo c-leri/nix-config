@@ -85,6 +85,11 @@
     };
 
     templates = {
+      basic-flake = {
+        path = ./templates/basic-flake;
+        description = "A basic empty flake";
+      };
+
       rust = {
         path = ./templates/rust;
         description = "A flake for rust development";

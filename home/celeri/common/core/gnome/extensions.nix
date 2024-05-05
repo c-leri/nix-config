@@ -35,8 +35,19 @@
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
     };
+    "org/gnome/shell/extensions/aztaskbar" = {
+      favorites = false;
+      indicator-color-focused = "rgb(198,160,246)";
+    };
+    "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
+      blur = false;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      blur = false;
+    };
     "org/gnome/shell/extensions/caffeine" = {
       countdown-timer = 0;
+      show-notifications = false;
     };
     "org/gnome/shell/extensions/coverflowalttab" = {
       position = "Top";
@@ -46,9 +57,11 @@
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
       apply-custom-theme = false;
+      transparency-mode = "FIXED";
       background-opacity = 0.0;
-      disable-overview-on-startup = true;
       dock-position = "BOTTOM";
+      running-indicator-style = "DOTS";
+      show-trash = false;
       hot-keys = false;
     };
     "org/gnome/shell/extensions/just-perfection" = {
@@ -57,6 +70,7 @@
       weather = false;
       window-demands-attention-focus = true;
       world-clock = false;
+      startup-status = 0;
     };
     "org/gnome/shell/extensions/quick-settings-tweaks" = {
       add-dnd-quick-toggle-enabled = true;

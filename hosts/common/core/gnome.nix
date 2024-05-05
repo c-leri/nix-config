@@ -16,13 +16,20 @@
   with gnome; [
     epiphany
     geary
+    gnome-backgrounds
     gnome-calculator
+    gnome-calendar
     gnome-characters
+    gnome-clocks
     gnome-connections
     gnome-console
     gnome-contacts
+    gnome-font-viewer
+    gnome-logs
     gnome-maps
     gnome-music
+    gnome-system-monitor
+    gnome-weather
     gnome-text-editor
     gnome-tour
     simple-scan
