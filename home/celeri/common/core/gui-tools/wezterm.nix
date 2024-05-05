@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -6,6 +7,11 @@
   catppuccinFlavour = config.catppuccin.flavour;
   capitalizedCatppuccinFlavour = (lib.toUpper (builtins.substring 0 1 catppuccinFlavour)) + (builtins.substring 1 (builtins.stringLength catppuccinFlavour) catppuccinFlavour);
 in {
+  # Set wezterm as the default terminal
+  home.packages = [pkgs.xdg-terminal-exec];
+  xdg.configFile."xdg-terminals.list".text = "org.wezfurlong.wezterm.desktop";
+  xdg.dataFile."xdg-terminals/org.wezfurlong.wezterm.desktop".source = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
+
   programs.wezterm = {
     enable = true;
     extraConfig = ''

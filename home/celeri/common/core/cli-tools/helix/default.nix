@@ -8,6 +8,7 @@
 
       nil
 
+      nodePackages.bash-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
@@ -72,6 +73,13 @@
               "--quiet"
               "-"
             ];
+          };
+          auto-format = true;
+        }
+        {
+          name = "bash";
+          formatter = {
+            command = "${pkgs.shfmt}/bin/shfmt";
           };
           auto-format = true;
         }
