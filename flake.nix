@@ -88,6 +88,9 @@
       basic-flake = {
         path = ./templates/basic-flake;
         description = "A basic empty flake";
+        welcomeText = ''
+          Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
+        '';
       };
 
       rust = {

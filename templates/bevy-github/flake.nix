@@ -10,19 +10,36 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-root.url = "github:srid/flake-root";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Flake outputs
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {
+    flake-parts,
+    flake-root,
+    treefmt-nix,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        flake-root.flakeModule
+        treefmt-nix.flakeModule
+      ];
+
       systems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
+
       perSystem = {
         system,
         self',
         pkgs,
+        config,
         lib,
         ...
       }: let
@@ -91,8 +108,19 @@
           ];
         };
 
-        # Format this file with `nix fmt`
-        formatter = pkgs.alejandra;
+        # Format the whole project with `nix fmt`
+        treefmt.config = {
+          inherit (config.flake-root) projectRootFile;
+
+          # To format nix files
+          programs.alejandra.enable = true;
+
+          # To format rust files
+          programs.rustfmt.enable = true;
+
+          # To format toml files
+          programs.taplo.enable = true;
+        };
 
         # Checks run with `nix flake check`
         checks = {
@@ -154,6 +182,12 @@
           checks = self'.checks;
 
           name = crateMeta.pname;
+
+          # Export $FLAKE_ROOT in the development shell
+          inputsFrom = [config.flake-root.devShell];
+
+          # Provide treefmt's formaters in the development shell
+          packages = lib.attrValues config.treefmt.build.programs;
 
           shellHook = ''
             # Environment variable to tell the system where to find the libraries

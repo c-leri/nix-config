@@ -50,7 +50,7 @@
         end
       '';
       flake-init = ''
-        if test $(count $argv) = 1
+        if test $(count $argv) = 1 && test -z "$(ls -A .)"
           nix flake init --template ${config.home.homeDirectory}/nix-config#$argv[1]
 
           if test $status = 0

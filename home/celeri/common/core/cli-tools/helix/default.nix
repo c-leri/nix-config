@@ -4,21 +4,35 @@
     catppuccin.enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
+      # C
       clang-tools
 
+      # Nix
+      alejandra
       nil
 
+      # Bash
       nodePackages.bash-language-server
+      shfmt
+
+      # Typescript
       nodePackages.typescript
       nodePackages.typescript-language-server
+
+      # Javascript/HTML/CSS
       nodePackages.vscode-langservers-extracted
 
+      # Python
+      black
       python3Packages.python-lsp-server
       python3Packages.python-lsp-ruff
+      ruff-lsp
 
+      # Toml
       taplo
 
-      zls
+      # Yaml
+      yaml-language-server
     ];
     settings = {
       editor = {
@@ -49,15 +63,29 @@
     languages = {
       language-server = {
         ruff-lsp = {
-          command = "${pkgs.ruff-lsp}/bin/ruff-lsp";
+          command = "ruff-lsp";
+        };
+
+        yaml-language-server.config.yaml = {
+          validation = true;
+          schemas = {
+            "https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}";
+          };
         };
       };
 
       language = [
         {
+          name = "bash";
+          formatter = {
+            command = "shfmt";
+          };
+          auto-format = true;
+        }
+        {
           name = "nix";
           formatter = {
-            command = "${pkgs.alejandra}/bin/alejandra";
+            command = "alejandra";
           };
           auto-format = true;
         }
@@ -68,18 +96,11 @@
             "ruff-lsp"
           ];
           formatter = {
-            command = "${pkgs.black}/bin/black";
+            command = "$black";
             args = [
               "--quiet"
               "-"
             ];
-          };
-          auto-format = true;
-        }
-        {
-          name = "bash";
-          formatter = {
-            command = "${pkgs.shfmt}/bin/shfmt";
           };
           auto-format = true;
         }
