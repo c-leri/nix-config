@@ -7,7 +7,6 @@
     ./services/mpris-proxy.nix
 
     # Theming
-    ./gnome
     ./theme.nix
 
     # Tools

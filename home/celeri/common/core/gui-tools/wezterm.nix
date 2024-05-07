@@ -10,7 +10,7 @@ in {
   # Set wezterm as the default terminal
   home.packages = [pkgs.xdg-terminal-exec];
   xdg.configFile."xdg-terminals.list".text = "org.wezfurlong.wezterm.desktop";
-  xdg.dataFile."xdg-terminals/org.wezfurlong.wezterm.desktop".source = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
+  xdg.dataFile."applications/org.wezfurlong.wezterm.desktop".source = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
 
   programs.wezterm = {
     enable = true;

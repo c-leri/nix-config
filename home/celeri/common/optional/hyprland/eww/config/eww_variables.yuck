@@ -1,0 +1,10 @@
+;; Variables
+
+(defpoll time :interval "5s"
+  :initial `{"hour":"00","min":"00"}`
+  `date +'{"hour":"%H","min":"%M"}'`)
+
+(defpoll net :interval "100s"
+  :initial `0`
+  `nmcli -t -f SIGNAL,ACTIVE device wifi \
+    | awk -F':' '{if($2=="oui")print$1}'`)

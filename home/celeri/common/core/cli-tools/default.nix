@@ -11,7 +11,6 @@
   ];
 
   home.packages = with pkgs; [
-    cachix
     manix
     nix-output-monitor
 

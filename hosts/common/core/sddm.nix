@@ -45,7 +45,7 @@
     '';
   });
 in {
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     theme = "${theme}/share/sddm/themes/catppuccin-sddm-corners";

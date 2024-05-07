@@ -20,6 +20,7 @@
     gnome-calendar
     gnome-characters
     gnome-clocks
+    gnome-color-manager
     gnome-connections
     gnome-console
     gnome-contacts

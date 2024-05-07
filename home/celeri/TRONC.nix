@@ -4,10 +4,11 @@
     common/core
 
     # Optional
+    common/optional/gnome
+    common/optional/hyprland
     common/optional/lazydocker.nix
     common/optional/mullvad-vpn.nix
     common/optional/prismlauncher.nix
-    # common/optional/eww
   ];
 
   home.username = "celeri";

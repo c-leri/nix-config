@@ -23,6 +23,10 @@ $mantle: #1e2030;
 .tm-box {
   label {
     font-size: 2em;
+
+    &.lbl {
+      font-size: 1.5em;
+    }
   }
 }
 
@@ -54,7 +58,7 @@ $mantle: #1e2030;
 }
 
 .sep {
-  font-size: 1.5em;
+  font-size: 2em;
   padding-top: 0.15em;
   padding-left: 0.2em;
   padding-right: 0.2em;

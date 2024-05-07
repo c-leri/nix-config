@@ -15,6 +15,8 @@
     ../common/core
 
     # Optional
+    ../common/optional/gnome.nix
+    ../common/optional/hyprland.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix

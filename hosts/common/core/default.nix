@@ -17,7 +17,6 @@
 
     # Settings
     ./sddm.nix
-    ./gnome.nix
     ./pipewire.nix
   ];
 

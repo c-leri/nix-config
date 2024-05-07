@@ -30,8 +30,6 @@
     enable = true;
     catppuccin.enable = true;
 
-    theme.name = lib.mkForce "Catppuccin-Macchiato-Standard-Mauve-Dark";
-
     iconTheme = {
       package = pkgs.papirus-icon-theme.override {color = "magenta";};
       name = "Papirus";

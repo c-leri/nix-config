@@ -13,6 +13,8 @@
       "--update-input"
       "home-manager"
       "--update-input"
+      "hyprland"
+      "--update-input"
       "rust-overlay"
       "--update-input"
       "catppuccin"
