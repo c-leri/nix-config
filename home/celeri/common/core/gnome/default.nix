@@ -2,7 +2,9 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  background = ../../../../../background.jpg;
+in {
   imports = [
     ./extensions.nix
   ];
@@ -33,11 +35,11 @@
       show-battery-percentage = true;
     };
     "org/gnome/desktop/background" = {
-      picture-uri = "${./background.jpg}";
-      picture-uri-dark = "${./background.jpg}";
+      picture-uri = "${background}";
+      picture-uri-dark = "${background}";
     };
     "org/gnome/desktop/screensaver" = {
-      picture-uri = "${./background.jpg}";
+      picture-uri = "${background}";
     };
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;

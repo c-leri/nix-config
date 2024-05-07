@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  explorer = pkgs.writeShellScriptBin "explorer.sh" (builtins.readFile ./explorer.sh);
+in {
   programs.helix = {
     enable = true;
     catppuccin.enable = true;
@@ -57,7 +59,7 @@
           ":buffer-close!"
           ":redraw"
         ];
-        C-e = ":sh ${builtins.readFile ./explorer.sh}";
+        C-e = ":sh ${explorer}/bin/explorer.sh";
       };
     };
     languages = {

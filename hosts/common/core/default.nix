@@ -16,6 +16,7 @@
     ./services/auto-upgrade.nix
 
     # Settings
+    ./sddm.nix
     ./gnome.nix
     ./pipewire.nix
   ];
