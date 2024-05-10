@@ -9,7 +9,7 @@
     ./eww
     ./mako.nix
     ./rofi.nix
-    ./wpaperd.nix
+    ./hyprpaper.nix
     ./alacritty.nix
   ];
 
@@ -36,8 +36,6 @@
       xwayland.force_zero_scaling = true;
 
       general = {
-        cursor_inactive_timeout = 1;
-
         # Style
         border_size = 2;
         gaps_out = 10;
@@ -47,7 +45,6 @@
       };
 
       exec-once = [
-        "wpaperd"
         "eww open faketray; mullvad-vpn & megasync & keepassxc"
       ];
 
