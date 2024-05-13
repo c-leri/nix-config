@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
@@ -28,7 +27,10 @@
 
   gtk = {
     enable = true;
-    catppuccin.enable = true;
+    catppuccin = {
+      enable = true;
+      gnomeShellTheme = true;
+    };
 
     iconTheme = {
       package = pkgs.papirus-icon-theme.override {color = "magenta";};

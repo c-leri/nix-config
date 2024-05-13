@@ -14,7 +14,6 @@
     just-perfection
     quick-settings-tweaker
     transparent-window-moving
-    user-themes
   ];
 
   dconf.settings = {
@@ -31,7 +30,6 @@
         "just-perfection-desktop@just-perfection"
         "quick-settings-tweaks@qwreey"
         "transparent-window-moving@noobsai.github.com"
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
     };
@@ -88,9 +86,6 @@
     };
     "org/gnome/shell/extensions/transparent-window-moving" = {
       transparent-on-resizing = false;
-    };
-    "org/gnome/shell/extensions/user-theme" = {
-      name = config.gtk.theme.name;
     };
   };
 }
