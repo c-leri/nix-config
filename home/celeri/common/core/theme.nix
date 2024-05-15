@@ -37,4 +37,21 @@
       name = "Papirus";
     };
   };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
+  };
+
+  xdg.configFile = {
+    "Kvantum/Catppuccin-Macchiato-Mauve".source = "${pkgs.catppuccin-kvantum.override {
+      variant = "Macchiato";
+      accent = "Mauve";
+    }}/share/Kvantum/Catppuccin-Macchiato-Mauve";
+    "Kvantum/kvantum.kvconfig".text = ''
+      [General]
+      theme=Catppuccin-Macchiato-Mauve
+    '';
+  };
 }
