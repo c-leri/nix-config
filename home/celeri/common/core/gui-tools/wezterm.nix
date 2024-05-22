@@ -4,8 +4,8 @@
   lib,
   ...
 }: let
-  catppuccinFlavour = config.catppuccin.flavour;
-  capitalizedCatppuccinFlavour = (lib.toUpper (builtins.substring 0 1 catppuccinFlavour)) + (builtins.substring 1 (builtins.stringLength catppuccinFlavour) catppuccinFlavour);
+  catppuccinFlavor = config.catppuccin.flavor;
+  capitalizedCatppuccinFlavor = (lib.toUpper (builtins.substring 0 1 catppuccinFlavor)) + (builtins.substring 1 (builtins.stringLength catppuccinFlavor) catppuccinFlavor);
 in {
   # Set wezterm as the default terminal
   home.packages = [pkgs.xdg-terminal-exec];
@@ -16,7 +16,7 @@ in {
     enable = true;
     extraConfig = ''
       return {
-        color_scheme = "Catppuccin ${capitalizedCatppuccinFlavour}",
+        color_scheme = "Catppuccin ${capitalizedCatppuccinFlavor}",
         font = wezterm.font("CaskaydiaCove Nerd Font"),
 
         hide_tab_bar_if_only_one_tab = true,

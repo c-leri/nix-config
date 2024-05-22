@@ -27,7 +27,7 @@ in {
 
     "org/gnome/desktop/interface" = {
       color-scheme =
-        if config.catppuccin.flavour == "latte"
+        if config.catppuccin.flavor == "latte"
         then "default"
         else "prefer-dark";
       enable-hot-corners = false;

@@ -8,8 +8,8 @@
     inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
-  # Choose catppuccin flavour
-  catppuccin.flavour = "macchiato";
+  # Choose catppuccin flavor
+  catppuccin.flavor = "macchiato";
 
   home.sessionVariables = {
     # Tell QT to use x11 (wayland seems to be broken for now)
