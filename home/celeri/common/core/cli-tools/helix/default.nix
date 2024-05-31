@@ -3,6 +3,7 @@
 in {
   programs.helix = {
     enable = true;
+    package = pkgs.unstable.helix;
     catppuccin.enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [

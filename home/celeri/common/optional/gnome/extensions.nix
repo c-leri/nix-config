@@ -1,32 +1,35 @@
 {pkgs, ...}: {
-  home.packages = with pkgs.gnomeExtensions; [
-    app-icons-taskbar
-    appindicator
-    blur-my-shell
-    caffeine
-    coverflow-alt-tab
-    dash-to-dock
-    gnome-40-ui-improvements
-    just-perfection
-    quick-settings-tweaker
-    transparent-window-moving
-  ];
+  home.packages = with pkgs.gnomeExtensions;
+    [
+      app-icons-taskbar
+      appindicator
+      blur-my-shell
+      coverflow-alt-tab
+      dash-to-dock
+      gnome-40-ui-improvements
+      just-perfection
+      transparent-window-moving
+    ]
+    ++ (with pkgs.unstable.gnomeExtensions; [
+      espresso
+      quick-settings-tweaker
+    ]);
 
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "blur-my-shell@aunetx"
-        "CoverflowAltTab@palatis.blogspot.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         "aztaskbar@aztaskbar.gitlab.com"
-        "caffeine@patapon.info"
+        "blur-my-shell@aunetx"
+        "CoverflowAltTab@palatis.blogspot.com"
         "dash-to-dock@micxgx.gmail.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "espresso@coadmunkee.github.com"
         "gnome-ui-tune@itstime.tech"
         "just-perfection-desktop@just-perfection"
         "quick-settings-tweaks@qwreey"
         "transparent-window-moving@noobsai.github.com"
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
     };
     "org/gnome/shell/extensions/aztaskbar" = {
@@ -38,10 +41,6 @@
     };
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       blur = false;
-    };
-    "org/gnome/shell/extensions/caffeine" = {
-      countdown-timer = 0;
-      show-notifications = false;
     };
     "org/gnome/shell/extensions/coverflowalttab" = {
       position = "Top";
@@ -67,7 +66,7 @@
       startup-status = 0;
     };
     "org/gnome/shell/extensions/quick-settings-tweaks" = {
-      add-dnd-quick-toggle-enabled = true;
+      add-dnd-quick-toggle-enabled = false;
       datemenu-remove-media-control = true;
       datemenu-remove-notifications = false;
       input-always-show = false;

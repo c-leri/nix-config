@@ -1,7 +1,11 @@
 {pkgs, ...}: {
+  home.packages = [
+    pkgs.texliveFull
+  ];
+
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.unstable.vscodium;
     extensions = with pkgs.vscode-extensions; [
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons

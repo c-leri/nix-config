@@ -5,7 +5,7 @@
   ];
 
   home.packages = with pkgs; [
-    bun
+    unstable.bun
     jdk21
     python3
   ];

@@ -9,8 +9,8 @@
   ];
 
   home.packages = with pkgs; [
-    android-studio
-    jetbrains.idea-community-bin
+    unstable.android-studio
+    unstable.jetbrains.idea-community-bin
     godot_4
 
     onlyoffice-bin
@@ -19,7 +19,7 @@
 
     floorp
     qbittorrent
-    vesktop
+    unstable.vesktop
     vlc
     stremio
   ];
