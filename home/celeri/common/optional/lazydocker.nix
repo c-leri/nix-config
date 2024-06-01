@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [pkgs.lazydocker];
 
-  programs.fish.shellAliases.ldocker = "lazydocker";
+  programs.zsh.shellAliases.ldocker = "lazydocker";
 }

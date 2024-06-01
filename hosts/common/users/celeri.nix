@@ -13,13 +13,18 @@ in {
     neededForUsers = true;
   };
 
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    vteIntegration = true;
+    enableBashCompletion = true;
+    autosuggestions.enable = true;
+  };
 
   users.users.celeri = {
     name = "celeri";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.celeri-password.path;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     extraGroups =
       ["wheel"]
       ++ ifTheyExist [

@@ -4,7 +4,7 @@ if [ -n "$left_pane_id" ]; then
 fi
 
 if [[ -z "$left_pane_id" || "$left_program" != "Yazi:"* ]]; then
-	left_pane_id=$(wezterm cli split-pane --left --cells 30 -- bash)
+	left_pane_id=$(wezterm cli split-pane --left --cells 30 -- sh)
 
 	rm -r /tmp/yazi_tree
 	cp -r "$HOME/.config/yazi" /tmp/yazi_tree

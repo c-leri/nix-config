@@ -57,6 +57,9 @@
       show-trash = false;
       hot-keys = false;
     };
+    "org/gnome/shell/extensions/espresso" = {
+      show-notifications = false;
+    };
     "org/gnome/shell/extensions/just-perfection" = {
       events-button = false;
       theme = false;
