@@ -17,6 +17,7 @@
     teams-for-linux
     zoom-us
 
+    bottles
     floorp
     qbittorrent
     unstable.vesktop
