@@ -30,11 +30,7 @@
     catppuccin = {
       enable = true;
       gnomeShellTheme = true;
-    };
-
-    iconTheme = {
-      package = pkgs.papirus-icon-theme.override {color = "magenta";};
-      name = "Papirus";
+      icon.enable = true;
     };
   };
 

@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [
-    ./helix
     ./bat.nix
     ./bottom.nix
     ./fzf.nix
     ./git.nix
+    ./helix.nix
     ./starship.nix
     ./yazi.nix
     ./zsh.nix

@@ -14,7 +14,6 @@
     godot_4
 
     onlyoffice-bin
-    teams-for-linux
     zoom-us
 
     bottles

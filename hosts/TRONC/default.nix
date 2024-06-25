@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   config,
   lib,
   ...
@@ -34,6 +35,14 @@
 
   networking.hostName = "TRONC";
 
+  # Latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  hardware = {
+    enableRedistributableFirmware = true;
+    intelgpu.driver = "xe";
+  };
+
   # Set the nixos and home-manager config flake for nh
   programs.nh.flake = "/home/${config.users.users.celeri.name}/nix-config";
 
@@ -48,7 +57,4 @@
       pkiBundle = "/etc/secureboot";
     };
   };
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
 }

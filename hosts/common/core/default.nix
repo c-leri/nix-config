@@ -20,10 +20,6 @@
     ./pipewire.nix
   ];
 
-  # Latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  hardware.enableRedistributableFirmware = true;
-
   # Set the time zone
   time.timeZone = "America/Toronto";
 
@@ -59,4 +55,7 @@
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
+
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "23.11";
 }
