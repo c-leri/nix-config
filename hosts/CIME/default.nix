@@ -1,15 +1,15 @@
 {
   inputs,
+  lib,
   pkgs,
   config,
-  lib,
   ...
 }: {
   imports = [
     # Harware modules
-    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.common-pc-laptop
 
     # Required
     ./hardware-configuration.nix
@@ -17,7 +17,6 @@
 
     # Optional
     ../common/optional/gnome.nix
-    ../common/optional/hyprland.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
@@ -26,22 +25,19 @@
     ../common/users/celeri.nix
 
     # Host specific
-    ./power-management
-    ./keymap.nix
     ./auto-login.nix
-    ./shared-partition.nix
-    ./searx.nix
+    ./data-disk.nix
+    ./keymap.nix
+    ./nvidia.nix
+    ./openrgb.nix
   ];
 
-  networking.hostName = "TRONC";
+  networking.hostName = "CIME";
 
   # Latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  hardware = {
-    enableRedistributableFirmware = true;
-    intelgpu.driver = "xe";
-  };
+  hardware.enableRedistributableFirmware = true;
 
   # Set the nixos and home-manager config flake for nh
   programs.nh.flake = "/home/${config.users.users.celeri.name}/nix-config";
@@ -59,5 +55,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

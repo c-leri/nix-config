@@ -90,6 +90,27 @@
           }
         ];
       };
+      CIME = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+        };
+        modules = [
+          ./hosts/CIME
+          lanzaboote.nixosModules.lanzaboote
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "hmbak";
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+            };
+          }
+        ];
+      };
     };
 
     templates = {
