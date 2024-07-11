@@ -2,9 +2,9 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
+    variant = "intl";
   };
 
-  # Configure console keymap
-  console.keyMap = "us";
+  # Tell the console to use x11 keymap
+  console.useXkbConfig = true;
 }
