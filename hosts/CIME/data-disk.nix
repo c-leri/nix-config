@@ -2,7 +2,7 @@
   boot.supportedFilesystems = ["ntfs"];
 
   # Mount the Shared partition
-  fileSystems."/mnt/Data" = {
+  fileSystems."/media/Data" = {
     label = "Data";
     fsType = "ntfs";
   };
