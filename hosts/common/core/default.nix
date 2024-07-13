@@ -21,7 +21,7 @@
   ];
 
   # Set the time zone
-  time.timeZone = "America/Toronto";
+  time.timeZone = "Europe/Paris";
 
   # Set the locale
   i18n.defaultLocale = "fr_FR.UTF-8";

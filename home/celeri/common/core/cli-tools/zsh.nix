@@ -87,6 +87,7 @@ in {
       '';
     shellAliases = {
       cl = "clear";
+      open = "xdg-open";
       lgit = "lazygit";
       ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";

@@ -13,7 +13,7 @@
     unstable.jetbrains.idea-community-bin
     godot_4
 
-    onlyoffice-bin
+    libreoffice
     zoom-us
 
     bottles
