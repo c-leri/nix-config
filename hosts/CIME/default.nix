@@ -8,7 +8,7 @@
   imports = [
     # Harware modules
     inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
+    inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
 
     # Required
@@ -26,10 +26,10 @@
     ../common/users/celeri.nix
 
     # Host specific
+    ./amdgpu.nix
     ./auto-login.nix
     ./data-disk.nix
     ./keymap.nix
-    ./nvidia.nix
     ./openrgb.nix
   ];
 
