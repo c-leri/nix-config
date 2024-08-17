@@ -2,7 +2,6 @@
   imports = [
     ./keepassxc.nix
     ./mega.nix
-    ./spotify.nix
     ./thunderbird.nix
     ./vscode.nix
     ./wezterm.nix
@@ -16,11 +15,11 @@
     libreoffice
     zoom-us
 
-    bottles
     floorp
     qbittorrent
     unstable.vesktop
     vlc
+    spotify
     stremio
   ];
 
