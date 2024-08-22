@@ -17,13 +17,9 @@
       "--update-input"
       "home-manager"
       "--update-input"
-      "hyprland"
-      "--update-input"
       "rust-overlay"
       "--update-input"
       "catppuccin"
-      "--update-input"
-      "spicetify-nix"
       "-L"
     ];
     dates = "daily";

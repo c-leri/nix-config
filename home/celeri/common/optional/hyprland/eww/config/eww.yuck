@@ -1,2 +1,0 @@
-;; Include windows
-(include "eww_windows.yuck")
