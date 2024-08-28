@@ -15,7 +15,7 @@
     libreoffice
     zoom-us
 
-    floorp
+    zen-browser.specific
     qbittorrent
     unstable.vesktop
     vlc
