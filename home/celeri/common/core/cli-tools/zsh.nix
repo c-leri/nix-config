@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: let
@@ -30,7 +31,7 @@ in {
         fast-theme -q ${catppuccin-fsh}/themes/catppuccin-macchiato.ini
 
         # nix-your-shell
-        ${pkgs.nix-your-shell}/bin/nix-your-shell zsh | source /dev/stdin
+        ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
 
         # Expand ... (or more) into ../.. when pressing RETURN
         function _expand-dots-then-accept-line() {
@@ -68,7 +69,7 @@ in {
             nix flake init --template ${config.home.homeDirectory}/nix-config#$1
 
             if [[ $? == 0 ]]; then
-              ${pkgs.rpl}/bin/rpl -R PROJECT_NAME $(path basename -- $PWD) * .*
+              ${lib.getExe pkgs.rpl} -R PROJECT_NAME $(path basename -- $PWD) * .*
 
               # run cargo update if the used template
               # is a rust template
@@ -89,7 +90,7 @@ in {
       cl = "clear";
       open = "xdg-open";
       lgit = "lazygit";
-      ls = "${pkgs.eza}/bin/eza --classify --icons --hyperlink --group-directories-first --sort=extension";
+      ls = "${lib.getExe pkgs.eza} --classify --icons --hyperlink --group-directories-first --sort=extension";
       l = "ls --long --header --mounts";
       la = "ls --all";
       ll = "l --all";

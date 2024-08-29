@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./keepassxc.nix
+    ./kitty.nix
     ./mega.nix
     ./thunderbird.nix
     ./vscode.nix
-    ./wezterm.nix
   ];
 
   home.packages = with pkgs; [
@@ -24,6 +28,6 @@
   ];
 
   home.sessionVariables = {
-    BROWSER = "${pkgs.floorp}/bin/floorp";
+    BROWSER = "${lib.getExe pkgs.zen-browser.specific}";
   };
 }

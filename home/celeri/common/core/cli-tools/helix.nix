@@ -1,22 +1,48 @@
-{pkgs, ...}: let
-  explorer = pkgs.writeShellScriptBin "explorer.sh" ''
-    left_pane_id=$(wezterm cli get-pane-direction left)
-    if [ -n "$left_pane_id" ]; then
-      left_program=$(wezterm cli list | awk -v pane_id="$left_pane_id" '$3==pane_id { print $6 }')
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  explorer_command = pkgs.writeShellScriptBin "hx_explorer_command.sh" ''
+    if [ $# -eq 1 ]; then
+      # Launch yazi with custom config
+      YAZI_CONFIG_HOME=/tmp/hx_explorer/yazi yazi --chooser-file /tmp/hx_explorer/picked
+
+      # If a file as been picked
+      if [ -s /tmp/hx_explorer/picked ]; then
+        # Send the escape key to enter normal mode
+        kitten @ send-key --match id:$1 escape
+
+        # Open the picked file
+        kitten @ send-text --match id:$1 ":o $(cat /tmp/hx_explorer/picked) \r"
+      fi
     fi
 
-    if [[ -z "$left_pane_id" || "$left_program" != "Yazi:"* ]]; then
-      left_pane_id=$(wezterm cli split-pane --left --cells 30 -- sh)
+    # Reset picked file
+    rm -f /tmp/hx_explorer/picked
 
-      rm -r /tmp/yazi_tree
-      cp -r "$HOME/.config/yazi" /tmp/yazi_tree
-      echo -e "\n[manager]\nratio = [ 0, 8, 0 ]\n" >>/tmp/yazi_tree/yazi.toml
-      echo -e "\nfunction Status:render() return {} end\nlocal old_manager_render = Manager.render\nfunction Manager:render(area)\n\treturn old_manager_render(self, ui.Rect { x = area.x, y = area.y, w = area.w, h = area.h + 1 })\nend\n" >>/tmp/yazi_tree/init.lua
+    # Close current window
+    kitten @ close-window
+  '';
 
-      echo "chosen_file=\$(YAZI_CONFIG_HOME=/tmp/yazi_tree yazi --chooser-file /dev/stdout); echo -e \"\e :o \$chosen_file \r\" | wezterm cli send-text --pane-id $WEZTERM_PANE --no-paste; exit" | wezterm cli send-text --pane-id "$left_pane_id" --no-paste
+  explorer = pkgs.writeShellScriptBin "hx_explorer.sh" ''
+    # Only run in kitty with remote control on
+    if [ -n "$KITTY_LISTEN_ON" ]; then
+      # Makes sure that the working directory exists
+      mkdir -p /tmp/hx_explorer
+
+      # Focus the window if one is already open or open a new one
+      if ! kitten @ focus-window --match title:\"hx\ explorer\" > /dev/null; then
+        # Setup yazi config
+        rm -rf /tmp/hx_explorer/yazi
+        cp -r "$HOME/.config/yazi" /tmp/hx_explorer/yazi
+        echo -e "\n[manager]\nratio = [ 0, 8, 0 ]\n" >> /tmp/hx_explorer/yazi/yazi.toml
+        echo -e "\nfunction Status:render() return {} end\nlocal old_manager_render = Manager.render\nfunction Manager:render(area)\n\treturn old_manager_render(self, ui.Rect { x = area.x, y = area.y, w = area.w, h = area.h + 1 })\nend\n" >> /tmp/hx_explorer/yazi/init.lua
+
+        # Open yazi in new window
+        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=30 --no-response ${lib.getExe explorer_command} $KITTY_WINDOW_ID
+      fi
     fi
-
-    wezterm cli activate-pane-direction left
   '';
 in {
   # Set helix as default editor
@@ -74,13 +100,8 @@ in {
         };
       };
       keys.normal = {
-        C-g = [
-          ":new"
-          ":insert-output ${pkgs.lazygit}/bin/lazygit"
-          ":buffer-close!"
-          ":redraw"
-        ];
-        C-e = ":sh ${explorer}/bin/explorer.sh";
+        C-g = '':sh if [ -n "$KITTY_LISTEN_ON" ]; then kitten @ launch --cwd current --type=overlay ${lib.getExe pkgs.lazygit} > /dev/null; fi'';
+        C-e = ":sh ${lib.getExe explorer}";
       };
     };
     languages = {

@@ -17,9 +17,11 @@
       "--update-input"
       "home-manager"
       "--update-input"
+      "catppuccin"
+      "--update-input"
       "rust-overlay"
       "--update-input"
-      "catppuccin"
+      "zen-browser"
       "-L"
     ];
     dates = "daily";
