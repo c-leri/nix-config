@@ -8,7 +8,10 @@
     enable = true;
     package = pkgs.unstable.kitty;
     catppuccin.enable = true;
-    font.name = "CaskaydiaCove Nerd Font";
+    font = {
+      name = "CaskaydiaCove Nerd Font";
+      size = 12;
+    };
 
     settings = {
       allow_remote_control = "socket-only";
