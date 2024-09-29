@@ -10,7 +10,5 @@
     common/optional/prismlauncher.nix
   ];
 
-  home.username = "celeri";
-  home.homeDirectory = "/home/celeri";
   home.stateVersion = "24.05";
 }

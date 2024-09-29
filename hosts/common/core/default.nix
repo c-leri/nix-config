@@ -12,6 +12,9 @@
     # Sops config
     ./sops.nix
 
+    # SSH config
+    ./ssh.nix
+
     # Auto-upgrade service
     ./services/auto-upgrade.nix
 

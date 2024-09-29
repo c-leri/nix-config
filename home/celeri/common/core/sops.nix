@@ -13,12 +13,7 @@ in {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
-      celeri-public-key = {
-        format = "binary";
-        sopsFile = "${secretsFolder}/id_ed25519.pub";
-        path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
-      };
-      celeri-private-key = {
+      ssh-private-key = {
         format = "binary";
         sopsFile = "${secretsFolder}/id_ed25519";
         path = "${config.home.homeDirectory}/.ssh/id_ed25519";

@@ -1,7 +1,7 @@
 {config, ...}: {
   programs.git = {
     enable = true;
-    userName = "celeri";
+    userName = config.home.username;
     userEmail = "celestin.bouchet@gmail.com";
 
     delta = {
@@ -15,9 +15,13 @@
 
     extraConfig = {
       init.defaultBranch = "main";
-      gpg.format = "ssh";
-      user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      user.signingkey = "${config.home.homeDirectory}/${config.home.file.ssh-public-key.target}";
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "${config.home.homeDirectory}/${config.home.file.ssh-allowed-signers.target}";
+      };
       commit.gpgSign = true;
+      tag.gpgSign = true;
     };
   };
 

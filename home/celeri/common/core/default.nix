@@ -3,6 +3,9 @@
     # Sops
     ./sops.nix
 
+    # SSH config
+    ./ssh.nix
+
     # Services
     ./services/mpris-proxy.nix
 
@@ -15,8 +18,8 @@
     ./languages
   ];
 
-  # Enable the ssh agent
-  services.ssh-agent.enable = true;
+  home.username = "celeri";
+  home.homeDirectory = "/home/celeri";
 
   xdg.enable = true;
 }
