@@ -12,7 +12,7 @@
 
   home.packages = with pkgs; [
     unstable.android-studio
-    unstable.jetbrains.idea-community-bin
+    unstable.jetbrains.idea-ultimate
     godot_4
 
     libreoffice

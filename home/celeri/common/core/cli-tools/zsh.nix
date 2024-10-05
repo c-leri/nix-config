@@ -7,8 +7,8 @@
   catppuccin-fsh = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "zsh-fsh";
-    rev = "dd7baca6e0e943f36d1a6721820346e91f25065f";
-    sha256 = "sha256-qd/+MHmgP+dOnYm6meSu5oCZ/TunCWGHnHqAXm79ERw=";
+    rev = "a9bdf479f8982c4b83b5c5005c8231c6b3352e2a";
+    sha256 = "sha256-WeqvsKXTO3Iham+2dI1QsNZWA8Yv9BHn1BgdlvR8zaw=";
   };
 in {
   programs.zsh = {
