@@ -59,7 +59,7 @@ in {
           if [[ -d $chosen_path ]]; then
             cd $chosen_path
           elif [[ -f $chosen_path ]]; then
-            cd $(path dirname $chosen_path)
+            cd $(dirname $chosen_path)
           fi
         }
 
@@ -69,7 +69,7 @@ in {
             nix flake init --template ${config.home.homeDirectory}/nix-config#$1
 
             if [[ $? == 0 ]]; then
-              ${lib.getExe pkgs.rpl} -R PROJECT_NAME $(path basename -- $PWD) * .*
+              ${lib.getExe pkgs.rpl} -R PROJECT_NAME ''\${PWD##*/} * .*
 
               # run cargo update if the used template
               # is a rust template
