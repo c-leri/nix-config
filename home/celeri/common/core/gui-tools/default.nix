@@ -7,7 +7,6 @@
     ./keepassxc.nix
     ./kitty.nix
     ./mega.nix
-    ./rider.nix
     ./vscode.nix
   ];
 
