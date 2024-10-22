@@ -13,7 +13,6 @@
       usernamehw.errorlens
       dbaeumer.vscode-eslint
       tamasfe.even-better-toml
-      mhutchie.git-graph
       esbenp.prettier-vscode
       jock.svg
     ];
