@@ -11,4 +11,8 @@
     jdk21
     python3
   ];
+
+  home.sessionVariables = {
+    COREPACK_ENABLE_AUTO_PIN = 0;
+  };
 }

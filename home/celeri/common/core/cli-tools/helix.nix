@@ -59,6 +59,7 @@ in {
       # Nix
       alejandra
       nil
+      nixd
 
       # Bash
       nodePackages.bash-language-server
@@ -106,6 +107,10 @@ in {
     };
     languages = {
       language-server = {
+        nixd = {
+          command = "nixd";
+        };
+
         ruff-lsp = {
           command = "ruff-lsp";
         };
@@ -128,6 +133,10 @@ in {
         }
         {
           name = "nix";
+          language-servers = [
+            "nixd"
+            "nil"
+          ];
           formatter = {
             command = "alejandra";
           };

@@ -69,7 +69,7 @@ in {
             nix flake init --template ${config.home.homeDirectory}/nix-config#$1
 
             if [[ $? == 0 ]]; then
-              ${lib.getExe pkgs.rpl} -R PROJECT_NAME ''\${PWD##*/} * .*
+              ${lib.getExe pkgs.rpl} -R PROJECT_NAME ${"'\${PWD##*/}"} * .*
 
               # run cargo update if the used template
               # is a rust template
