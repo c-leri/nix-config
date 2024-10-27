@@ -65,25 +65,42 @@ in {
 
         # Initialize a projet from one of the template flakes defined in the nix-config directory
         flake-init() {
-          if [[ $# == 1 ]] && [[ -z "$(ls -A .)" ]]; then
-            nix flake init --template ${config.home.homeDirectory}/nix-config#$1
-
-            if [[ $? == 0 ]]; then
-              ${lib.getExe pkgs.rpl} -R PROJECT_NAME ${"\${PWD##*/}"} * .*
-
-              # run cargo update if the used template
-              # is a rust template
-              rust_templates=(rust rust-github bevy bevy-github)
-              if [[ $rust_templates[(Ie)$1] ]]; then
-                cargo update
-              fi
-
-              git init; git add .
-
-              echo 'use flake' > .envrc
-              direnv allow
-            fi
+          # Not exactly one argument or directory not empty, abort
+          if [[ $# != 1 ]] || [ "$(ls -A .)" ]; then
+            return 1
           fi
+
+          # Init the right flake in the current directory
+          nix flake init --template ${config.home.homeDirectory}/nix-config#$1
+
+          # flake init returned an error, abort
+          if [[ $? != 0 ]]; then
+            return $?
+          fi
+
+          # Replace all mentions of "PROJECT_NAME" in the project files with the name of the current directory
+          ${lib.getExe pkgs.rpl} -R PROJECT_NAME ${"\${PWD##*/}"} * .*
+
+          # Run additional setup commands
+          case $1 in
+            # Run cargo update if the used template is a rust template
+            rust|rust-github|bevy|bevy-github)
+              # Temporary lock file
+              touch Cargo.lock
+              nix develop --command bash -c "cargo update"
+              ;;
+            # Manually generate the lock file in other cases
+            *)
+              nix flake lock
+              ;;
+          esac
+
+          # Init the git repository
+          git init; git add .
+
+          # Init the .envrc file
+          echo 'use flake' > .envrc
+          direnv allow
         }
       '';
     shellAliases = {

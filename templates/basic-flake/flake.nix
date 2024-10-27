@@ -41,9 +41,6 @@
 
           # To format nix files
           programs.alejandra.enable = true;
-
-          # To format rust files
-          programs.rustfmt.enable = true;
         };
 
         # Checks run with `nix flake check`

@@ -1,7 +1,5 @@
 name: "Build and Deploy the Documentation"
-
 on: [push]
-
 jobs:
   build-doc:
     name: "Build the documentation"
@@ -16,7 +14,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: result/share/doc
-
   deploy-doc:
     name: "Deploy the documentation"
     needs: build-doc
@@ -30,4 +27,3 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
-    
