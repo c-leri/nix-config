@@ -20,8 +20,7 @@
   };
 
   # Disable some gnome core apps
-  environment.gnome.excludePackages = with pkgs;
-  with gnome; [
+  environment.gnome.excludePackages = with pkgs; [
     epiphany
     geary
     gnome-backgrounds

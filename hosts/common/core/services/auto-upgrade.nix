@@ -7,8 +7,6 @@
       "--update-input"
       "nixpkgs"
       "--update-input"
-      "nixpkgs-unstable"
-      "--update-input"
       "hardware"
       "--update-input"
       "lanzaboote"

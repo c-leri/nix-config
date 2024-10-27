@@ -9,8 +9,8 @@ in {
     ./extensions.nix
   ];
 
-  home.packages = [
-    pkgs.gnome.gnome-tweaks
+  home.packages = with pkgs; [
+    gnome-tweaks
   ];
 
   dconf.settings = {

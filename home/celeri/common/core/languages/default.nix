@@ -4,8 +4,8 @@
   ];
 
   home.packages = with pkgs; [
-    unstable.bun
-    unstable.deno
+    bun
+    deno
     nodejs_20
     corepack_20
     jdk21

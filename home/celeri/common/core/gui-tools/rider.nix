@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  extra-path = with pkgs.unstable; [
+  extra-path = with pkgs; [
     dotnetCorePackages.sdk_8_0_3xx
     dotnetPackages.Nuget
     mono
@@ -15,7 +15,7 @@
     # Add any extra libraries you want accessible to Rider here
   ];
 
-  rider = pkgs.unstable.jetbrains.rider.overrideAttrs (attrs: {
+  rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
     postInstall =
       ''
         # Wrap rider with extra tools and libraries

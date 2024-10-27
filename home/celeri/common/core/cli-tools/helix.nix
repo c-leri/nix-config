@@ -50,7 +50,6 @@ in {
 
   programs.helix = {
     enable = true;
-    package = pkgs.unstable.helix;
     catppuccin.enable = true;
     extraPackages = with pkgs; [
       # C

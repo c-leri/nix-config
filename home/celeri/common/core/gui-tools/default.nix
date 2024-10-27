@@ -12,8 +12,8 @@
   ];
 
   home.packages = with pkgs; [
-    unstable.android-studio
-    unstable.jetbrains.idea-ultimate
+    android-studio
+    jetbrains.idea-ultimate
     godot_4
 
     libreoffice
@@ -21,7 +21,7 @@
 
     zen-browser.specific
     qbittorrent
-    unstable.vesktop
+    vesktop
     vlc
     spotify
     stremio

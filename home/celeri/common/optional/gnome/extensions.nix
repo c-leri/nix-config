@@ -1,19 +1,16 @@
 {pkgs, ...}: {
-  home.packages = with pkgs.gnomeExtensions;
-    [
-      app-icons-taskbar
-      appindicator
-      blur-my-shell
-      coverflow-alt-tab
-      dash-to-dock
-      gnome-40-ui-improvements
-      just-perfection
-      transparent-window-moving
-    ]
-    ++ (with pkgs.unstable.gnomeExtensions; [
-      espresso
-      quick-settings-tweaker
-    ]);
+  home.packages = with pkgs.gnomeExtensions; [
+    app-icons-taskbar
+    appindicator
+    blur-my-shell
+    coverflow-alt-tab
+    dash-to-dock
+    espresso
+    gnome-40-ui-improvements
+    just-perfection
+    quick-settings-tweaker
+    transparent-window-moving
+  ];
 
   dconf.settings = {
     "org/gnome/shell" = {
