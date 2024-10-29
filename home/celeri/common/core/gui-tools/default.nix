@@ -14,17 +14,15 @@
   home.packages = with pkgs; [
     android-studio
     jetbrains.idea-ultimate
-    godot_4
 
     libreoffice
-    zoom-us
-
-    zen-browser.specific
+    obsidian
     qbittorrent
     vesktop
     vlc
     spotify
     stremio
+    zen-browser.specific
   ];
 
   home.sessionVariables = {
