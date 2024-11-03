@@ -11,9 +11,9 @@
       catppuccin.catppuccin-vsc-icons
       editorconfig.editorconfig
       usernamehw.errorlens
-      dbaeumer.vscode-eslint
       tamasfe.even-better-toml
-      esbenp.prettier-vscode
+      redhat.vscode-yaml
+      redhat.vscode-xml
       jock.svg
     ];
   };

@@ -8,7 +8,6 @@
     deno
     nodejs_20
     corepack_20
-    jdk21
     python3
   ];
 

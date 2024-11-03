@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   theme = pkgs.catppuccin-sddm-corners.overrideAttrs (old: {
     dontBuild = false;
 
@@ -47,7 +51,11 @@
 in {
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = true;
+    wayland = {
+      enable = true;
+      # TODO: remove once neatvnc package builds again
+      compositorCommand = lib.getExe pkgs.stable.weston;
+    };
     theme = "${theme}/share/sddm/themes/catppuccin-sddm-corners";
     extraPackages = with pkgs.libsForQt5.qt5; [
       qtgraphicaleffects

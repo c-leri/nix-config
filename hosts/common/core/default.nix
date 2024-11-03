@@ -18,6 +18,9 @@
     # Auto-upgrade service
     ./services/auto-upgrade.nix
 
+    # Languages
+    ./languages/default.nix
+
     # Settings
     ./pipewire.nix
     ./sddm.nix
