@@ -45,9 +45,6 @@
     fi
   '';
 in {
-  # Set helix as default editor
-  home.sessionVariables.VISUAL = "hx";
-
   programs.helix = {
     enable = true;
     catppuccin.enable = true;
