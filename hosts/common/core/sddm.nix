@@ -51,11 +51,7 @@
 in {
   services.displayManager.sddm = {
     enable = true;
-    wayland = {
-      enable = true;
-      # TODO: remove once neatvnc package builds again
-      compositorCommand = lib.getExe pkgs.stable.weston;
-    };
+    wayland.enable = true;
     theme = "${theme}/share/sddm/themes/catppuccin-sddm-corners";
     extraPackages = with pkgs.libsForQt5.qt5; [
       qtgraphicaleffects
