@@ -111,6 +111,10 @@ in {
           command = "ruff-lsp";
         };
 
+        rust-analyzer.config.check = {
+          command = "clippy";
+        };
+
         yaml-language-server.config.yaml = {
           validation = true;
           schemas = {

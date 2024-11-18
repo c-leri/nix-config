@@ -16,7 +16,7 @@
     jetbrains.idea-ultimate
 
     libreoffice
-    obsidian
+    notesnook
     qbittorrent
     vesktop
     vlc
