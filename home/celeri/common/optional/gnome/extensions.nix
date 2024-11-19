@@ -3,9 +3,9 @@
     app-icons-taskbar
     appindicator
     blur-my-shell
+    caffeine
     coverflow-alt-tab
     dash-to-dock
-    espresso
     gnome-40-ui-improvements
     just-perfection
     quick-settings-tweaker
@@ -18,11 +18,11 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "aztaskbar@aztaskbar.gitlab.com"
+        "caffeine@patapon.info"
         "blur-my-shell@aunetx"
         "CoverflowAltTab@palatis.blogspot.com"
         "dash-to-dock@micxgx.gmail.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "espresso@coadmunkee.github.com"
         "gnome-ui-tune@itstime.tech"
         "just-perfection-desktop@just-perfection"
         "quick-settings-tweaks@qwreey"
@@ -53,9 +53,6 @@
       running-indicator-style = "DOTS";
       show-trash = false;
       hot-keys = false;
-    };
-    "org/gnome/shell/extensions/espresso" = {
-      show-notifications = false;
     };
     "org/gnome/shell/extensions/just-perfection" = {
       events-button = false;
