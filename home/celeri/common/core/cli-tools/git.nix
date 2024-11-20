@@ -15,6 +15,8 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      # Use helix as git's editor
+      core.editor = "hx";
       user.signingkey = "${config.home.homeDirectory}/${config.home.file.ssh-public-key.target}";
       gpg = {
         format = "ssh";

@@ -39,7 +39,7 @@ in {
         fi
 
         # Expand ... (or more) into ../.. when pressing RETURN
-        function _expand-dots-then-accept-line() {
+        _expand-dots-then-accept-line () {
             local MATCH
             if [[ $LBUFFER =~ '(^| )\.\.\.+' ]]; then
                 LBUFFER=$LBUFFER:fs%\.\.\.%../..%
@@ -50,25 +50,32 @@ in {
         bindkey '^M' _expand-dots-then-accept-line
 
         # Change default cursor
-        _fix_cursor() {
+        _fix_cursor () {
           echo -ne '\e[5 q'
         }
 
         precmd_functions+=(_fix_cursor)
 
         # Change directory with yazi
-        ycd() {
-          chosen_path=$(yazi --chooser-file /dev/stdout)
+        y () {
+          # Setup tmp file
+          local tmp="$(mktemp --tmpdir= "yazi-cwd.XXXXXX")" cwd
 
-          if [[ -d $chosen_path ]]; then
-            cd $chosen_path
-          elif [[ -f $chosen_path ]]; then
-            cd $(dirname $chosen_path)
+          # Open yazi writing cwd to tmp file
+          yazi "$@" --cwd-file="$tmp"
+
+          # cd into the path stored into the tmp file
+          # if it's not empty and different from current working dir
+          if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            builtin cd -- "$cwd"
           fi
+
+          # Cleanup
+          rm -f -- "$tmp"
         }
 
         # Initialize a projet from one of the template flakes defined in the nix-config directory
-        flake-init() {
+        flake-init () {
           # Not exactly one argument or directory not empty, abort
           if [[ $# != 1 ]] || [ "$(ls -A .)" ]; then
             return 1

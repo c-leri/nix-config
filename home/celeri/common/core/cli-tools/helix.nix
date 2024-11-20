@@ -4,22 +4,25 @@
   ...
 }: let
   explorer_command = pkgs.writeShellScriptBin "hx_explorer_command.sh" ''
-    if [ $# -eq 1 ]; then
-      # Launch yazi with custom config
-      YAZI_CONFIG_HOME=/tmp/hx_explorer/yazi yazi --chooser-file /tmp/hx_explorer/picked
+    # First argument is path to tmp directory
+    # Second argument is the id of the windows with helix open
+    if [ $# -eq 2 ]; then
+      # Launch yazi with custom conmfig
+      # writing picked file to file in tmp directory
+      YAZI_CONFIG_HOME="$1/yazi" yazi --chooser-file "$1/picked"
 
-      # If a file as been picked
-      if [ -s /tmp/hx_explorer/picked ]; then
+      # If a file has been picked
+      if [ -s "$1/picked" ]; then
         # Send the escape key to enter normal mode
-        kitten @ send-key --match id:$1 escape
+        kitten @ send-key --match id:$2 escape
 
         # Open the picked file
-        kitten @ send-text --match id:$1 ":o $(cat /tmp/hx_explorer/picked) \r"
+        kitten @ send-text --match id:$2 ":o $(command cat "$1/picked") \r"
       fi
-    fi
 
-    # Reset picked file
-    rm -f /tmp/hx_explorer/picked
+      # Delete tmp directory
+      rm -f $1
+    fi
 
     # Close current window
     kitten @ close-window
@@ -28,19 +31,19 @@
   explorer = pkgs.writeShellScriptBin "hx_explorer.sh" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
-      # Makes sure that the working directory exists
-      mkdir -p /tmp/hx_explorer
+      # Create tmp directory
+      tmp="$(mktemp -d --tmpdir= "hx_explorer.XXXXXX")"
 
       # Focus the window if one is already open or open a new one
-      if ! kitten @ focus-window --match title:\"hx\ explorer\" > /dev/null; then
+      if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
         # Setup yazi config
-        rm -rf /tmp/hx_explorer/yazi
-        cp -r "$HOME/.config/yazi" /tmp/hx_explorer/yazi
-        echo -e "\n[manager]\nratio = [ 0, 8, 0 ]\n" >> /tmp/hx_explorer/yazi/yazi.toml
-        echo -e "\nfunction Status:render() return {} end\nlocal old_manager_render = Manager.render\nfunction Manager:render(area)\n\treturn old_manager_render(self, ui.Rect { x = area.x, y = area.y, w = area.w, h = area.h + 1 })\nend\n" >> /tmp/hx_explorer/yazi/init.lua
+        cp -r "$HOME/.config/yazi" $tmp
+        echo -e "\n[manager]\nratio = [ 0, 1, 0 ]\n" >> "$tmp/yazi/yazi.toml"
+        # Uses no-status yazi plugin to hide status bar
+        echo -e "\nrequire(\"no-status\"):setup()\n" >> "$tmp/yazi/init.lua"
 
-        # Open yazi in new window
-        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=30 --no-response ${lib.getExe explorer_command} $KITTY_WINDOW_ID
+        # Open yazi with its custom config in new window
+        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=20 --no-response ${lib.getExe explorer_command} $tmp $KITTY_WINDOW_ID
       fi
     fi
   '';

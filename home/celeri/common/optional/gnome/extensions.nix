@@ -39,6 +39,9 @@
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       blur = false;
     };
+    "org/gnome/shell/extensions/caffeine" = {
+      show-notifications = false;
+    };
     "org/gnome/shell/extensions/coverflowalttab" = {
       position = "Top";
       hide-panel = false;
