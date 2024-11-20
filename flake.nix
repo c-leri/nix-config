@@ -120,6 +120,14 @@
         '';
       };
 
+      tauri = {
+        path = ./templates/tauri;
+        description = "A flake for tauri development";
+        welcomeText = ''
+          Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
+        '';
+      };
+
       rust = {
         path = ./templates/rust;
         description = "A flake for rust development";

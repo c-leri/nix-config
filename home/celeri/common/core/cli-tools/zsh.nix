@@ -76,9 +76,26 @@ in {
 
         # Initialize a projet from one of the template flakes defined in the nix-config directory
         flake-init () {
-          # Not exactly one argument or directory not empty, abort
-          if [[ $# != 1 ]] || [ "$(ls -A .)" ]; then
+          # Not exactly one argument, abort
+          if [[ $# != 1 ]]; then
+            echo -e "\e[31mPlease provide a template name.\e[0m" >> /dev/stderr
             return 1
+          fi
+
+          # Folder not empty, confirm with the user
+          if [ -n "$(command ls -A .)" ]; then
+            echo "This folder is not empty, do you wish to continue? (y/N)"
+            read yn
+
+            case $yn in
+              # y or Y, continue
+              y|Y)
+                ;;
+              # Anything else, abort
+              *)
+                return 0
+                ;;
+            esac
           fi
 
           # Init the right flake in the current directory
@@ -90,15 +107,20 @@ in {
           fi
 
           # Replace all mentions of "PROJECT_NAME" in the project files with the name of the current directory
-          ${lib.getExe pkgs.rpl} -R PROJECT_NAME ${"\${PWD##*/}"} * .*
+          ${lib.getExe pkgs.rpl} -F PROJECT_NAME ${"\${PWD##*/}"} flake.nix Cargo.toml .github/workflows/build.yml
 
           # Run additional setup commands
           case $1 in
-            # Run cargo update if the used template is a rust template
+            # Run cargo update for rust
             rust|rust-github|bevy|bevy-github)
               # Temporary lock file
               touch Cargo.lock
               nix develop --command bash -c "cargo update"
+              ;;
+            # Modify .gitignore and manually generate lock file for tauri
+            tauri)
+              echo "\n\n# Direnv\n/.direnv/\n/.envrc" >> .gitignore
+              nix flake lock
               ;;
             # Manually generate the lock file in other cases
             *)
