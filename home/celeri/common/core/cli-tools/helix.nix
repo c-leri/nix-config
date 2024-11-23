@@ -3,21 +3,28 @@
   lib,
   ...
 }: let
-  open_file = pkgs.writeShellScriptBin "hx_open_file.sh" ''
+  open_file = pkgs.writeShellScriptBin "hx_open_file" ''
     # First argument is the id of the kitty window with helix running
     # Second argument is the file or folder to open
+    # Third optional argument is the line to open the file at
 
-    # If the file or folder to open does exist
-    if [ -f "$2" ] || [ -d "$2" ]; then
+    # Second argument is not empty
+    if [ -n "$2" ]; then
       # Send the escape key to enter normal mode
       kitten @ send-key --match id:$1 escape
 
-      # Open the picked file or folder
-      kitten @ send-text --match id:$1 ":o $2\r"
+      # Third argument not empty and second argument leads to a file
+      if [ -n "$3" ] && [ -f "$2" ]; then
+        # Open the picked file at the picked line
+        kitten @ send-text --match id:$1 ":o $2:$3\r"
+      else
+        # Open the picked file or folder
+        kitten @ send-text --match id:$1 ":o $2\r"
+      fi
     fi
   '';
 
-  explorer = pkgs.writeShellScriptBin "hx_explorer.sh" ''
+  explorer = pkgs.writeShellScriptBin "hx_explorer" ''
     # First argument is the id of the windows with helix open
     # Second optional argument is the path to a temp yazi config dir
 
@@ -47,7 +54,7 @@
     kitten @ close-window
   '';
 
-  side_explorer = pkgs.writeShellScriptBin "hx_side_explorer.sh" ''
+  side_explorer = pkgs.writeShellScriptBin "hx_side_explorer" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
       # Create tmp config directory
@@ -67,11 +74,56 @@
     fi
   '';
 
-  full_explorer = pkgs.writeShellScriptBin "hx_full_explorer.sh" ''
+  full_explorer = pkgs.writeShellScriptBin "hx_full_explorer" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
       # Open yazi in new overlay window
       kitten @ launch --cwd=current --type=overlay --no-response -- ${lib.getExe explorer} $KITTY_WINDOW_ID
+    fi
+  '';
+
+  git_explorer = pkgs.writeShellScriptBin "hx_git_explorer" ''
+    # First argument is the id of the windows with helix open
+    # Second argument is the path to the temp lazygit config file
+
+    # Shorthand to delete the temp config file and close the window
+    close="rm -f $2; kitten @ close-window"
+
+    # Change the edit commands to open the file in the current helix instance
+    echo 'os:
+      edit: "${lib.getExe open_file} '"$1"' {{filename}}; '"$close"'"
+      editAtLine: "${lib.getExe open_file} '"$1"' {{filename}} {{line}}; '"$close"'"
+      openDirInEditor: "${lib.getExe open_file} '"$1"' {{dir}}; '"$close"'"
+    ' > $2
+
+    lazygit
+
+    eval $close
+  '';
+
+  full_git_explorer = pkgs.writeShellScriptBin "hx_full_git_explorer" ''
+    # Only run in kitty with remote control on
+    if [ -n "$KITTY_LISTEN_ON" ]; then
+      # Find the root of the repo
+      repo_root=$(git rev-parse --show-toplevel 2> /dev/null)
+
+      # Not a repo, abort
+      if [ -z "$repo_root" ]; then
+        echo "Not a repository." >> /dev/stderr
+        exit 1
+      fi
+
+      # Local config file for lazygit
+      config_file="$repo_root/.git/lazygit.yml"
+
+      # Config file already exists, abort
+      if [ -f "$config_file" ]; then
+        echo "Config file already exists." >> /dev/stderr
+        exit 1
+      fi
+
+      # Open lazygit in new overlay window
+      kitten @ launch --cwd=current --type=overlay --no-response -- ${lib.getExe git_explorer} $KITTY_WINDOW_ID $config_file
     fi
   '';
 in {
@@ -127,7 +179,7 @@ in {
         };
       };
       keys.normal = {
-        C-g = '':sh if [ -n "$KITTY_LISTEN_ON" ]; then kitten @ launch --cwd current --type=overlay ${lib.getExe pkgs.lazygit} > /dev/null; fi'';
+        C-g = ":sh ${lib.getExe full_git_explorer}";
         C-m = ":sh ${lib.getExe side_explorer}";
         C-S-m = ":sh ${lib.getExe full_explorer}";
       };
