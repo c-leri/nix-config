@@ -20,7 +20,7 @@
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
-    ../common/optional/steam.nix
+    ../common/optional/games
 
     # User
     ../common/users/celeri.nix
