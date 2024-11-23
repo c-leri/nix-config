@@ -3,48 +3,75 @@
   lib,
   ...
 }: let
-  explorer_command = pkgs.writeShellScriptBin "hx_explorer_command.sh" ''
-    # First argument is path to tmp directory
-    # Second argument is the id of the windows with helix open
-    if [ $# -eq 2 ]; then
-      # Launch yazi with custom conmfig
-      # writing picked file to file in tmp directory
-      YAZI_CONFIG_HOME="$1/yazi" yazi --chooser-file "$1/picked"
+  open_file = pkgs.writeShellScriptBin "hx_open_file.sh" ''
+    # First argument is the id of the kitty window with helix running
+    # Second argument is the file or folder to open
 
-      # If a file has been picked
-      if [ -s "$1/picked" ]; then
-        # Send the escape key to enter normal mode
-        kitten @ send-key --match id:$2 escape
+    # If the file or folder to open does exist
+    if [ -f "$2" ] || [ -d "$2" ]; then
+      # Send the escape key to enter normal mode
+      kitten @ send-key --match id:$1 escape
 
-        # Open the picked file
-        kitten @ send-text --match id:$2 ":o $(command cat "$1/picked") \r"
-      fi
+      # Open the picked file or folder
+      kitten @ send-text --match id:$1 ":o $2\r"
+    fi
+  '';
 
-      # Delete tmp directory
-      rm -f $1
+  explorer = pkgs.writeShellScriptBin "hx_explorer.sh" ''
+    # First argument is the id of the windows with helix open
+    # Second optional argument is the path to a temp yazi config dir
+
+    # Temp file to store the path to the picked file
+    picked_file=$(mktemp)
+
+    # Second argument is present and a directory
+    # launch yazi with it as config
+    if [ -d "$2" ]; then
+      YAZI_CONFIG_HOME=$2 yazi --chooser-file "$picked_file"
+    else
+      yazi --chooser-file "$picked_file"
+    fi
+
+    # Open picked file in helix
+    ${lib.getExe open_file} $1 $(command cat $picked_file)
+
+    # Delete temp file
+    rm -f $picked_file
+
+    # Delete temp yazi config dir if present
+    if [ -d "$2" ]; then
+      rm -rf $2
     fi
 
     # Close current window
     kitten @ close-window
   '';
 
-  explorer = pkgs.writeShellScriptBin "hx_explorer.sh" ''
+  side_explorer = pkgs.writeShellScriptBin "hx_side_explorer.sh" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
-      # Create tmp directory
-      tmp="$(mktemp -d --tmpdir= "hx_explorer.XXXXXX")"
+      # Create tmp config directory
+      yazi_config=$(mktemp -d)
 
       # Focus the window if one is already open or open a new one
       if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
         # Setup yazi config
-        cp -r "$HOME/.config/yazi" $tmp
-        echo -e "\n[manager]\nratio = [ 0, 1, 0 ]\n" >> "$tmp/yazi/yazi.toml"
+        cp -r "$HOME/.config/yazi/." $yazi_config
+        echo -e "\n[manager]\nratio = [ 0, 1, 0 ]\n" >> "$yazi_config/yazi.toml"
         # Uses no-status yazi plugin to hide status bar
-        echo -e "\nrequire(\"no-status\"):setup()\n" >> "$tmp/yazi/init.lua"
+        echo -e "\nrequire(\"no-status\"):setup()\n" >> "$yazi_config/init.lua"
 
-        # Open yazi with its custom config in new window
-        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=20 --no-response ${lib.getExe explorer_command} $tmp $KITTY_WINDOW_ID
+        # Open yazi with its custom config in new split window to the left
+        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=20 --no-response -- ${lib.getExe explorer} $KITTY_WINDOW_ID $yazi_config
       fi
+    fi
+  '';
+
+  full_explorer = pkgs.writeShellScriptBin "hx_full_explorer.sh" ''
+    # Only run in kitty with remote control on
+    if [ -n "$KITTY_LISTEN_ON" ]; then
+      # Open yazi in new overlay window
+      kitten @ launch --cwd=current --type=overlay --no-response -- ${lib.getExe explorer} $KITTY_WINDOW_ID
     fi
   '';
 in {
@@ -101,7 +128,8 @@ in {
       };
       keys.normal = {
         C-g = '':sh if [ -n "$KITTY_LISTEN_ON" ]; then kitten @ launch --cwd current --type=overlay ${lib.getExe pkgs.lazygit} > /dev/null; fi'';
-        C-e = ":sh ${lib.getExe explorer}";
+        C-m = ":sh ${lib.getExe side_explorer}";
+        C-S-m = ":sh ${lib.getExe full_explorer}";
       };
     };
     languages = {
