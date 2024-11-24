@@ -1,9 +1,5 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  open_file = pkgs.writeShellScriptBin "hx_open_file" ''
+{pkgs, ...}: let
+  open_file = pkgs.writeShellScript "hx_open_file" ''
     # First argument is the id of the kitty window with helix running
     # Second argument is the file or folder to open
     # Third optional argument is the line to open the file at
@@ -24,7 +20,7 @@
     fi
   '';
 
-  explorer = pkgs.writeShellScriptBin "hx_explorer" ''
+  explorer = pkgs.writeShellScript "hx_explorer" ''
     # First argument is the id of the windows with helix open
     # Second optional argument is the path to a temp yazi config dir
 
@@ -40,7 +36,7 @@
     fi
 
     # Open picked file in helix
-    ${lib.getExe open_file} $1 $(command cat $picked_file)
+    ${open_file} $1 $(command cat $picked_file)
 
     # Delete temp file
     rm -f $picked_file
@@ -54,13 +50,13 @@
     kitten @ close-window
   '';
 
-  side_explorer = pkgs.writeShellScriptBin "hx_side_explorer" ''
+  side_explorer = pkgs.writeShellScript "hx_side_explorer" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
       # Create tmp config directory
       yazi_config=$(mktemp -d)
 
-      # Focus the window if one is already open or open a new one
+      # Focus the window if one is already open
       if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
         # Setup yazi config
         cp -r "$HOME/.config/yazi/." $yazi_config
@@ -69,20 +65,23 @@
         echo -e "\nrequire(\"no-status\"):setup()\n" >> "$yazi_config/init.lua"
 
         # Open yazi with its custom config in new split window to the left
-        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=20 --no-response -- ${lib.getExe explorer} $KITTY_WINDOW_ID $yazi_config
+        kitten @ launch --cwd=current --type=window --title="hx explorer" --location=vsplit --location=before --bias=20 --no-response -- ${explorer} $KITTY_WINDOW_ID $yazi_config
       fi
     fi
   '';
 
-  full_explorer = pkgs.writeShellScriptBin "hx_full_explorer" ''
+  full_explorer = pkgs.writeShellScript "hx_full_explorer" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
-      # Open yazi in new overlay window
-      kitten @ launch --cwd=current --type=overlay --no-response -- ${lib.getExe explorer} $KITTY_WINDOW_ID
+      # Focus the side explorer if one is already open
+      if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
+        # Open yazi in new overlay window
+        kitten @ launch --cwd=current --type=overlay-main --title="hx explorer" --no-response -- ${explorer} $KITTY_WINDOW_ID
+      fi
     fi
   '';
 
-  git_explorer = pkgs.writeShellScriptBin "hx_git_explorer" ''
+  git_explorer = pkgs.writeShellScript "hx_git_explorer" ''
     # First argument is the id of the windows with helix open
     # Second argument is the path to the temp lazygit config file
 
@@ -91,9 +90,9 @@
 
     # Change the edit commands to open the file in the current helix instance
     echo 'os:
-      edit: "${lib.getExe open_file} '"$1"' {{filename}}; '"$close"'"
-      editAtLine: "${lib.getExe open_file} '"$1"' {{filename}} {{line}}; '"$close"'"
-      openDirInEditor: "${lib.getExe open_file} '"$1"' {{dir}}; '"$close"'"
+      edit: "${open_file} '"$1"' {{filename}}; '"$close"'"
+      editAtLine: "${open_file} '"$1"' {{filename}} {{line}}; '"$close"'"
+      openDirInEditor: "${open_file} '"$1"' {{dir}}; '"$close"'"
     ' > $2
 
     lazygit
@@ -101,7 +100,7 @@
     eval $close
   '';
 
-  full_git_explorer = pkgs.writeShellScriptBin "hx_full_git_explorer" ''
+  full_git_explorer = pkgs.writeShellScript "hx_full_git_explorer" ''
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
       # Find the root of the repo
@@ -123,7 +122,7 @@
       fi
 
       # Open lazygit in new overlay window
-      kitten @ launch --cwd=current --type=overlay --no-response -- ${lib.getExe git_explorer} $KITTY_WINDOW_ID $config_file
+      kitten @ launch --cwd=current --type=overlay-main --title="hx git explorer" --no-response -- ${git_explorer} $KITTY_WINDOW_ID $config_file
     fi
   '';
 in {
@@ -179,9 +178,9 @@ in {
         };
       };
       keys.normal = {
-        C-g = ":sh ${lib.getExe full_git_explorer}";
-        C-m = ":sh ${lib.getExe side_explorer}";
-        C-S-m = ":sh ${lib.getExe full_explorer}";
+        C-g = ":sh ${full_git_explorer}";
+        C-m = ":sh ${side_explorer}";
+        C-S-m = ":sh ${full_explorer}";
       };
     };
     languages = {
