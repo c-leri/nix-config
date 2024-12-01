@@ -42,8 +42,10 @@
     unzip
   ];
 
-  # Install CaskaydiaCove Nerd Font
-  fonts.packages = [(pkgs.nerdfonts.override {fonts = ["CascadiaCode"];})];
+  fonts.packages = with pkgs; [
+    # Install CaskaydiaCove Nerd Font
+    nerd-fonts.caskaydia-cove
+  ];
 
   # Enable zram
   zramSwap.enable = true;

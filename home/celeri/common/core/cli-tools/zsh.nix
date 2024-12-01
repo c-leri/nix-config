@@ -76,8 +76,8 @@ in {
 
         # Initialize a projet from one of the template flakes defined in the nix-config directory
         flake-init () {
-          # Not exactly one argument, abort
-          if [[ $# != 1 ]]; then
+          # Missing template name, abort
+          if [ $# -lt 1 ]; then
             echo -e "\e[31mPlease provide a template name.\e[0m" >> /dev/stderr
             return 1
           fi
@@ -102,12 +102,21 @@ in {
           nix flake init --template ${config.home.homeDirectory}/nix-config#$1
 
           # flake init returned an error, abort
-          if [[ $? != 0 ]]; then
-            return $?
+          local return_code=$?
+          if [ $return_code -ne 0 ]; then
+            return $return_code
           fi
 
-          # Replace all mentions of "PROJECT_NAME" in the project files with the name of the current directory
-          ${lib.getExe pkgs.rpl} -F PROJECT_NAME ${"\${PWD##*/}"} flake.nix Cargo.toml .github/workflows/build.yml
+          # Use second argument as project name
+          local project_name=$2
+
+          # If no second argument, default to the current directory's name
+          if [ -z "$project_name" ]; then
+            project_name="''${PWD##*/}"
+          fi
+
+          # Replace all mentions of "PROJECT_NAME" in the project files with the name of the project
+          ${lib.getExe pkgs.rpl} -F PROJECT_NAME "$project_name" flake.nix Cargo.toml .github/workflows/build.yml
 
           # Run additional setup commands
           case $1 in
