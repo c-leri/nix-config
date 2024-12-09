@@ -74,6 +74,11 @@ in {
           rm -f -- "$tmp"
         }
 
+        # Utility function to check if a directory is part of a git repository
+        is_git_repo () {
+          [ -n "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]
+        }
+
         # Initialize a projet from one of the template flakes defined in the nix-config directory
         flake-init () {
           # Missing template name, abort
@@ -109,7 +114,6 @@ in {
 
           # Use second argument as project name
           local project_name=$2
-
           # If no second argument, default to the current directory's name
           if [ -z "$project_name" ]; then
             project_name="''${PWD##*/}"
@@ -124,6 +128,10 @@ in {
             rust|rust-github|bevy|bevy-github)
               # Temporary lock file
               touch Cargo.lock
+              # Add the temporary lock file to git if it is already initialized
+              if is_git_repo; then
+                git add Cargo.lock
+              fi
               nix develop --command bash -c "cargo update"
               ;;
             # Modify .gitignore and manually generate lock file for tauri
@@ -137,8 +145,11 @@ in {
               ;;
           esac
 
-          # Init the git repository
-          git init; git add .
+          # Init the git repository if we are not already in one
+          if ! is_git_repo; then
+            git init
+          fi
+          git add .
 
           # Init the .envrc file
           echo 'use flake' > .envrc
