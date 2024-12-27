@@ -22,10 +22,10 @@
     vlc
     spotify
     stremio
-    zen-browser.specific
+    zen-browser
   ];
 
   home.sessionVariables = {
-    BROWSER = "${lib.getExe pkgs.zen-browser.specific}";
+    BROWSER = "${lib.getExe pkgs.zen-browser}";
   };
 }

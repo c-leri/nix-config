@@ -4,6 +4,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    ankama-launcher
     prismlauncher
   ];
 }

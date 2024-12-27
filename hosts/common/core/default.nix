@@ -44,7 +44,7 @@
 
   fonts.packages = with pkgs; [
     # Install CaskaydiaCove Nerd Font
-    nerd-fonts.caskaydia-cove
+    (nerdfonts.override {fonts = ["CascadiaCode"];})
   ];
 
   # Enable zram
