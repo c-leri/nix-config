@@ -21,9 +21,11 @@
     # Languages
     ./languages/default.nix
 
+    # Theme
+    ./theme.nix
+
     # Settings
     ./pipewire.nix
-    ./sddm.nix
   ];
 
   # Set the time zone
@@ -40,11 +42,6 @@
     git
     zip
     unzip
-  ];
-
-  fonts.packages = with pkgs; [
-    # Install CaskaydiaCove Nerd Font
-    (nerdfonts.override {fonts = ["CascadiaCode"];})
   ];
 
   # Enable zram

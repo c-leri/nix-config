@@ -6,7 +6,6 @@
 
   programs.kitty = {
     enable = true;
-    catppuccin.enable = true;
     font = {
       name = "CaskaydiaCove Nerd Font";
       size = 12;

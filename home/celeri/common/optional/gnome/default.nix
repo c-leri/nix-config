@@ -1,10 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  background = ../../../../../background.jpg;
-in {
+{pkgs, ...}: {
   imports = [
     ./extensions.nix
   ];
@@ -26,20 +20,9 @@ in {
     };
 
     "org/gnome/desktop/interface" = {
-      color-scheme =
-        if config.catppuccin.flavor == "latte"
-        then "default"
-        else "prefer-dark";
       enable-hot-corners = false;
       show-clock-weekday = true;
       show-battery-percentage = true;
-    };
-    "org/gnome/desktop/background" = {
-      picture-uri = "${background}";
-      picture-uri-dark = "${background}";
-    };
-    "org/gnome/desktop/screensaver" = {
-      picture-uri = "${background}";
     };
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;

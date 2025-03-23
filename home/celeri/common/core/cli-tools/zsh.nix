@@ -3,14 +3,7 @@
   lib,
   config,
   ...
-}: let
-  catppuccin-fsh = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "zsh-fsh";
-    rev = "a9bdf479f8982c4b83b5c5005c8231c6b3352e2a";
-    sha256 = "sha256-WeqvsKXTO3Iham+2dI1QsNZWA8Yv9BHn1BgdlvR8zaw=";
-  };
-in {
+}: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -18,18 +11,12 @@ in {
       expireDuplicatesFirst = true;
       ignoreDups = true;
     };
-    sessionVariables = {
-      FAST_WORK_DIR = "XDG";
-    };
+    syntaxHighlighting.enable = true;
     initExtra =
       /*
       zsh
       */
       ''
-        # syntax highlighting catppuccin
-        mkdir -p ${config.home.homeDirectory}/.config/fsh
-        fast-theme -q ${catppuccin-fsh}/themes/catppuccin-macchiato.ini
-
         # nix-your-shell
         ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
 
@@ -170,11 +157,6 @@ in {
       llt = "ll --tree --level=2";
     };
     plugins = [
-      {
-        name = "fast-syntax-highlighting";
-        src = pkgs.zsh-fast-syntax-highlighting;
-        file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
-      }
       {
         name = "fzf-tab";
         src = pkgs.zsh-fzf-tab;

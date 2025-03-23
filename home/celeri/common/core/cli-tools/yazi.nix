@@ -8,7 +8,6 @@
 in {
   programs.yazi = {
     enable = true;
-    catppuccin.enable = true;
     plugins = {
       no-status = "${yazi-plugins}/no-status.yazi";
     };

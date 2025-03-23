@@ -11,6 +11,9 @@
       # Disable xterm
       excludePackages = [pkgs.xterm];
 
+      # Enable the GDM Display Manager
+      displayManager.gdm.enable = true;
+
       # Enable the GNOME Desktop Environment.
       desktopManager.gnome.enable = true;
     };

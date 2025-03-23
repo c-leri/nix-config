@@ -128,7 +128,6 @@
 in {
   programs.helix = {
     enable = true;
-    catppuccin.enable = true;
     extraPackages = with pkgs; [
       # C
       clang-tools

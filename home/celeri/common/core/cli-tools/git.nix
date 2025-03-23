@@ -6,7 +6,6 @@
 
     delta = {
       enable = true;
-      catppuccin.enable = true;
       options = {
         navigate = true;
         side-by-side = true;
@@ -29,7 +28,6 @@
 
   programs.lazygit = {
     enable = true;
-    catppuccin.enable = true;
     settings = {
       gui.theme = {
         activeBorderColor = [
