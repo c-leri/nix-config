@@ -3,7 +3,13 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.system;
 
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "dotnet-runtime-6.0.36"
+          "dotnet-sdk-6.0.428"
+        ];
+      };
     };
   };
 
