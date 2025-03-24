@@ -8,6 +8,7 @@
     ./keepassxc.nix
     ./kitty.nix
     ./mega.nix
+    ./spicetify.nix
     ./vscode.nix
   ];
 
@@ -20,7 +21,6 @@
     qbittorrent
     vesktop
     vlc
-    spotify
     stremio
     zen-browser
   ];
