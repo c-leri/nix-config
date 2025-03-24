@@ -57,7 +57,7 @@
       yazi_config=$(mktemp -d)
 
       # Focus the window if one is already open
-      if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
+      if ! kitten @ focus-window --match "title:\"hx explorer\"" &> /dev/null; then
         # Setup yazi config
         cp -r "$HOME/.config/yazi/." $yazi_config
         echo -e "\n[manager]\nratio = [ 0, 1, 0 ]\n" >> "$yazi_config/yazi.toml"
@@ -74,7 +74,7 @@
     # Only run in kitty with remote control on
     if [ -n "$KITTY_LISTEN_ON" ]; then
       # Focus the side explorer if one is already open
-      if ! kitten @ focus-window --match "title:\"hx explorer\"" > /dev/null; then
+      if ! kitten @ focus-window --match "title:\"hx explorer\"" &> /dev/null; then
         # Open yazi in new overlay window
         kitten @ launch --cwd=current --type=overlay-main --title="hx explorer" --no-response -- ${explorer} $KITTY_WINDOW_ID
       fi

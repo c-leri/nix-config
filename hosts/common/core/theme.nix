@@ -6,7 +6,7 @@
   stylix = {
     enable = true;
     image = ../../../background.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
     cursor = {
       package = pkgs.google-cursor;
       name = "GoogleDot-Black";

@@ -3,7 +3,6 @@
     app-icons-taskbar
     appindicator
     blur-my-shell
-    caffeine
     coverflow-alt-tab
     dash-to-dock
     gnome-40-ui-improvements
@@ -19,7 +18,6 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "aztaskbar@aztaskbar.gitlab.com"
-        "caffeine@patapon.info"
         "blur-my-shell@aunetx"
         "CoverflowAltTab@palatis.blogspot.com"
         "dash-to-dock@micxgx.gmail.com"
@@ -33,16 +31,13 @@
     };
     "org/gnome/shell/extensions/aztaskbar" = {
       favorites = false;
-      indicator-color-focused = "rgb(198,160,246)";
+      indicator-color-focused = "rgb(33,144,164)";
     };
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
       blur = false;
     };
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       blur = false;
-    };
-    "org/gnome/shell/extensions/caffeine" = {
-      show-notifications = false;
     };
     "org/gnome/shell/extensions/coverflowalttab" = {
       position = "Top";
