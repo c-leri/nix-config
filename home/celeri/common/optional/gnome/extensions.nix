@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs.gnomeExtensions; [
     app-icons-taskbar
     appindicator
@@ -31,7 +35,7 @@
     };
     "org/gnome/shell/extensions/aztaskbar" = {
       favorites = false;
-      indicator-color-focused = "rgb(33,144,164)";
+      indicator-color-focused = lib.mkDefault "rgb(53,132,228)";
     };
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
       blur = false;

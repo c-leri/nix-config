@@ -24,6 +24,9 @@
     # User
     ../common/users/celeri.nix
 
+    # Theming
+    ./theme.nix
+
     # Host specific
     ./power-management
     ./keymap.nix

@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./rider.nix
     ./keepassxc.nix
     ./kitty.nix
     ./mega.nix

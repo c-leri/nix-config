@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   stylix.iconTheme = {
     enable = true;
-    package = pkgs.papirus-icon-theme.override {color = "cyan";};
+    package = lib.mkDefault pkgs.papirus-icon-theme;
     dark = "Papirus-Dark";
     light = "Papirus-Light";
   };

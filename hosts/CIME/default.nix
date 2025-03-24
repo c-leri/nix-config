@@ -25,6 +25,9 @@
     # User
     ../common/users/celeri.nix
 
+    # Theming
+    ./theme.nix
+
     # Host specific
     ./amdgpu.nix
     ./auto-login.nix
