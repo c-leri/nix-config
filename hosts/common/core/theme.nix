@@ -17,7 +17,7 @@
       };
       serif = config.stylix.fonts.sansSerif;
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["CascadiaCode"];};
+        package = pkgs.nerd-fonts.caskaydia-cove;
         name = "CaskaydiaCove Nerd Font";
       };
     };

@@ -12,7 +12,7 @@
       ignoreDups = true;
     };
     syntaxHighlighting.enable = true;
-    initExtra =
+    initContent =
       /*
       zsh
       */

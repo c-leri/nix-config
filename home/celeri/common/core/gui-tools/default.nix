@@ -4,11 +4,12 @@
   ...
 }: {
   imports = [
+    ./ghostty.nix
     ./keepassxc.nix
-    ./kitty.nix
     ./mega.nix
     ./spicetify.nix
     ./vscode.nix
+    ./zen.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,7 +22,6 @@
     vesktop
     vlc
     stremio
-    zen-browser
   ];
 
   home.sessionVariables = {
