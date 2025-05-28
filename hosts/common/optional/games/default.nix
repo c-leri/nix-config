@@ -6,5 +6,6 @@
   environment.systemPackages = with pkgs; [
     ankama-launcher
     prismlauncher
+    unstable.shadps4
   ];
 }

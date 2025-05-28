@@ -1,8 +1,8 @@
-{
+{inputs, ...}: {
   system.autoUpgrade = {
     enable = true;
     operation = "boot";
-    flake = "/home/celeri/nix-config";
+    flake = inputs.self.outPath;
     flags = [
       "--update-input"
       "nixpkgs"
