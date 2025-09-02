@@ -8,7 +8,6 @@
     ./keepassxc.nix
     ./mega.nix
     ./spicetify.nix
-    ./vscode.nix
     ./zen.nix
   ];
 
@@ -21,6 +20,7 @@
     qbittorrent
     vesktop
     vlc
+    vscodium-fhs
     stremio
   ];
 
