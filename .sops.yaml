@@ -11,11 +11,6 @@ creation_rules:
           - *TRONC
           - *CIME
           - *celeri
-  - path_regex: secrets/hosts/TRONC/.+$
-    key_groups:
-      - age:
-           - *TRONC
-           - *celeri
   - path_regex: secrets/users/celeri/.+$
     key_groups:
       - age:

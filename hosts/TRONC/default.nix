@@ -32,7 +32,6 @@
     ./keymap.nix
     ./auto-login.nix
     ./shared-partition.nix
-    ./searx.nix
   ];
 
   networking.hostName = "TRONC";
