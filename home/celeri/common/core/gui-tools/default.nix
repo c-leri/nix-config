@@ -7,12 +7,10 @@
     ./ghostty.nix
     ./keepassxc.nix
     ./mega.nix
-    ./spicetify.nix
     ./zen.nix
   ];
 
   home.packages = with pkgs; [
-    android-studio
     jetbrains.idea-ultimate
 
     libreoffice
@@ -21,7 +19,6 @@
     vesktop
     vlc
     vscodium-fhs
-    stremio
   ];
 
   home.sessionVariables = {

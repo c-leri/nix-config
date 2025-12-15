@@ -6,7 +6,7 @@
     # Optional
     common/optional/gnome
     common/optional/mullvad-vpn.nix
-    common/optional/rider.nix
+    # common/optional/rider.nix
   ];
 
   home.stateVersion = "23.11";

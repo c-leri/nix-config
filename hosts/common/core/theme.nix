@@ -21,7 +21,5 @@
         name = "CaskaydiaCove Nerd Font";
       };
     };
-    # Gnome won't start after logging in otherwise
-    targets.gnome.enable = false;
   };
 }

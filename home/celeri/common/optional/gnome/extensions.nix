@@ -83,9 +83,5 @@
     "org/gnome/shell/extensions/transparent-window-moving" = {
       transparent-on-resizing = false;
     };
-    "org/gnome/shell/extensions/user-theme" = {
-      # Apply stylix gtk theme
-      name = "Stylix";
-    };
   };
 }

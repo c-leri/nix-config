@@ -10,13 +10,16 @@ in {
     ssh-allowed-signers = {
       target = ".ssh/allowed_signers";
       text = ''
-        ${config.programs.git.userEmail} namespaces="git" ${builtins.readFile ssh-public-key}
+        ${config.programs.git.settings.user.email} namespaces="git" ${builtins.readFile ssh-public-key}
       '';
     };
   };
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
   };
 }

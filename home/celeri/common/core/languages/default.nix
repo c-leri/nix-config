@@ -5,7 +5,6 @@
 
   home.packages = with pkgs; [
     bun
-    deno
     nodejs_20
     corepack_20
     python3

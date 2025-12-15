@@ -11,4 +11,6 @@
     enable = true;
     nativeMessagingHosts = [pkgs.firefoxpwa];
   };
+
+  stylix.targets.zen-browser.profileNames = ["default"];
 }

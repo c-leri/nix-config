@@ -1,25 +1,17 @@
 {
   pkgs,
-  lib,
+  # lib,
   ...
 }: {
   services = {
-    xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
+    # Enable the GDM Display Manager
+    displayManager.gdm.enable = true;
 
-      # Disable xterm
-      excludePackages = [pkgs.xterm];
-
-      # Enable the GDM Display Manager
-      displayManager.gdm.enable = true;
-
-      # Enable the GNOME Desktop Environment.
-      desktopManager.gnome.enable = true;
-    };
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
 
     # Disable keyring
-    gnome.gnome-keyring.enable = lib.mkForce false;
+    # gnome.gnome-keyring.enable = lib.mkForce false;
   };
 
   # Disable some gnome core apps
@@ -44,6 +36,7 @@
     gnome-text-editor
     gnome-tour
     simple-scan
+    showtime
     snapshot
     totem
     yelp
