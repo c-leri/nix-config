@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     jetbrains.idea-ultimate
 
+    unstable.cider-2
     libreoffice
     notesnook
     qbittorrent

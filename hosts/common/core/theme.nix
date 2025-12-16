@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -21,5 +22,6 @@
         name = "CaskaydiaCove Nerd Font";
       };
     };
+    targets.qt.platform = lib.mkForce "qtct";
   };
 }

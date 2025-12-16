@@ -1,12 +1,5 @@
-{
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["amdgpu"];
-  };
-
-  hardware = {
-    amdgpu = {
-      opencl.enable = true;
-    };
-  };
+{pkgs, ...}: {
+  hardware.graphics.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
 }
