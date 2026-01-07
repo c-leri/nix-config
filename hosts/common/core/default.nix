@@ -44,6 +44,9 @@
   # Enable zram
   zramSwap.enable = true;
 
+  # Increase bootloader timeout
+  boot.loader.timeout = 30;
+
   # Sudo password stars hint
   security.sudo.extraConfig = ''
     Defaults pwfeedback
