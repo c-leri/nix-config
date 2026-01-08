@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs.gnomeExtensions; [
     app-icons-taskbar
     appindicator
@@ -76,7 +77,7 @@
       media-control-enabled = true;
       notifications-enabled = false;
       output-show-selected = false;
-      user-removed-buttons = ["DarkModeToggle"];
+      user-removed-buttons = [ "DarkModeToggle" ];
       volume-mixer-enabled = true;
       volume-mixer-position = "bottom";
     };

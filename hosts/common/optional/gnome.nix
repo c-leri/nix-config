@@ -2,7 +2,8 @@
   pkgs,
   # lib,
   ...
-}: {
+}:
+{
   services = {
     # Enable the GDM Display Manager
     displayManager.gdm.enable = true;

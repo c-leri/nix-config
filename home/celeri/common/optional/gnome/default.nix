@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./extensions.nix
   ];
@@ -13,7 +14,7 @@
     };
 
     "org/gnome/mutter" = {
-      experimental-features = ["scale-monitor-framebuffer"];
+      experimental-features = [ "scale-monitor-framebuffer" ];
       center-new-windows = true;
       dynamic-workspaces = true;
       edge-tiling = true;

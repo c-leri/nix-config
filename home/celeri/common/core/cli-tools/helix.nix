@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix = {
     enable = true;
     extraPackages = with pkgs; [
@@ -6,9 +7,9 @@
       clang-tools
 
       # Nix
-      alejandra
       nil
       nixd
+      nixfmt
 
       # Bash
       nodePackages.bash-language-server
@@ -87,7 +88,7 @@
             "nil"
           ];
           formatter = {
-            command = "alejandra";
+            command = "nixfmt";
           };
           auto-format = true;
         }

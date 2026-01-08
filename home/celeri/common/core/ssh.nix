@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   ssh-public-key = ../../../../public/users/celeri/id_ed25519.pub;
-in {
+in
+{
   home.file = {
     ssh-public-key = {
       target = ".ssh/id_ed25519.pub";

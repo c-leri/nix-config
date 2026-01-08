@@ -4,7 +4,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # Harware modules
     inputs.hardware.nixosModules.common-cpu-intel

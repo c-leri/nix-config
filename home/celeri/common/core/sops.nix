@@ -2,9 +2,11 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   secretsFolder = ../../../../secrets/users/celeri;
-in {
+in
+{
   imports = [
     inputs.sops-nix.homeManagerModules.sops
   ];

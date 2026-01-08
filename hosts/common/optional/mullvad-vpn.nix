@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable mullvad vpn
   services.mullvad-vpn = {
     enable = true;

@@ -2,9 +2,11 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in {
+in
+{
   users.mutableUsers = false;
   sops.secrets.celeri-password = {
     key = "celeri";
@@ -25,18 +27,19 @@ in {
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.celeri-password.path;
     shell = pkgs.zsh;
-    extraGroups =
-      ["wheel"]
-      ++ ifTheyExist [
-        "audio"
-        "video"
-        "docker"
-        "networkmanager"
-      ];
+    extraGroups = [
+      "wheel"
+    ]
+    ++ ifTheyExist [
+      "audio"
+      "video"
+      "docker"
+      "networkmanager"
+    ];
   };
 
   # Add user to nix trusted users
-  nix.settings.trusted-users = ["celeri"];
+  nix.settings.trusted-users = [ "celeri" ];
 
   # Load this user's home manager config
   home-manager.users.celeri = import ../../../home/celeri/${config.networking.hostName}.nix;

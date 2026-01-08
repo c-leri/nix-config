@@ -28,6 +28,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,26 +41,31 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    lanzaboote,
-    sops-nix,
-    home-manager,
-    stylix,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      treefmt-nix,
+      lanzaboote,
+      sops-nix,
+      home-manager,
+      stylix,
+      ...
+    }:
+    let
+      inherit (self) outputs;
 
-    systems = ["x86_64-linux"];
-    forAllSystem = nixpkgs.lib.genAttrs systems;
-  in {
-    formatter = forAllSystem (system: nixpkgs.legacyPackages.${system}.nixfmt);
+      systems = [ "x86_64-linux" ];
+      forAllSystem = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
+      treefmtEval = forAllSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in
+    {
+      formatter = forAllSystem (
+        pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
+      );
 
-    devShell = forAllSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in
+      devShell = forAllSystem (
+        pkgs:
         pkgs.mkShell {
           name = "nix-config";
           packages = with pkgs; [
@@ -63,106 +73,106 @@
             sops
           ];
         }
-    );
+      );
 
-    overlays = import ./overlays.nix {inherit inputs;};
+      overlays = import ./overlays.nix { inherit inputs; };
 
-    nixosConfigurations = {
-      TRONC = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-        };
-        modules = [
-          ./hosts/TRONC
-          lanzaboote.nixosModules.lanzaboote
-          sops-nix.nixosModules.sops
-          stylix.nixosModules.stylix
+      nixosConfigurations = {
+        TRONC = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/TRONC
+            lanzaboote.nixosModules.lanzaboote
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "hmbak";
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              extraSpecialArgs = {
-                inherit inputs;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "hmbak";
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
               };
-            };
-          }
-        ];
+            }
+          ];
+        };
+        CIME = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/CIME
+            lanzaboote.nixosModules.lanzaboote
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "hmbak";
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+              };
+            }
+          ];
+        };
       };
-      CIME = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
+
+      templates = {
+        basic-flake = {
+          path = ./templates/basic-flake;
+          description = "A basic empty flake";
+          welcomeText = ''
+            Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
+          '';
         };
-        modules = [
-          ./hosts/CIME
-          lanzaboote.nixosModules.lanzaboote
-          sops-nix.nixosModules.sops
-          stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "hmbak";
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-            };
-          }
-        ];
+
+        tauri = {
+          path = ./templates/tauri;
+          description = "A flake for tauri development";
+          welcomeText = ''
+            Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
+          '';
+        };
+
+        rust = {
+          path = ./templates/rust;
+          description = "A flake for rust development";
+          welcomeText = ''
+            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
+          '';
+        };
+
+        rust-github = {
+          path = ./templates/rust-github;
+          description = "A flake for rust development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
+          welcomeText = ''
+            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
+          '';
+        };
+
+        bevy = {
+          path = ./templates/bevy;
+          description = "A flake for bevy development";
+          welcomeText = ''
+            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
+          '';
+        };
+
+        bevy-github = {
+          path = ./templates/bevy-github;
+          description = "A flake for bevy development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
+          welcomeText = ''
+            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
+          '';
+        };
       };
     };
-
-    templates = {
-      basic-flake = {
-        path = ./templates/basic-flake;
-        description = "A basic empty flake";
-        welcomeText = ''
-          Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
-        '';
-      };
-
-      tauri = {
-        path = ./templates/tauri;
-        description = "A flake for tauri development";
-        welcomeText = ''
-          Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
-        '';
-      };
-
-      rust = {
-        path = ./templates/rust;
-        description = "A flake for rust development";
-        welcomeText = ''
-          Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
-        '';
-      };
-
-      rust-github = {
-        path = ./templates/rust-github;
-        description = "A flake for rust development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
-        welcomeText = ''
-          Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
-        '';
-      };
-
-      bevy = {
-        path = ./templates/bevy;
-        description = "A flake for bevy development";
-        welcomeText = ''
-          Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
-        '';
-      };
-
-      bevy-github = {
-        path = ./templates/bevy-github;
-        description = "A flake for bevy development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
-        welcomeText = ''
-          Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
-        '';
-      };
-    };
-  };
 }
