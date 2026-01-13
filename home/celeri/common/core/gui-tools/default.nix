@@ -12,7 +12,7 @@
   ];
 
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    jetbrains.idea
 
     unstable.cider-2
     libreoffice
