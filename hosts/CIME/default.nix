@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   pkgs,
   config,
   ...
@@ -50,12 +49,16 @@
   boot = {
     # Bootloader
     loader = {
-      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
-    };
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
+      limine = {
+        enable = true;
+        secureBoot.enable = true;
+        extraEntries = ''
+          /Windows
+            protocol: efi
+            path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
+      };
     };
   };
 

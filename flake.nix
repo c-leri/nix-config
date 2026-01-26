@@ -107,9 +107,9 @@
           };
           modules = [
             ./hosts/CIME
-            lanzaboote.nixosModules.lanzaboote
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
+
             home-manager.nixosModules.home-manager
             {
               home-manager = {
