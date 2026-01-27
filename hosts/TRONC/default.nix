@@ -32,7 +32,6 @@
     ./power-management
     ./keymap.nix
     ./auto-login.nix
-    ./shared-partition.nix
   ];
 
   networking.hostName = "TRONC";
@@ -51,15 +50,14 @@
   boot = {
     # Bootloader
     loader = {
-      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
-    };
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
+      limine = {
+        enable = true;
+        secureBoot.enable = true;
+      };
     };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.11";
 }

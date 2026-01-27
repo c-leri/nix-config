@@ -7,12 +7,6 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +40,6 @@
       self,
       nixpkgs,
       treefmt-nix,
-      lanzaboote,
       sops-nix,
       home-manager,
       stylix,
@@ -84,7 +77,6 @@
           };
           modules = [
             ./hosts/TRONC
-            lanzaboote.nixosModules.lanzaboote
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
 

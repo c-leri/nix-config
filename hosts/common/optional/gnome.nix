@@ -10,9 +10,6 @@
 
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
-
-    # Disable keyring
-    # gnome.gnome-keyring.enable = lib.mkForce false;
   };
 
   # Disable some gnome core apps
