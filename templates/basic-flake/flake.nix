@@ -60,8 +60,11 @@
             # Export $FLAKE_ROOT in the development shell
             inputsFrom = [ config.flake-root.devShell ];
 
+            packages = [
+              # Add packages here
+            ]
             # Provide treefmt's formaters in the development shell
-            packages = lib.attrValues config.treefmt.build.programs;
+            ++ (lib.attrValues config.treefmt.build.programs);
           };
         };
     };
