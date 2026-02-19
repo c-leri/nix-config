@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./discord.nix
     ./ghostty.nix
     ./keepassxc.nix
     ./mega.nix
@@ -18,7 +19,6 @@
     libreoffice
     notesnook
     qbittorrent
-    vesktop
     vlc
     vscodium-fhs
   ];
