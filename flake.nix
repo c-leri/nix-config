@@ -33,8 +33,7 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # Replace with "github:FlameFlag/nixcord" once #179 as been merged
-    nixcord.url = "github:c-leri/nixcord/fix/vencord-show_me_your_name";
+    nixcord.url = "github:FlameFlag/nixcord";
   };
 
   outputs =
