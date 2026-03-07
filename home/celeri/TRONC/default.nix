@@ -6,12 +6,11 @@
 {
   imports = [
     # Required
-    common/core
+    ../common/core
 
     # Optional
-    common/optional/gnome
-    common/optional/mullvad-vpn.nix
-    # common/optional/rider.nix
+    ../common/optional/gnome
+    ../common/optional/mullvad-vpn.nix
   ];
 
   home.stateVersion = "23.11";

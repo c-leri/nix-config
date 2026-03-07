@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     jetbrains.idea
 
-    unstable.cider-2
+    cider-2
     libreoffice
     notesnook
     qbittorrent

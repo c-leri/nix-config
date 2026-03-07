@@ -14,7 +14,7 @@
     };
     fonts = {
       sansSerif = {
-        package = pkgs.unstable.adwaita-fonts;
+        package = pkgs.adwaita-fonts;
         name = "Adwaita Sans";
       };
       serif = config.stylix.fonts.sansSerif;

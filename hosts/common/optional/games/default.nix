@@ -8,6 +8,6 @@
     itch
     prismlauncher
     r2modman
-    unstable.shadps4
+    shadps4
   ];
 }

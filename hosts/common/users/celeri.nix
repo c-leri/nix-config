@@ -42,5 +42,5 @@ in
   nix.settings.trusted-users = [ "celeri" ];
 
   # Load this user's home manager config
-  home-manager.users.celeri = import ../../../home/celeri/${config.networking.hostName}.nix;
+  home-manager.users.celeri = import ../../../home/celeri/${config.networking.hostName};
 }

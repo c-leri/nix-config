@@ -16,7 +16,7 @@
     ../common/core
 
     # Optional
-    ../common/optional/gnome.nix
+    ../common/optional/dms.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
@@ -30,7 +30,8 @@
 
     # Host specific
     ./amdgpu.nix
-    ./auto-login.nix
+    # Broken for now
+    # ./auto-login.nix
     ./data-disk.nix
     ./keymap.nix
     ./openrgb.nix
