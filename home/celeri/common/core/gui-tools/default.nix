@@ -7,8 +7,6 @@
   imports = [
     ./discord.nix
     ./ghostty.nix
-    ./keepassxc.nix
-    ./mega.nix
     ./zen.nix
   ];
 
@@ -16,7 +14,9 @@
     jetbrains.idea
 
     cider-2
+    keepassxc
     libreoffice
+    megasync
     notesnook
     qbittorrent
     vlc

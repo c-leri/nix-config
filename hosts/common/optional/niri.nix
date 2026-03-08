@@ -9,6 +9,11 @@
     xwayland-satellite
   ];
 
+  environment.sessionVariables = {
+    # Support dead keys in GTK4 applications
+    GTK_IM_MODULE = "simple";
+  };
+
   programs.niri.enable = true;
 
   # Allows MTP file transfer

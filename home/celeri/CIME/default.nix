@@ -6,9 +6,9 @@
     # Optional
     ../common/optional/niri.nix
     ../common/optional/dms.nix
-    ../common/optional/mullvad-vpn.nix
 
     # Host specific
+    ./niri.nix
     ./dms.nix
   ];
 
