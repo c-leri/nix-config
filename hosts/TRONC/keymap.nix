@@ -1,8 +1,8 @@
 {
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "fr";
-    variant = "";
+    layout = "us,fr";
+    variant = "intl";
   };
 
   # Configure console keymap

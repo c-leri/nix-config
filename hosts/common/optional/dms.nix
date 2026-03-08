@@ -14,6 +14,9 @@
 
   programs.niri.enable = true;
 
+  # Allows phone file transfer
+  services.gvfs.enable = true;
+
   services.displayManager.dms-greeter = {
     enable = true;
     compositor.name = "niri";

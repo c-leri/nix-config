@@ -2,7 +2,6 @@
   inputs,
   pkgs,
   config,
-  lib,
   ...
 }:
 {
@@ -17,7 +16,7 @@
     ../common/core
 
     # Optional
-    ../common/optional/gnome.nix
+    ../common/optional/dms.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
@@ -31,7 +30,7 @@
     # Host specific
     ./power-management
     ./keymap.nix
-    ./auto-login.nix
+    # ./auto-login.nix
   ];
 
   networking.hostName = "TRONC";
