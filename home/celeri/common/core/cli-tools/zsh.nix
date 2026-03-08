@@ -7,6 +7,7 @@
 {
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     autocd = true;
     history = {
       expireDuplicatesFirst = true;
@@ -39,24 +40,6 @@
       }
 
       precmd_functions+=(_fix_cursor)
-
-      # Change directory with yazi
-      y () {
-        # Setup tmp file
-        local tmp="$(mktemp --tmpdir= "yazi-cwd.XXXXXX")" cwd
-
-        # Open yazi writing cwd to tmp file
-        yazi "$@" --cwd-file="$tmp"
-
-        # cd into the path stored into the tmp file
-        # if it's not empty and different from current working dir
-        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-          builtin cd -- "$cwd"
-        fi
-
-        # Cleanup
-        rm -f -- "$tmp"
-      }
 
       # Utility function to check if a directory is part of a git repository
       is_git_repo () {

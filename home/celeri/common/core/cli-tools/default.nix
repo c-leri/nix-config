@@ -7,7 +7,6 @@
     ./git.nix
     ./helix.nix
     ./starship.nix
-    ./yazi.nix
     ./zsh.nix
   ];
 

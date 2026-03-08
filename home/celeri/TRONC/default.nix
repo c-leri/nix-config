@@ -9,6 +9,7 @@
     ../common/core
 
     # Optional
+    ../common/optional/niri.nix
     ../common/optional/dms.nix
     ../common/optional/mullvad-vpn.nix
 
