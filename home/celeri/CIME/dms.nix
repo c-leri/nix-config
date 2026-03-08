@@ -117,7 +117,7 @@
     }
 
     output "HDMI-A-1" {
-        mode "4096x2160@120.000"
+        mode "3840x2160@120.000"
         scale 1.75
         position x=0 y=0
         variable-refresh-rate on-demand=true
