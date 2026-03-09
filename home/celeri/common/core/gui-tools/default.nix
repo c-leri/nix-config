@@ -19,6 +19,7 @@
     megasync
     notesnook
     qbittorrent
+    stremio-linux-shell
     vlc
     vscodium-fhs
   ];
