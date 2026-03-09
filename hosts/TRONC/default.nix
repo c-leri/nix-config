@@ -29,9 +29,10 @@
     ./theme.nix
 
     # Host specific
-    ./power-management
-    ./keymap.nix
     # ./auto-login.nix
+    ./keymap.nix
+    ./power-management
+    ./swap.nix
   ];
 
   networking.hostName = "TRONC";

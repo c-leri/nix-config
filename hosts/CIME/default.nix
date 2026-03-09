@@ -36,6 +36,7 @@
     ./data-disk.nix
     ./keymap.nix
     ./openrgb.nix
+    ./swap.nix
   ];
 
   networking.hostName = "CIME";
