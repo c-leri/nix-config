@@ -40,6 +40,10 @@
               keyboardLayoutNameCompactMode = false;
             }
             {
+              id = "developerUtilities";
+              enabled = true;
+            }
+            {
               id = "clipboard";
               enabled = true;
             }

@@ -3,6 +3,7 @@
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.dms-plugin-registry.modules.default
   ];
 
   programs.dank-material-shell = {
@@ -11,6 +12,18 @@
     niri = {
       enableKeybinds = true;
       enableSpawn = false;
+    };
+
+    plugins = {
+      emojiLauncher.enable = true;
+
+      developerUtilities = {
+        enable = true;
+
+        settings = {
+          autoPaste = true;
+        };
+      };
     };
 
     settings = {
