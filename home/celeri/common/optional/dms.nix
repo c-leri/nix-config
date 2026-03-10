@@ -21,7 +21,7 @@
         enable = true;
 
         settings = {
-          autoPaste = true;
+          autoPaste = false;
         };
       };
     };

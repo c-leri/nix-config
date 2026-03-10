@@ -29,6 +29,7 @@
     ./theme.nix
 
     # Host specific
+    # Broken for now
     # ./auto-login.nix
     ./keymap.nix
     ./power-management

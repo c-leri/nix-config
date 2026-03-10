@@ -31,8 +31,6 @@
 
     # Host specific
     ./amdgpu.nix
-    # Broken for now
-    # ./auto-login.nix
     ./data-disk.nix
     ./keymap.nix
     ./openrgb.nix
