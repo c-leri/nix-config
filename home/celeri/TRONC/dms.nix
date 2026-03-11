@@ -38,16 +38,15 @@
               keyboardLayoutNameCompactMode = false;
             }
             {
+              id = "developerUtilities";
+              enabled = true;
+            }
+            {
               id = "clipboard";
               enabled = true;
             }
             {
               id = "cpuTemp";
-              enabled = true;
-              minimumWidth = true;
-            }
-            {
-              id = "cpuUsage";
               enabled = true;
               minimumWidth = true;
             }
