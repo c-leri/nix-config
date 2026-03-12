@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -20,6 +19,7 @@
     "usbhid"
     "usb_storage"
     "sd_mod"
+    "tpm_tis"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -30,8 +30,11 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-e64a8c7e-5ec2-4bc7-bc78-6c6153d1d4f0".device =
-    "/dev/disk/by-partlabel/NIXROOT";
+  boot.initrd.systemd.enable = true;
+  boot.initrd.luks.devices."luks-e64a8c7e-5ec2-4bc7-bc78-6c6153d1d4f0" = {
+    device = "/dev/disk/by-partlabel/NIXROOT";
+    crypttabExtraOpts = [ "tpm2-device=auto" ];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-partlabel/EFI";
