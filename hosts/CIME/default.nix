@@ -32,6 +32,7 @@
     # Host specific
     ./amdgpu.nix
     ./data-disk.nix
+    ./jovian.nix
     ./keymap.nix
     ./openrgb.nix
     ./swap.nix
