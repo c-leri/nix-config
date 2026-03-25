@@ -19,7 +19,8 @@
     megasync
     notesnook
     qbittorrent
-    stremio-linux-shell
+    # Uncomment when https://github.com/NixOS/nixpkgs/pull/503035 is fixed
+    # stremio-linux-shell
     vlc
     vscodium-fhs
   ];

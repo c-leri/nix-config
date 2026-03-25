@@ -30,7 +30,6 @@
     ./theme.nix
 
     # Host specific
-    ./amdgpu.nix
     ./data-disk.nix
     ./jovian.nix
     ./keymap.nix
