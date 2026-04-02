@@ -12,15 +12,15 @@
       nixfmt
 
       # Bash
-      nodePackages.bash-language-server
+      bash-language-server
       shfmt
 
       # Typescript
-      nodePackages.typescript
-      nodePackages.typescript-language-server
+      typescript
+      typescript-language-server
 
       # Javascript/HTML/CSS
-      nodePackages.vscode-langservers-extracted
+      vscode-langservers-extracted
 
       # Python
       black
