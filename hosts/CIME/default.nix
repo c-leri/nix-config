@@ -16,6 +16,7 @@
     ../common/core
 
     # Optional
+    ../common/optional/regreet.nix
     ../common/optional/niri.nix
     ../common/optional/dms.nix
     ../common/optional/mullvad-vpn.nix
@@ -34,6 +35,7 @@
     ./jovian.nix
     ./keymap.nix
     ./openrgb.nix
+    ./regreet.nix
     ./swap.nix
   ];
 
