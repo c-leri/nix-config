@@ -5,11 +5,11 @@
 
     # Optional
     ../common/optional/niri.nix
-    ../common/optional/dms.nix
+    ../common/optional/noctalia.nix
 
     # Host specific
     ./niri.nix
-    ./dms.nix
+    ./noctalia.nix
   ];
 
   home.stateVersion = "24.05";

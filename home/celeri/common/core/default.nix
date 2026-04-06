@@ -21,5 +21,12 @@
   home.username = "celeri";
   home.homeDirectory = "/home/celeri";
 
+  home.file = {
+    face = {
+      target = ".face";
+      source = ./face.jpg;
+    };
+  };
+
   xdg.enable = true;
 }

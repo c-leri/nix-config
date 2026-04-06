@@ -18,7 +18,7 @@
     # Optional
     ../common/optional/regreet.nix
     ../common/optional/niri.nix
-    ../common/optional/dms.nix
+    ../common/optional/noctalia.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
