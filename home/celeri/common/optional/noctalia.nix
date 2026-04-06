@@ -20,7 +20,9 @@ in
   ];
 
   home.packages = with pkgs; [
+    fastfetch # Display system informations in settings
     pwvucontrol # Volume control gui
+    wl-mirror # Mirror screen
   ];
 
   programs.noctalia-shell = {
@@ -64,6 +66,8 @@ in
               id = "KeyboardLayout";
               displayMode = "forceOpen";
             }
+            { id = "plugin:mirror-mirror"; }
+            { id = "plugin:usb-drive-manager"; }
             {
               id = "Tray";
               drawerEnabled = false;
@@ -110,26 +114,32 @@ in
         {
           action = "lock";
           enabled = true;
+          keybind = "1";
         }
         {
           action = "suspend";
           enabled = true;
+          keybind = "2";
         }
         {
           action = "reboot";
           enabled = true;
+          keybind = "3";
         }
         {
           action = "logout";
           enabled = true;
+          keybind = "4";
         }
         {
           action = "shutdown";
           enabled = true;
+          keybind = "5";
         }
         {
           action = "rebootToUefi";
           enabled = true;
+          keybind = "6";
         }
         {
           action = "hibernate";
@@ -144,6 +154,34 @@ in
       nightLight = {
         enable = true;
         nightTemp = "5500";
+      };
+      # Plugins
+      plugins = {
+        sources = [
+          {
+            enabled = true;
+            name = "Official Noctalia Plugins";
+            url = "https://github.com/noctalia-dev/noctalia-plugins";
+          }
+        ];
+        states = {
+          mirror-mirror = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          usb-drive-manager = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+        };
+        version = 2;
+      };
+      pluginSettings = {
+        usb-drive-manager = {
+          hideWhenEmpty = true;
+          fileBrowser = "nautilus";
+          terminalCommand = "ghostty";
+        };
       };
     };
   };

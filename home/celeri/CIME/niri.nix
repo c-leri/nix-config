@@ -1,4 +1,11 @@
 {
+  home.shellAliases = {
+    turnOnMonitor = "niri msg output 'DP-2' on";
+    turnOffMonitor = "niri msg output 'DP-2' off";
+    turnOnTV = "niri msg output 'HDMI-A-1' on";
+    turnOffTV = "niri msg output 'HDMI-A-1' off";
+  };
+
   programs.niri = {
     settings = {
       screenshot-path = "~/Images/Captures d’écran/Capture d’écran du %Y-%m-%d %H-%M-%S.png";
@@ -18,6 +25,33 @@
           };
         }
       ];
+      outputs = {
+        "DP-2" = {
+          mode = {
+            width = 2560;
+            height = 1440;
+            refresh = 170.001;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+          variable-refresh-rate = "on-demand";
+        };
+        "HDMI-A-1" = {
+          enable = false;
+          mode = {
+            width = 3840;
+            height = 2160;
+            refresh = 60.;
+          };
+          position = {
+            x = 2560;
+            y = 0;
+          };
+          scale = 1.5;
+        };
+      };
     };
   };
 }

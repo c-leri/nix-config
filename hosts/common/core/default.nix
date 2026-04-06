@@ -61,4 +61,7 @@
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
+
+  # Do not install html documentation pages
+  documentation.doc.enable = false;
 }
