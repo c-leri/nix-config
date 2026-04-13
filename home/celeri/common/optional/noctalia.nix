@@ -82,6 +82,7 @@ in
               id = "Brightness";
               displayMode = "alwaysShow";
             }
+            { id = "plugin:privacy-indicator"; }
             { id = "ControlCenter"; }
           ];
         };
@@ -165,7 +166,19 @@ in
           }
         ];
         states = {
+          custom-commands = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
           mirror-mirror = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          polkit-agent = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          privacy-indicator = {
             enabled = true;
             sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
           };
@@ -181,6 +194,9 @@ in
           hideWhenEmpty = true;
           fileBrowser = "nautilus";
           terminalCommand = "ghostty";
+        };
+        privacy-indicator = {
+          hideInactive = true;
         };
       };
     };

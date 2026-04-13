@@ -1,11 +1,4 @@
 {
-  home.shellAliases = {
-    turnOnMonitor = "niri msg output 'DP-2' on";
-    turnOffMonitor = "niri msg output 'DP-2' off";
-    turnOnTV = "niri msg output 'HDMI-A-1' on";
-    turnOffTV = "niri msg output 'HDMI-A-1' off";
-  };
-
   programs.niri = {
     settings = {
       screenshot-path = "~/Images/Captures d’écran/Capture d’écran du %Y-%m-%d %H-%M-%S.png";
