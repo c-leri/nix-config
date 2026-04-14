@@ -156,48 +156,47 @@ in
         enable = true;
         nightTemp = "5500";
       };
-      # Plugins
-      plugins = {
-        sources = [
-          {
-            enabled = true;
-            name = "Official Noctalia Plugins";
-            url = "https://github.com/noctalia-dev/noctalia-plugins";
-          }
-        ];
-        states = {
-          custom-commands = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          mirror-mirror = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          polkit-agent = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          privacy-indicator = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          usb-drive-manager = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
+    };
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        custom-commands = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        version = 2;
-      };
-      pluginSettings = {
-        usb-drive-manager = {
-          hideWhenEmpty = true;
-          fileBrowser = "nautilus";
-          terminalCommand = "ghostty";
+        mirror-mirror = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        polkit-agent = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
         privacy-indicator = {
-          hideInactive = true;
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        usb-drive-manager = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
+    };
+    pluginSettings = {
+      usb-drive-manager = {
+        hideWhenEmpty = true;
+        fileBrowser = "nautilus";
+        terminalCommand = "ghostty";
+      };
+      privacy-indicator = {
+        hideInactive = true;
       };
     };
   };
