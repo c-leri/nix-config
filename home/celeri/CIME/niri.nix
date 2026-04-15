@@ -18,33 +18,6 @@
           };
         }
       ];
-      outputs = {
-        "DP-2" = {
-          mode = {
-            width = 2560;
-            height = 1440;
-            refresh = 170.001;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          variable-refresh-rate = "on-demand";
-        };
-        "HDMI-A-1" = {
-          enable = false;
-          mode = {
-            width = 3840;
-            height = 2160;
-            refresh = 60.;
-          };
-          position = {
-            x = 2560;
-            y = 0;
-          };
-          scale = 1.5;
-        };
-      };
     };
   };
 }

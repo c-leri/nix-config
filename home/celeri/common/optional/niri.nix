@@ -1,12 +1,24 @@
-{ inputs, pkgs, ... }:
 {
-  imports = [
-    inputs.niri.homeModules.niri
-  ];
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [ inputs.niri.homeModules.niri ];
+
+  xdg.configFile."niri/config.kdl".text = ''
+    // Nix generated config
+    include "nix-generated-config.kdl"
+
+    // Monique generated output config
+    include optional=true "monitors.kdl"
+  '';
+  xdg.configFile.niri-config.target = lib.mkForce "niri/nix-generated-config.kdl";
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri;
+    package = pkgs.niri-unstable;
     settings = {
       # Hide window decoration
       prefer-no-csd = true;

@@ -14,7 +14,11 @@
     GTK_IM_MODULE = "simple";
   };
 
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    # Unstable version needed until 'include optional=true' is stable
+    package = pkgs.niri-unstable;
+  };
 
   # Allows MTP file transfer
   services.gvfs.enable = true;

@@ -46,6 +46,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    monique = {
+      url = "github:ToRvaLDz/monique";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     steam-presence = {
       url = "github:JustTemmie/steam-presence";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +61,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     nixcord.url = "github:FlameFlag/nixcord";
   };
 
@@ -92,8 +104,6 @@
           ];
         }
       );
-
-      overlays = import ./overlays.nix { inherit inputs; };
 
       nixosConfigurations = {
         TRONC = nixpkgs.lib.nixosSystem {

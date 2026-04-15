@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./discord.nix
@@ -21,8 +17,4 @@
     stremio-linux-shell
     vlc
   ];
-
-  home.sessionVariables = {
-    BROWSER = "${lib.getExe pkgs.zen-browser}";
-  };
 }

@@ -1,11 +1,11 @@
 {
-  outputs,
+  inputs,
   ...
 }:
 {
   nixpkgs = {
     overlays = [
-      outputs.overlays.zen-browser
+      inputs.niri.overlays.niri
     ];
     config = {
       allowUnfree = true;

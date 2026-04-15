@@ -62,16 +62,17 @@ in
             { id = "Workspace"; }
           ];
           right = [
+            { id = "plugin:usb-drive-manager"; }
             {
               id = "KeyboardLayout";
               displayMode = "forceOpen";
             }
-            { id = "plugin:mirror-mirror"; }
-            { id = "plugin:usb-drive-manager"; }
             {
               id = "Tray";
               drawerEnabled = false;
             }
+            { id = "plugin:mirror-mirror"; }
+            { id = "plugin:monique"; }
             { id = "NotificationHistory"; }
             { id = "Battery"; }
             {
@@ -166,11 +167,11 @@ in
         }
       ];
       states = {
-        custom-commands = {
+        mirror-mirror = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        mirror-mirror = {
+        monique = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
@@ -190,13 +191,16 @@ in
       version = 2;
     };
     pluginSettings = {
+      monique = {
+        activeColor = "none";
+      };
+      privacy-indicator = {
+        hideInactive = true;
+      };
       usb-drive-manager = {
         hideWhenEmpty = true;
         fileBrowser = "nautilus";
         terminalCommand = "ghostty";
-      };
-      privacy-indicator = {
-        hideInactive = true;
       };
     };
   };
