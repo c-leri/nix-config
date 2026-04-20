@@ -32,7 +32,6 @@
     # Host specific
     ./keymap.nix
     ./power-management
-    ./regreet.nix
     ./swap.nix
   ];
 
