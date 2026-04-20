@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   pkgs,
   lib,
   ...
@@ -24,8 +25,13 @@
       prefer-no-csd = true;
       input.keyboard.numlock = true;
       hotkey-overlay.skip-at-startup = true;
+      cursor.hide-after-inactive-ms = 500;
       layout = {
         default-column-width.proportion = 0.5;
+        focus-ring = with config.lib.stylix.colors.withHashtag; {
+          active.color = base0D;
+          inactive.color = base03;
+        };
       };
       binds = {
         "Mod+Shift+Slash" = {
