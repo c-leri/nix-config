@@ -8,6 +8,8 @@
 {
   imports = [ inputs.niri.homeModules.niri ];
 
+  # Workaround to add include to the config file
+  # Can be simplified once https://github.com/sodiboo/niri-flake/pull/1548 is merged
   xdg.configFile."niri/config.kdl".text = ''
     // Nix generated config
     include "nix-generated-config.kdl"
