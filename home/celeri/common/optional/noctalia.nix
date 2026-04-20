@@ -74,7 +74,6 @@ in
             { id = "plugin:mirror-mirror"; }
             { id = "plugin:monique"; }
             { id = "NotificationHistory"; }
-            { id = "Battery"; }
             {
               id = "Volume";
               displayMode = "alwaysShow";
@@ -84,6 +83,10 @@ in
               displayMode = "alwaysShow";
             }
             { id = "plugin:privacy-indicator"; }
+            {
+              id = "Battery";
+              displayMode = "graphic";
+            }
             { id = "ControlCenter"; }
           ];
         };

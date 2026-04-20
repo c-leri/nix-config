@@ -5,6 +5,11 @@
     variant = "intl";
   };
 
+  environment.sessionVariables = {
+    # Used by cage (regreet's compositor)
+    XKB_DEFAULT_LAYOUT = "fr";
+  };
+
   # Configure console keymap
   console.keyMap = "fr";
 }
