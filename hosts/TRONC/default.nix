@@ -30,10 +30,9 @@
     ./theme.nix
 
     # Host specific
-    # Broken for now
-    # ./auto-login.nix
     ./keymap.nix
     ./power-management
+    ./regreet.nix
     ./swap.nix
   ];
 
