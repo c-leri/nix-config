@@ -36,7 +36,7 @@
         };
       };
       binds = {
-        "Mod+Shift+Slash" = {
+        "Mod+F1" = {
           action.show-hotkey-overlay = { };
         };
         "Mod+D" = {
@@ -51,11 +51,12 @@
           action.quit = { };
         };
         "Ctrl+Shift+space" = {
-          hotkey-overlay.title = "Switch keyboard layout";
+          hotkey-overlay.title = "Switch Keyboard Layout";
           action.switch-layout = "next";
         };
         # Open default terminal
         "Mod+T" = {
+          hotkey-overlay.title = "Open terminal";
           action.spawn = [ "xdg-terminal-exec" ];
         };
         # Maximize/fullscreen window/column
@@ -228,6 +229,10 @@
         };
         "Mod+Shift+V" = {
           action.switch-focus-between-floating-and-tiling = { };
+        };
+        # Tabbed column
+        "Mod+W" = {
+          action.toggle-column-tabbed-display = { };
         };
         # Screenshot
         "Print" = {

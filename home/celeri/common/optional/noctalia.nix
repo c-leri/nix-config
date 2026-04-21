@@ -170,6 +170,10 @@ in
         }
       ];
       states = {
+        keybind-cheatsheet = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
         mirror-mirror = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -203,7 +207,7 @@ in
       usb-drive-manager = {
         hideWhenEmpty = true;
         fileBrowser = "nautilus";
-        terminalCommand = "ghostty";
+        terminalCommand = "xdg-terminal-exec";
       };
     };
   };
@@ -247,16 +251,24 @@ in
 
       # Keybinds
       binds = {
+        "Mod+F1" = lib.mkForce {
+          hotkey-overlay.title = "Open Keybind Cheatsheet";
+          action.spawn = noctaliaCall "plugin:keybind-cheatsheet toggle";
+        };
         "Mod+X" = {
+          hotkey-overlay.title = "Open Power Menu";
           action.spawn = noctaliaCall "sessionMenu toggle";
         };
         "Mod+Space" = {
+          hotkey-overlay.title = "Open Launcher";
           action.spawn = noctaliaCall "launcher toggle";
         };
         "Mod+Alt+Comma" = {
+          hotkey-overlay.title = "Open Settings";
           action.spawn = noctaliaCall "settings toggle";
         };
         "Mod+Alt+L" = {
+          hotkey-overlay.title = "Lock Screen";
           action.spawn = noctaliaCall "lockScreen lock";
         };
         # Volume
