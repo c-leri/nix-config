@@ -21,6 +21,7 @@
     ../common/optional/noctalia.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
+    ../common/optional/kind.nix
     ../common/optional/flatpak.nix
 
     # User
