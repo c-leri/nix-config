@@ -6,4 +6,6 @@
     dark = "Papirus-Dark";
     light = "Papirus-Light";
   };
+
+  gtk.gtk4.theme = null;
 }

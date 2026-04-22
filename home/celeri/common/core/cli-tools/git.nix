@@ -3,6 +3,12 @@
   programs.git = {
     enable = true;
 
+    signing = {
+      format = "ssh";
+      key = "${config.home.homeDirectory}/${config.home.file.ssh-public-key.target}";
+      signByDefault = true;
+    };
+
     settings = {
       init.defaultBranch = "main";
 
@@ -12,15 +18,9 @@
       user = {
         name = config.home.username;
         email = "celestin.bouchet@gmail.com";
-        signingkey = "${config.home.homeDirectory}/${config.home.file.ssh-public-key.target}";
       };
 
-      gpg = {
-        format = "ssh";
-        ssh.allowedSignersFile = "${config.home.homeDirectory}/${config.home.file.ssh-allowed-signers.target}";
-      };
-      commit.gpgSign = true;
-      tag.gpgSign = true;
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/${config.home.file.ssh-allowed-signers.target}";
     };
   };
 
