@@ -8,14 +8,30 @@
 {
   imports = [ inputs.niri.homeModules.niri ];
 
-  # Workaround to add include to the config file
+  # Workaround to add options form niri 25.11+ to the config file
   # Can be simplified once https://github.com/sodiboo/niri-flake/pull/1548 is merged
-  xdg.configFile."niri/config.kdl".text = ''
+  xdg.configFile."niri/config.kdl".text = /* kdl */ ''
     // Nix generated config
     include "nix-generated-config.kdl"
 
     // Monique generated output config
     include optional=true "monitors.kdl"
+
+    // Enable blur effect on all windows
+    window-rule {
+      background-effect {
+        blur true
+        xray false
+      }
+    }
+
+    // Also disable xray for noctalia
+    layer-rule {
+      match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+      background-effect {
+        xray false
+      }
+    }
   '';
   xdg.configFile.niri-config.target = lib.mkForce "niri/nix-generated-config.kdl";
 

@@ -42,6 +42,8 @@ in
       location.autoLocate = true;
       # Control external monitor brightness
       brightness.enableDdcSupport = true;
+      # Translucent widgets in noctalia panels
+      ui.translucentWidgets = true;
       # Bar
       bar = {
         mouseWheelAction = "workspace";
@@ -95,6 +97,9 @@ in
       dock = {
         pinnedStatic = true;
         groupApps = true;
+        # Transparent dock
+        backgroundOpacity = lib.mkForce 0.5;
+        deadOpacity = 0.5;
       };
       # Launcher
       appLauncher = {
