@@ -37,7 +37,7 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = pkgs.niri;
     settings = {
       # Hide window decoration
       prefer-no-csd = true;

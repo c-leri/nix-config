@@ -11,6 +11,8 @@
         "vesktop"
         "Cider"
       ];
+      # Get GPU temp
+      systemMonitor.enableDgpuMonitoring = true;
     };
   };
 }

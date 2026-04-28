@@ -24,6 +24,7 @@
 
     # Settings
     ./pipewire.nix
+    ./zsh.nix
   ];
 
   # Set the time zone
@@ -52,6 +53,9 @@
   security.sudo.extraConfig = ''
     Defaults pwfeedback
   '';
+
+  # Prohibit user creation outside of nixos config
+  users.mutableUsers = false;
 
   # Enable networking
   networking.networkmanager.enable = true;

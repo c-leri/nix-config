@@ -7,19 +7,11 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  users.mutableUsers = false;
   sops.secrets.celeri-password = {
     key = "celeri";
     sopsFile = ../../../secrets/hosts/common/passwords.yaml;
     format = "yaml";
     neededForUsers = true;
-  };
-
-  programs.zsh = {
-    enable = true;
-    vteIntegration = true;
-    enableBashCompletion = true;
-    autosuggestions.enable = true;
   };
 
   users.users.celeri = {

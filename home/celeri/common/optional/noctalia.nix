@@ -44,6 +44,7 @@ in
       brightness.enableDdcSupport = true;
       # Translucent widgets in noctalia panels
       ui.translucentWidgets = true;
+      network.bluetoothHideUnnamedDevices = true;
       # Bar
       bar = {
         mouseWheelAction = "workspace";
