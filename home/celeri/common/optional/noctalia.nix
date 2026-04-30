@@ -51,18 +51,17 @@ in
         middleClickAction = "settings";
         widgets = {
           left = [
-            { id = "Launcher"; }
-            {
-              id = "Clock";
-              formatHorizontal = "ddd dd/MM, HH:mm";
-              tooltipFormat = "dddd d MMMM yyyy, HH:mm";
-            }
+            { id = "Workspace"; }
             { id = "SystemMonitor"; }
             { id = "ActiveWindow"; }
             { id = "MediaMini"; }
           ];
           center = [
-            { id = "Workspace"; }
+            {
+              id = "Clock";
+              formatHorizontal = "HH:mm - dd MMMM";
+              tooltipFormat = "dddd d MMMM yyyy, HH:mm";
+            }
           ];
           right = [
             { id = "plugin:usb-drive-manager"; }
