@@ -3,14 +3,15 @@
     # Sops
     ./sops.nix
 
-    # SSH config
-    ./ssh.nix
-
     # Services
     ./services/mpris-proxy.nix
 
     # Theming
     ./theme.nix
+
+    # Config
+    ./user-dirs.nix
+    ./ssh.nix
 
     # Tools
     ./cli-tools

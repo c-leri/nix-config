@@ -54,7 +54,12 @@ in
             { id = "Workspace"; }
             { id = "SystemMonitor"; }
             { id = "ActiveWindow"; }
-            { id = "MediaMini"; }
+            {
+              id = "MediaMini";
+              showArtistFirst = false;
+              showVisualizer = true;
+              compactMode = true;
+            }
           ];
           center = [
             {
@@ -116,7 +121,7 @@ in
           { id = "AirplaneMode"; }
         ];
         right = [
-          { id = "Notifications"; }
+          { id = "PowerProfile"; }
           { id = "KeepAwake"; }
           { id = "NightLight"; }
         ];

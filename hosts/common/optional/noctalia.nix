@@ -12,6 +12,9 @@
     mission-center # System monitor gui
   ];
 
+  # Allows noctalia to switch power profile
+  services.power-profiles-daemon.enable = true;
+
   # Net top tool, wrapped to be runnable without root (used by mission-center)
   security.wrappers."nethogs" = {
     source = lib.getExe pkgs.nethogs;

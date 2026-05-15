@@ -3,6 +3,7 @@
   imports = [
     ./discord.nix
     ./ghostty.nix
+    ./mpv.nix
     ./zen.nix
   ];
 
@@ -15,6 +16,5 @@
     notesnook
     qbittorrent
     stremio-linux-shell
-    vlc
   ];
 }

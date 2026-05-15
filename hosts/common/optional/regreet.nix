@@ -1,5 +1,5 @@
 {
-  services.greetd.enable = true;
+  services.accounts-daemon.enable = true;
 
   programs.regreet = {
     enable = true;
