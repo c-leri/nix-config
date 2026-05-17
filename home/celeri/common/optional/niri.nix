@@ -51,7 +51,6 @@
           inactive.color = base03;
         };
       };
-      screenshot-path = "${config.xdg.userDirs.pictures}/Captures d’écran/Capture d’écran du %Y-%m-%d %H-%M-%S.png";
       binds = {
         "Mod+F1" = {
           action.show-hotkey-overlay = { };

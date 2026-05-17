@@ -104,9 +104,6 @@ in
         groupApps = true;
         # Workaround for https://github.com/noctalia-dev/noctalia-shell/issues/2559
         onlySameOutput = false;
-        # Transparent dock
-        backgroundOpacity = lib.mkForce 0.5;
-        deadOpacity = 0.5;
       };
       # Launcher
       appLauncher = {
