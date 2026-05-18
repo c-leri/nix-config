@@ -5,9 +5,11 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    itch
+    lutris
     prismlauncher
     r2modman
     shadps4
   ];
+
+  programs.gamemode.enable = true;
 }

@@ -9,7 +9,7 @@
           "org.gnome.Nautilus"
           "com.mitchellh.ghostty"
           "steam"
-          "itch"
+          "net.lutris.Lutris"
           "vesktop"
           "Cider"
         ];
