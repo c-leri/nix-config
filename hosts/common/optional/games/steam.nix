@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }:
 {
@@ -15,6 +16,10 @@
   programs.steam = {
     enable = true;
     extest.enable = true;
+    extraPackages = with pkgs; [
+      # Needed to update the steam controller's firmware
+      hidapi
+    ];
 
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = false;
