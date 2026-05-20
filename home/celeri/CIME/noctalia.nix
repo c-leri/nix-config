@@ -1,7 +1,9 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs.noctalia-shell = {
     settings = {
+      # Startup apps (megasync, keepassxc, mullvad-vpn, steam)
+      hooks.startup = "${lib.getExe pkgs.megasync} & ${lib.getExe pkgs.keepassxc} & ${lib.getExe pkgs.mullvad-vpn} & ${lib.getExe pkgs.steam} -silent &";
       dock = {
         # Dock pinned apps
         pinnedApps = [

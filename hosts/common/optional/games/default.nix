@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./gamemode.nix
     ./steam.nix
   ];
 
@@ -10,6 +11,4 @@
     r2modman
     shadps4
   ];
-
-  programs.gamemode.enable = true;
 }

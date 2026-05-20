@@ -1,6 +1,4 @@
 {
-  services.accounts-daemon.enable = true;
-
   programs.regreet = {
     enable = true;
     settings = {

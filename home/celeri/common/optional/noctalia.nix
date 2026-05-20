@@ -28,11 +28,7 @@ in
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      # Startup apps (megasync, keepassxc, mullvad-vpn)
-      hooks = {
-        enabled = true;
-        startup = "${lib.getExe pkgs.megasync} & ${lib.getExe pkgs.keepassxc} & ${lib.getExe pkgs.mullvad-vpn} &";
-      };
+      hooks.enabled = true;
       wallpaper = {
         # Enable wallpaper in overview
         overviewEnabled = true;
@@ -45,6 +41,7 @@ in
       # Translucent widgets in noctalia panels
       ui.translucentWidgets = true;
       network.bluetoothHideUnnamedDevices = true;
+      general.showHibernateOnLockScreen = true;
       # Bar
       bar = {
         mouseWheelAction = "workspace";
@@ -131,29 +128,28 @@ in
           keybind = "1";
         }
         {
-          action = "suspend";
+          action = "logout";
           enabled = true;
           keybind = "2";
         }
         {
-          action = "reboot";
+          action = "shutdown";
           enabled = true;
           keybind = "3";
         }
         {
-          action = "logout";
+          action = "reboot";
           enabled = true;
           keybind = "4";
         }
         {
-          action = "shutdown";
+          action = "rebootToUefi";
           enabled = true;
           keybind = "5";
         }
         {
-          action = "rebootToUefi";
-          enabled = true;
-          keybind = "6";
+          action = "suspend";
+          enabled = false;
         }
         {
           action = "hibernate";
