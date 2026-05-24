@@ -16,7 +16,6 @@
     # Tools
     ./cli-tools
     ./gui-tools
-    ./languages
   ];
 
   home.username = "celeri";
