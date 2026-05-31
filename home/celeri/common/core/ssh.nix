@@ -21,8 +21,10 @@ in
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks."*" = {
-      addKeysToAgent = "yes";
+    settings = {
+      "*" = {
+        addKeysToAgent = "yes";
+      };
     };
   };
 }

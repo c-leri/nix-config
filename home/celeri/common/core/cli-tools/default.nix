@@ -11,7 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    manix
+    devenv
     nix-output-monitor
 
     fd

@@ -1,5 +1,19 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 {
+  # Github access token
+  sops.secrets.github-access-token = {
+    sopsFile = ../../../secrets/hosts/common/github_access_token;
+    format = "binary";
+  };
+
+  # Sops template with nix access tokens config
+  sops.templates."nix-access-tokens.conf" = {
+    mode = "444"; # Make it readable to everyone
+    content = ''
+      access-tokens = github.com=${config.sops.placeholder.github-access-token}
+    '';
+  };
+
   # Nix settings
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -21,5 +35,6 @@
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       ];
     };
+    extraOptions = "!include ${config.sops.templates."nix-access-tokens.conf".path}";
   };
 }

@@ -10,5 +10,6 @@
     prismlauncher
     r2modman
     shadps4
+    winetricks
   ];
 }
