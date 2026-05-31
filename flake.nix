@@ -141,55 +141,5 @@
           ];
         };
       };
-
-      templates = {
-        basic-flake = {
-          path = ./templates/basic-flake;
-          description = "A basic empty flake";
-          welcomeText = ''
-            Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
-          '';
-        };
-
-        tauri = {
-          path = ./templates/tauri;
-          description = "A flake for tauri development";
-          welcomeText = ''
-            Remember to replace `PROJECT_NAME` in `flake.nix` with the name of your project!
-          '';
-        };
-
-        rust = {
-          path = ./templates/rust;
-          description = "A flake for rust development";
-          welcomeText = ''
-            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
-          '';
-        };
-
-        rust-github = {
-          path = ./templates/rust-github;
-          description = "A flake for rust development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
-          welcomeText = ''
-            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
-          '';
-        };
-
-        bevy = {
-          path = ./templates/bevy;
-          description = "A flake for bevy development";
-          welcomeText = ''
-            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml` and `flake.nix` with the name of your project!
-          '';
-        };
-
-        bevy-github = {
-          path = ./templates/bevy-github;
-          description = "A flake for bevy development with Github Actions for building the project and building and deploying the project's documentation as a Github Page";
-          welcomeText = ''
-            Remember to replace all instances of `PROJECT_NAME` in `Cargo.toml`, `flake.nix` and `.github/workflows/build.yml` with the name of your project!
-          '';
-        };
-      };
     };
 }

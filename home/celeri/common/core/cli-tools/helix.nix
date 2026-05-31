@@ -29,7 +29,7 @@
       ruff
 
       # Toml
-      taplo
+      tombi
 
       # Yaml
       yaml-language-server
