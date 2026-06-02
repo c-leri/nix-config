@@ -10,6 +10,7 @@
     prismlauncher
     r2modman
     shadps4
+    shadps4-qtlauncher
     winetricks
   ];
 }

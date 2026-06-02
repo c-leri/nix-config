@@ -17,7 +17,8 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix";
+      # Temp fix for https://github.com/nix-community/stylix/issues/2334
+      url = "github:nix-community/stylix/pull/2337/head";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
