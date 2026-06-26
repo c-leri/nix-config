@@ -1,7 +1,14 @@
 { pkgs, ... }:
 {
+  nix.settings = {
+    substituters = [ "https://niri.cachix.org" ];
+    trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+  };
+
   environment.systemPackages = with pkgs; [
-    # Include a file explorer
+    # Disk format gui
+    gnome-disk-utility
+    # File explorer
     nautilus
     # Image viewer
     ristretto

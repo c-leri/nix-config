@@ -16,6 +16,7 @@
     ../common/core
 
     # Optional
+    ../common/optional/cachyos-kernels.nix
     ../common/optional/regreet.nix
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
@@ -42,7 +43,7 @@
   networking.hostName = "CIME";
 
   # Latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
 
   hardware.enableRedistributableFirmware = true;
 
