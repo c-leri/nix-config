@@ -24,6 +24,7 @@
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
     ../common/optional/games
+    ../common/optional/music.nix
 
     # User
     ../common/users/celeri.nix
