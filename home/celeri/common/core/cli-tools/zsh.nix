@@ -18,11 +18,6 @@
       # nix-your-shell
       ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
 
-      # set helix as default editor if it is installed
-      if command -v hx &> /dev/null; then
-        export EDITOR=hx
-      fi
-
       # Expand ... (or more) into ../.. when pressing RETURN
       _expand-dots-then-accept-line () {
           local MATCH

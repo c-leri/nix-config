@@ -39,6 +39,7 @@
     wl-clipboard
 
     git
+    gnupg
     zip
     unzip
   ];
