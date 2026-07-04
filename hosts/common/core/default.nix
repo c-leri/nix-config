@@ -16,9 +16,6 @@
     # Auto-upgrade service
     ./services/auto-upgrade.nix
 
-    # Languages
-    ./languages/default.nix
-
     # Theme
     ./theme.nix
 

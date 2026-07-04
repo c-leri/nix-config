@@ -5,8 +5,6 @@
   jovian = {
     steam.enable = true;
 
-    decky-loader.enable = true;
-
     steamos = {
       useSteamOSConfig = false;
 
