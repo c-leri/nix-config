@@ -18,8 +18,40 @@
         log-word-wrap = true;
         show-cryptographic-signatures = true;
       };
+      "--scope" = [
+        {
+          "--when.environments" = [ "JJUI" ];
+          ui = {
+            diff-formatter = [
+              "delta"
+              "--width"
+              "$width"
+              "$left"
+              "$right"
+            ];
+          };
+        }
+      ];
     };
   };
 
   programs.delta.enableJujutsuIntegration = true;
+
+  programs.jjui = {
+    enable = true;
+    settings = {
+      preview.show_at_start = true;
+      actions = [
+        {
+          name = "edit-file";
+          desc = "open file in editor";
+          scope = "revisions.details";
+          key = "alt+e";
+          lua = ''
+            exec_shell("$EDITOR "..context.file())
+          '';
+        }
+      ];
+    };
+  };
 }
