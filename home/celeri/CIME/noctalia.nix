@@ -23,4 +23,20 @@
       systemMonitor.enableDgpuMonitoring = true;
     };
   };
+
+  programs.niri = {
+    settings = {
+      layer-rules = [
+        # Disable xray effect for noctalia pannels
+        {
+          matches = [
+            {
+              namespace = "^noctalia-(background|launcher-overlay|dock)-.*$";
+            }
+          ];
+          background-effect.xray = false;
+        }
+      ];
+    };
+  };
 }

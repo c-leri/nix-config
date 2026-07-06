@@ -2,7 +2,14 @@
   programs.niri = {
     settings = {
       window-rules = [
-        # Window rule to place steam notifications at the bottom right of the screen, unfocused
+        {
+          # Enable blur effect on all windows, without xray
+          background-effect = {
+            blur = true;
+            xray = false;
+          };
+        }
+        # Place steam notifications at the bottom right of the screen, unfocused
         {
           matches = [
             {
@@ -17,7 +24,7 @@
           };
           open-focused = false;
         }
-        # Window rule to place the steam on screen keyboard at the bottom of the screen, unfocused
+        # Place the steam on screen keyboard at the bottom of the screen, unfocused
         {
           matches = [
             {

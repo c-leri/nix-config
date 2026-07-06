@@ -6,11 +6,6 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,38 +16,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    monique = {
-      url = "github:ToRvaLDz/monique";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    steam-presence = {
-      url = "github:JustTemmie/steam-presence";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     musnix = {
       url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -65,7 +40,18 @@
     };
 
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    niri.url = "github:epireyn/niri-flake";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
+
+    monique.url = "github:ToRvaLDz/monique";
+
     nixcord.url = "github:FlameFlag/nixcord";
+
+    steam-presence.url = "github:JustTemmie/steam-presence";
   };
 
   outputs =

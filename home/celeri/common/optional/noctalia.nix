@@ -242,8 +242,8 @@ in
         honor-xdg-activation-with-invalid-serial = { };
       };
 
-      # Display a blurred background for the overview
       layer-rules = [
+        # Display a blurred background for the overview
         {
           matches = [
             {
@@ -251,6 +251,14 @@ in
             }
           ];
           place-within-backdrop = true;
+        }
+      ];
+
+      includes = [
+        # Monique generated output config
+        {
+          path = "monitors.kdl";
+          optional = true;
         }
       ];
 
