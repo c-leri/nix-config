@@ -1,5 +1,8 @@
 {
   imports = [
+    # Nix config
+    ./nix.nix
+
     # Sops
     ./sops.nix
 
