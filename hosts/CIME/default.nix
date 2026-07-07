@@ -25,6 +25,7 @@
     ../common/optional/flatpak.nix
     ../common/optional/games
     ../common/optional/music.nix
+    ../common/optional/ratbagd.nix
 
     # User
     ../common/users/celeri.nix
