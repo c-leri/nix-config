@@ -6,7 +6,6 @@
     ./fzf.nix
     ./git.nix
     ./helix.nix
-    ./jj.nix
     ./starship.nix
     ./zsh.nix
   ];
