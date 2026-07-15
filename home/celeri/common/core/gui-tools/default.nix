@@ -3,6 +3,7 @@
   imports = [
     ./discord.nix
     ./ghostty.nix
+    ./keepassxc.nix
     ./mpv.nix
     ./zen.nix
   ];
@@ -11,7 +12,6 @@
     jetbrains.idea
 
     cider-2
-    keepassxc
     megasync
     notesnook
     qbittorrent

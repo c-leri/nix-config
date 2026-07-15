@@ -29,9 +29,19 @@
     enableGitIntegration = true;
     options = {
       navigate = true;
-      side-by-side = true;
     };
   };
 
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.pagers = [
+        {
+          pager = "delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format='lazygit-edit://{path}:{line}'";
+        }
+      ];
+    };
+  };
+
+  home.shellAliases.lgit = "lazygit";
 }
