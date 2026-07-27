@@ -7,6 +7,7 @@
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
     ../common/optional/music.nix
+    ../common/optional/godot.nix
 
     # Host specific
     ./niri.nix
