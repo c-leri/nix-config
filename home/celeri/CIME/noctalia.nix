@@ -24,17 +24,17 @@
     };
   };
 
-  programs.niri = {
+  wayland.windowManager.niri = {
     settings = {
-      layer-rules = [
+      _children = [
         # Disable xray effect for noctalia pannels
         {
-          matches = [
-            {
+          layer-rule = {
+            match._props = {
               namespace = "^noctalia-(background|launcher-overlay|dock)-.*$";
-            }
-          ];
-          background-effect.xray = false;
+            };
+            background-effect.xray = false;
+          };
         }
       ];
     };

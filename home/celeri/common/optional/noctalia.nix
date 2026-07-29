@@ -217,111 +217,104 @@ in
     };
   };
 
-  programs.niri = {
+  wayland.windowManager.niri = {
     settings = {
-      # Start noctalia with niri
-      spawn-at-startup = [
+      _children = [
+        # Start noctalia with niri
+        { spawn-at-startup = "noctalia-shell"; }
+        # Recommanded niri settings for noctalia
         {
-          command = [ "noctalia-shell" ];
-        }
-      ];
-
-      # Recommanded niri settings for noctalia
-      window-rules = [
-        {
-          geometry-corner-radius = {
-            bottom-left = 20.;
-            bottom-right = 20.;
-            top-left = 20.;
-            top-right = 20.;
+          window-rule = {
+            geometry-corner-radius = [
+              20.
+              20.
+              20.
+              20.
+            ];
+            clip-to-geometry = true;
           };
-          clip-to-geometry = true;
+          debug = {
+            honor-xdg-activation-with-invalid-serial = { };
+          };
         }
-      ];
-      debug = {
-        honor-xdg-activation-with-invalid-serial = { };
-      };
-
-      layer-rules = [
         # Display a blurred background for the overview
         {
-          matches = [
-            {
+          layer-rule = {
+            match._props = {
               namespace = "^noctalia-overview*";
-            }
-          ];
-          place-within-backdrop = true;
+            };
+            place-within-backdrop = true;
+          };
         }
-      ];
-
-      includes = [
-        # Monique generated output config
+        # Include monique generated output config
         {
-          path = "monitors.kdl";
-          optional = true;
+          include = {
+            _props.optional = true;
+            _args = [ "monitors.kdl" ];
+          };
         }
       ];
 
       # Keybinds
       binds = {
         "Mod+F1" = lib.mkForce {
-          hotkey-overlay.title = "Open Keybind Cheatsheet";
-          action.spawn = noctaliaCall "plugin:keybind-cheatsheet toggle";
+          _props.hotkey-overlay-title = "Open Keybind Cheatsheet";
+          spawn = noctaliaCall "plugin:keybind-cheatsheet toggle";
         };
         "Mod+X" = {
-          hotkey-overlay.title = "Open Power Menu";
-          action.spawn = noctaliaCall "sessionMenu toggle";
+          _props.hotkey-overlay-title = "Open Power Menu";
+          spawn = noctaliaCall "sessionMenu toggle";
         };
         "Mod+Space" = {
-          hotkey-overlay.title = "Open Launcher";
-          action.spawn = noctaliaCall "launcher toggle";
+          _props.hotkey-overlay-title = "Open Launcher";
+          spawn = noctaliaCall "launcher toggle";
         };
         "Mod+Alt+Comma" = {
-          hotkey-overlay.title = "Open Settings";
-          action.spawn = noctaliaCall "settings toggle";
+          _props.hotkey-overlay-title = "Open Settings";
+          spawn = noctaliaCall "settings toggle";
         };
         "Mod+Alt+L" = {
-          hotkey-overlay.title = "Lock Screen";
-          action.spawn = noctaliaCall "lockScreen lock";
+          _props.hotkey-overlay-title = "Lock Screen";
+          spawn = noctaliaCall "lockScreen lock";
         };
         # Volume
         "XF86AudioRaiseVolume" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "volume increase";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "volume increase";
         };
         "XF86AudioLowerVolume" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "volume decrease";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "volume decrease";
         };
         "XF86AudioMute" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "volume muteOutput";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "volume muteOutput";
         };
         "XF86AudioMicMute" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "volume muteInput";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "volume muteInput";
         };
         # Media control
         "XF86AudioPlay" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "media playPause";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "media playPause";
         };
         "XF86AudioPrev" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "media previous";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "media previous";
         };
         "XF86AudioNext" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "media next";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "media next";
         };
         # Brightness
         "XF86MonBrightnessUp" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "brightness increase";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "brightness increase";
         };
         "XF86MonBrightnessDown" = {
-          allow-when-locked = true;
-          action.spawn = noctaliaCall "brightness decrease";
+          _props.allow-when-locked = true;
+          spawn = noctaliaCall "brightness decrease";
         };
       };
     };

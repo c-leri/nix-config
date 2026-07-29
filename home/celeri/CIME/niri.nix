@@ -1,43 +1,45 @@
 {
-  programs.niri = {
+  wayland.windowManager.niri = {
     settings = {
-      window-rules = [
+      _children = [
+        # Enable blur effect on all windows, without xray
         {
-          # Enable blur effect on all windows, without xray
-          background-effect = {
-            blur = true;
-            xray = false;
+          window-rule = {
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
           };
         }
         # Place steam notifications at the bottom right of the screen, unfocused
         {
-          matches = [
-            {
+          window-rule = {
+            match._props = {
               app-id = "steam";
               title = "^notificationtoasts_\\d+_desktop$";
-            }
-          ];
-          default-floating-position = {
-            x = 10;
-            y = 10;
-            relative-to = "bottom-right";
+            };
+            default-floating-position._props = {
+              relative-to = "bottom-right";
+              x = 10;
+              y = 10;
+            };
+            open-focused = false;
           };
-          open-focused = false;
         }
         # Place the steam on screen keyboard at the bottom of the screen, unfocused
         {
-          matches = [
-            {
+          window-rule = {
+            match._props = {
               app-id = "steam";
               title = "^Steam Input";
-            }
-          ];
-          default-floating-position = {
-            x = 0;
-            y = 10;
-            relative-to = "bottom";
+            };
+            default-floating-position._props = {
+              relative-to = "bottom";
+              x = 0;
+              y = 10;
+            };
+            open-focused = false;
           };
-          open-focused = false;
         }
       ];
     };

@@ -1,15 +1,6 @@
-{
-  inputs,
-  config,
-  pkgs,
-  ...
-}:
-{
-  imports = [ inputs.niri.homeModules.niri ];
-
-  programs.niri = {
+{ config, ... }: {
+  wayland.windowManager.niri = {
     enable = true;
-    package = pkgs.niri;
     settings = {
       # Hide window decoration
       prefer-no-csd = true;
@@ -19,218 +10,218 @@
       layout = {
         default-column-width.proportion = 0.5;
         focus-ring = with config.lib.stylix.colors.withHashtag; {
-          active.color = base0D;
-          inactive.color = base03;
+          active-color = base0D;
+          inactive-color = base03;
         };
       };
       binds = {
         "Mod+F1" = {
-          action.show-hotkey-overlay = { };
+          show-hotkey-overlay = { };
         };
         "Mod+D" = {
-          repeat = false;
-          action.toggle-overview = { };
+          _props.repeat = false;
+          toggle-overview = { };
         };
         "Mod+Q" = {
-          repeat = false;
-          action.close-window = { };
+          _props.repeat = false;
+          close-window = { };
         };
         "Mod+Shift+E" = {
-          action.quit = { };
+          quit = { };
         };
         "Ctrl+Shift+space" = {
-          hotkey-overlay.title = "Switch Keyboard Layout";
-          action.switch-layout = "next";
+          _props.hotkey-overlay-title = "Switch Keyboard Layout";
+          switch-layout = "next";
         };
         # Open default terminal
         "Mod+T" = {
-          hotkey-overlay.title = "Open terminal";
-          action.spawn = [ "xdg-terminal-exec" ];
+          _props.hotkey-overlay-title = "Open terminal";
+          spawn = [ "xdg-terminal-exec" ];
         };
         # Maximize/fullscreen window/column
         "Mod+F" = {
-          action.maximize-column = { };
+          maximize-column = { };
         };
         "Mod+Shift+F" = {
-          action.fullscreen-window = { };
+          fullscreen-window = { };
         };
         "Mod+Ctrl+F" = {
-          action.expand-column-to-available-width = { };
+          expand-column-to-available-width = { };
         };
         "Mod+M" = {
-          action.maximize-window-to-edges = { };
+          maximize-window-to-edges = { };
         };
         # Move focus in workspace
         "Mod+Left" = {
-          action.focus-column-left = { };
+          focus-column-left = { };
         };
         "Mod+Down" = {
-          action.focus-window-down = { };
+          focus-window-down = { };
         };
         "Mod+Up" = {
-          action.focus-window-up = { };
+          focus-window-up = { };
         };
         "Mod+Right" = {
-          action.focus-column-right = { };
+          focus-column-right = { };
         };
         # Move windows/columns in workspace
         "Mod+Ctrl+Left" = {
-          action.move-column-left = { };
+          move-column-left = { };
         };
         "Mod+Ctrl+Down" = {
-          action.move-window-down = { };
+          move-window-down = { };
         };
         "Mod+Ctrl+Up" = {
-          action.move-window-up = { };
+          move-window-up = { };
         };
         "Mod+Ctrl+Right" = {
-          action.move-column-right = { };
+          move-column-right = { };
         };
         # Move focus accross workspaces
         "Mod+Page_Down" = {
-          action.focus-workspace-down = { };
+          focus-workspace-down = { };
         };
         "Mod+Page_Up" = {
-          action.focus-workspace-up = { };
+          focus-workspace-up = { };
         };
         # Move windows/columns accross workspaces
         "Mod+Ctrl+Page_Down" = {
-          action.move-column-to-workspace-down = { };
+          move-column-to-workspace-down = { };
         };
         "Mod+Ctrl+Page_Up" = {
-          action.move-column-to-workspace-up = { };
+          move-column-to-workspace-up = { };
         };
         "Mod+Shift+Page_Down" = {
-          action.move-workspace-down = { };
+          move-workspace-down = { };
         };
         "Mod+Shift+Page_Up" = {
-          action.move-workspace-up = { };
+          move-workspace-up = { };
         };
         # Scroll focus
         "Mod+WheelScrollDown" = {
-          cooldown-ms = 150;
-          action.focus-workspace-down = { };
+          _props.cooldown-ms = 150;
+          focus-workspace-down = { };
         };
         "Mod+WheelScrollUp" = {
-          cooldown-ms = 150;
-          action.focus-workspace-up = { };
+          _props.cooldown-ms = 150;
+          focus-workspace-up = { };
         };
         "Mod+WheelScrollRight" = {
-          action.focus-column-right = { };
+          focus-column-right = { };
         };
         "Mod+WheelScrollLeft" = {
-          action.focus-column-left = { };
+          focus-column-left = { };
         };
         "Mod+Shift+WheelScrollDown" = {
-          action.focus-column-right = { };
+          focus-column-right = { };
         };
         "Mod+Shift+WheelScrollUp" = {
-          action.focus-column-left = { };
+          focus-column-left = { };
         };
         # Scroll columns
         "Mod+Ctrl+WheelScrollDown" = {
-          cooldown-ms = 150;
-          action.move-column-to-workspace-down = { };
+          _props.cooldown-ms = 150;
+          move-column-to-workspace-down = { };
         };
         "Mod+Ctrl+WheelScrollUp" = {
-          cooldown-ms = 150;
-          action.move-column-to-workspace-up = { };
+          _props.cooldown-ms = 150;
+          move-column-to-workspace-up = { };
         };
         "Mod+Ctrl+WheelScrollRight" = {
-          action.move-column-right = { };
+          move-column-right = { };
         };
         "Mod+Ctrl+WheelScrollLeft" = {
-          action.move-column-left = { };
+          move-column-left = { };
         };
         "Mod+Ctrl+Shift+WheelScrollDown" = {
-          action.move-column-right = { };
+          move-column-right = { };
         };
         "Mod+Ctrl+Shift+WheelScrollUp" = {
-          action.move-column-left = { };
+          move-column-left = { };
         };
         # Move focus to specific workspace
         "Mod+1" = {
-          action.focus-workspace = 1;
+          focus-workspace = 1;
         };
         "Mod+2" = {
-          action.focus-workspace = 2;
+          focus-workspace = 2;
         };
         "Mod+3" = {
-          action.focus-workspace = 3;
+          focus-workspace = 3;
         };
         "Mod+4" = {
-          action.focus-workspace = 4;
+          focus-workspace = 4;
         };
         "Mod+5" = {
-          action.focus-workspace = 5;
+          focus-workspace = 5;
         };
         "Mod+6" = {
-          action.focus-workspace = 6;
+          focus-workspace = 6;
         };
         "Mod+7" = {
-          action.focus-workspace = 7;
+          focus-workspace = 7;
         };
         "Mod+8" = {
-          action.focus-workspace = 8;
+          focus-workspace = 8;
         };
         "Mod+9" = {
-          action.focus-workspace = 9;
+          focus-workspace = 9;
         };
         # Move column to specific workspace
         "Mod+Ctrl+1" = {
-          action.move-column-to-workspace = 1;
+          move-column-to-workspace = 1;
         };
         "Mod+Ctrl+2" = {
-          action.move-column-to-workspace = 2;
+          move-column-to-workspace = 2;
         };
         "Mod+Ctrl+3" = {
-          action.move-column-to-workspace = 3;
+          move-column-to-workspace = 3;
         };
         "Mod+Ctrl+4" = {
-          action.move-column-to-workspace = 4;
+          move-column-to-workspace = 4;
         };
         "Mod+Ctrl+5" = {
-          action.move-column-to-workspace = 5;
+          move-column-to-workspace = 5;
         };
         "Mod+Ctrl+6" = {
-          action.move-column-to-workspace = 6;
+          move-column-to-workspace = 6;
         };
         "Mod+Ctrl+7" = {
-          action.move-column-to-workspace = 7;
+          move-column-to-workspace = 7;
         };
         "Mod+Ctrl+8" = {
-          action.move-column-to-workspace = 8;
+          move-column-to-workspace = 8;
         };
         "Mod+Ctrl+9" = {
-          action.move-column-to-workspace = 9;
+          move-column-to-workspace = 9;
         };
         # Move window left/right
         "Mod+BracketLeft" = {
-          action.consume-or-expel-window-left = { };
+          consume-or-expel-window-left = { };
         };
         "Mod+BracketRight" = {
-          action.consume-or-expel-window-right = { };
+          consume-or-expel-window-right = { };
         };
         # Floating windows
         "Mod+V" = {
-          action.toggle-window-floating = { };
+          toggle-window-floating = { };
         };
         "Mod+Shift+V" = {
-          action.switch-focus-between-floating-and-tiling = { };
+          switch-focus-between-floating-and-tiling = { };
         };
         # Tabbed column
         "Mod+W" = {
-          action.toggle-column-tabbed-display = { };
+          toggle-column-tabbed-display = { };
         };
         # Screenshot
         "Print" = {
-          action.screenshot = { };
+          screenshot = { };
         };
         "Ctrl+Print" = {
-          action.screenshot-screen = { };
+          screenshot-screen = { };
         };
         "Alt+Print" = {
-          action.screenshot-window = { };
+          screenshot-window = { };
         };
       };
     };

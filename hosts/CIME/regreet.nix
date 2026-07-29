@@ -11,7 +11,7 @@ let
     ${lib.getExe pkgs.wlr-randr} --output DP-2 --mode 2560x1440 --pos 0,0;
     # Turn off the TV
     ${lib.getExe pkgs.wlr-randr} --output HDMI-A-1 --off;
-    ${lib.getExe config.programs.regreet.package};
+    ${lib.getExe config.services.displayManager.regreet.package};
   '';
 in
 {

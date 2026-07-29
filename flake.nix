@@ -43,8 +43,6 @@
 
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    niri.url = "github:epireyn/niri-flake";
-
     noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
 
     monique.url = "github:ToRvaLDz/monique";
