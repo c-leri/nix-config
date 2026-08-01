@@ -28,6 +28,13 @@
     capabilities = "cap_net_admin,cap_net_raw,cap_dac_read_search,cap_sys_ptrace+pe";
   };
 
+  # Allow wheel users to check CPU power draw (used by mission-center)
+  services.udev.extraRules = ''
+    SUBSYSTEM=="powercap", KERNEL=="intel-rapl*", \
+        RUN+="${lib.getExe' pkgs.coreutils "chgrp"} -R wheel /sys/%p/'", \
+        RUN+="${lib.getExe' pkgs.coreutils "chmod"} -R g+r /sys/%p/"
+  '';
+
   # Monitors management gui
   programs.monique.enable = true;
 }

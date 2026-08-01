@@ -24,10 +24,8 @@
       vscode-langservers-extracted
 
       # Python
-      black
-      python3Packages.python-lsp-server
-      python3Packages.python-lsp-ruff
       ruff
+      ty
 
       # Toml
       tombi
@@ -60,10 +58,16 @@
 
         ruff = {
           command = "ruff";
+          args = [ "server" ];
         };
 
         rust-analyzer.config.check = {
           command = "clippy";
+        };
+
+        ty = {
+          command = "ty";
+          args = [ "server" ];
         };
 
         yaml-language-server.config.yaml = {
@@ -96,16 +100,9 @@
         {
           name = "python";
           language-servers = [
-            "pylsp"
             "ruff"
+            "ty"
           ];
-          formatter = {
-            command = "$black";
-            args = [
-              "--quiet"
-              "-"
-            ];
-          };
           auto-format = true;
         }
       ];
