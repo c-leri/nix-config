@@ -18,9 +18,9 @@
     ../common/core
 
     # Optional
-    ../common/optional/regreet.nix
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
+    ../common/optional/noctalia-greeter.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
@@ -41,7 +41,6 @@
     ./keymap.nix
     ./lact.nix
     ./openrgb.nix
-    ./regreet.nix
     ./swap.nix
   ];
 

@@ -43,7 +43,9 @@
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
-    noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
+    noctalia.url = "github:noctalia-dev/noctalia";
+
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
 
     monique.url = "github:ToRvaLDz/monique";
 
