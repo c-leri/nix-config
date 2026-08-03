@@ -45,7 +45,7 @@
   networking.hostName = "CIME";
 
   # Latest kernel
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
 
   hardware.enableRedistributableFirmware = true;
 
