@@ -17,9 +17,9 @@
 
     # Optional
     ../common/optional/cachyos-kernels.nix
-    ../common/optional/regreet.nix
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
+    ../common/optional/noctalia-greeter.nix
     ../common/optional/mullvad-vpn.nix
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
@@ -38,7 +38,6 @@
     ./jovian.nix
     ./keymap.nix
     ./openrgb.nix
-    ./regreet.nix
     ./swap.nix
   ];
 

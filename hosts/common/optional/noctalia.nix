@@ -10,15 +10,24 @@
     trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
   };
 
-  imports = [ inputs.monique.nixosModules.default ];
-
-  environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    mission-center # System monitor gui
+  imports = with inputs; [
+    noctalia.nixosModules.default
+    monique.nixosModules.default
   ];
 
-  # Allows noctalia to switch power profile
-  services.power-profiles-daemon.enable = true;
+  programs.noctalia = {
+    enable = true;
+    systemd.enable = true;
+    recommendedServices.enable = true;
+  };
+
+  # Monitors management gui
+  programs.monique.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    ddcutil # Get and update external monitors brightness
+    mission-center # System monitor gui
+  ];
 
   # Net top tool, wrapped to be runnable without root (used by mission-center)
   security.wrappers."nethogs" = {
@@ -34,7 +43,4 @@
         RUN+="${lib.getExe' pkgs.coreutils "chgrp"} -R wheel /sys/%p/'", \
         RUN+="${lib.getExe' pkgs.coreutils "chmod"} -R g+r /sys/%p/"
   '';
-
-  # Monitors management gui
-  programs.monique.enable = true;
 }

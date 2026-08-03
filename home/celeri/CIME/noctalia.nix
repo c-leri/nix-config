@@ -1,26 +1,20 @@
-{ lib, ... }:
 {
-  programs.noctalia-shell = {
+  programs.noctalia = {
     settings = {
       # Startup apps (megasync, keepassxc, mullvad-vpn, steam)
-      hooks.startup = "megasync & keepassxc & mullvad-vpn & steam -silent &";
+      hooks.started = "megasync & keepassxc & mullvad-vpn & steam -silent &";
       dock = {
         # Dock pinned apps
-        pinnedApps = [
+        pinned = [
           "zen-beta"
-          "org.gnome.Nautilus"
-          "com.mitchellh.ghostty"
+          "nautilus"
+          "ghostty"
           "steam"
-          "net.lutris.Lutris"
+          "lutris"
           "vesktop"
-          "Cider"
+          "cider"
         ];
-        # Transparent dock
-        backgroundOpacity = lib.mkForce 0.5;
-        deadOpacity = 0.5;
       };
-      # Get GPU temp
-      systemMonitor.enableDgpuMonitoring = true;
     };
   };
 
@@ -31,9 +25,21 @@
         {
           layer-rule = {
             match._props = {
-              namespace = "^noctalia-(background|launcher-overlay|dock)-.*$";
+              namespace = ''^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$'';
             };
             background-effect.xray = false;
+          };
+        }
+        # Enable blur on noctalia window switcher
+        {
+          layer-rule = {
+            match._props = {
+              namespace = "noctalia-window-switcher";
+            };
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
           };
         }
       ];

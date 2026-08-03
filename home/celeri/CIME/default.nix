@@ -6,6 +6,7 @@
     # Optional
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
+    ../common/optional/noctalia-greeter.nix
     ../common/optional/music.nix
     ../common/optional/godot.nix
 
