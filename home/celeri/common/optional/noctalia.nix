@@ -171,33 +171,33 @@ in
         {
           enabled = true;
           name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
+          url = "https://github.com/noctalia-dev/legacy-v4-plugins";
         }
       ];
       states = {
         keybind-cheatsheet = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
         mirror-mirror = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
         monique = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
         polkit-agent = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
         privacy-indicator = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
         usb-drive-manager = {
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          sourceUrl = "https://github.com/noctalia-dev/legacy-v4-plugins";
         };
       };
       version = 2;

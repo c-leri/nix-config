@@ -5,10 +5,13 @@
   ...
 }:
 {
-  imports = [ inputs.steam-presence.nixosModules.steam-presence ];
+  imports = [
+    inputs.steam-presence.nixosModules.steam-presence
+    ./millenium.nix
+  ];
 
   sops.secrets.steam_api_key = {
-    sopsFile = ../../../../secrets/hosts/common/steam_api_key;
+    sopsFile = ../../../../../secrets/hosts/common/steam_api_key;
     format = "binary";
     owner = config.users.users.celeri.name;
   };

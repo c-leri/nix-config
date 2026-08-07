@@ -43,7 +43,9 @@
 
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+
+    noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
 
     monique.url = "github:ToRvaLDz/monique";
 

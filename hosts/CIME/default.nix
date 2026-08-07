@@ -24,6 +24,7 @@
     ../common/optional/docker.nix
     ../common/optional/flatpak.nix
     ../common/optional/games
+    ../common/optional/jovian.nix
     ../common/optional/ratbagd.nix
     ../common/optional/music.nix
 
@@ -35,7 +36,6 @@
 
     # Host specific
     ./data-disk.nix
-    ./jovian.nix
     ./keymap.nix
     ./openrgb.nix
     ./regreet.nix

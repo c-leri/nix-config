@@ -2,7 +2,7 @@
 {
   imports = [
     ./gamemode.nix
-    ./steam.nix
+    ./steam
   ];
 
   environment.systemPackages = with pkgs; [
