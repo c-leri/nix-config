@@ -4,7 +4,13 @@
     settings = {
       # Hide window decoration
       prefer-no-csd = true;
-      input.keyboard.numlock = true;
+      input = {
+        keyboard.numlock = true;
+        touchpad = {
+          tap = { };
+          natural-scroll = { };
+        };
+      };
       hotkey-overlay.skip-at-startup = true;
       cursor.hide-after-inactive-ms = 500;
       layout = {
