@@ -7,6 +7,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -19,41 +20,44 @@
     "usbhid"
     "usb_storage"
     "sd_mod"
-    "tpm_tis"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1025b5e8-6077-4aab-b1f2-dfe74d8d427a";
-    fsType = "ext4";
+    device = "/dev/mapper/luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
+    fsType = "btrfs";
   };
 
   boot.initrd.systemd.enable = true;
-  boot.initrd.luks.devices."luks-e64a8c7e-5ec2-4bc7-bc78-6c6153d1d4f0" = {
-    device = "/dev/disk/by-partlabel/NIXROOT";
-    crypttabExtraOpts = [ "tpm2-device=auto" ];
+  boot.initrd.luks.devices."luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540" = {
+    device = "/dev/disk/by-uuid/7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
+    crypttabExtraOpts = [ "tpm1-device=auto" ];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/mapper/luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/mapper/luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-partlabel/EFI";
+    device = "/dev/disk/by-uuid/2413-2D41";
     fsType = "vfat";
     options = [
-      "fmask=0022"
-      "dmask=0022"
+      "fmask=0077"
+      "dmask=0077"
     ];
   };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
