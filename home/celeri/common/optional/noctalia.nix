@@ -19,7 +19,6 @@
     settings = {
       shell = {
         niri_overview_type_to_launch_enabled = true;
-        launch_apps_as_systemd_services = true;
         polkit_agent = true;
       };
       backdrop.enabled = true;
@@ -29,14 +28,17 @@
       brightness.enable_ddcutil = true;
       # Bar
       bar.default = {
+        capsule = true;
+        margin_ends = 0;
         start = [
           "workspaces"
-          "sysmon"
+          "group:g1"
           "active_window"
           "audio_visualizer"
         ];
         center = [ "clock" ];
         end = [
+          "status"
           "keyboard_layout"
           "tray"
           "elijaharch/wl-screen-mirror:mirror"
@@ -46,10 +48,60 @@
           "battery"
           "control-center"
         ];
+        capsule_group = [
+          {
+            id = "g1";
+            enable = true;
+            members = [
+              "cpu"
+              "temp"
+              "ram"
+            ];
+          }
+        ];
+        dead_zone.actions = {
+          middle = "settings-toggle";
+          scroll_down = "workspace-switch next";
+          scroll_up = "workspace-switch prev";
+        };
+      };
+      # Widgets
+      widget = {
+        clock = {
+          format = "{:%x - %R}";
+        };
+        cpu = {
+          show_value = false;
+
+          actions = {
+            middle = "exec missioncenter";
+          };
+        };
+        temp = {
+          show_value = false;
+          actions = {
+            middle = "exec missioncenter";
+          };
+        };
+        ram = {
+          show_value = false;
+          actions = {
+            middle = "exec missioncenter";
+          };
+        };
+        volume.actions = {
+          middle = "exec pwvucontrol";
+        };
+        status = {
+          type = "aristides/udiskie";
+          hide_when_empty = true;
+        };
       };
       # Dock
       dock = {
         enabled = true;
+        margin_edge = 8;
+        main_axis_padding = 8;
         active_monitor_only = true;
         smart_auto_hide = true;
         reserve_space = false;
@@ -89,7 +141,14 @@
           "kenn/keybind-cheatsheet"
           "elijaharch/wl-screen-mirror"
           "whyoolw/sharednd"
+          "aristides/udiskie"
         ];
+      };
+      # Plugins settings
+      plugin_settings = {
+        "aristides/udiskie" = {
+          file_manager_cmd = "nautilus";
+        };
       };
     };
   };
@@ -97,6 +156,10 @@
   wayland.windowManager.niri = {
     settings = {
       _children = [
+        # Start noctalia on niri startup
+        {
+          spawn-at-startup = "noctalia";
+        }
         # Rounded window corners
         {
           window-rule = {

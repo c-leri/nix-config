@@ -6,10 +6,10 @@
       # Dock pinned apps
       dock.pinned = [
         "zen-beta"
-        "nautilus"
-        "ghostty"
+        "org.gnome.Nautilus"
+        "com.mitchellh.ghostty"
         "vesktop"
-        "cider"
+        "cider-2"
       ];
     };
   };

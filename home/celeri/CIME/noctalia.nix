@@ -3,18 +3,16 @@
     settings = {
       # Startup apps (megasync, keepassxc, mullvad-vpn, steam)
       hooks.started = "megasync & keepassxc & mullvad-vpn & steam -silent &";
-      dock = {
-        # Dock pinned apps
-        pinned = [
-          "zen-beta"
-          "nautilus"
-          "ghostty"
-          "steam"
-          "lutris"
-          "vesktop"
-          "cider"
-        ];
-      };
+      # Dock pinned apps
+      dock.pinned = [
+        "zen-beta"
+        "org.gnome.Nautilus"
+        "com.mitchellh.ghostty"
+        "steam"
+        "net.lutris.Lutris"
+        "vesktop"
+        "cider-2"
+      ];
     };
   };
 

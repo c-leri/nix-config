@@ -17,7 +17,6 @@
 
   programs.noctalia = {
     enable = true;
-    systemd.enable = true;
     recommendedServices.enable = true;
   };
 
@@ -27,6 +26,7 @@
   environment.systemPackages = with pkgs; [
     ddcutil # Get and update external monitors brightness
     mission-center # System monitor gui
+    udiskie # Usb drive automounter
   ];
 
   # Net top tool, wrapped to be runnable without root (used by mission-center)
@@ -43,4 +43,7 @@
         RUN+="${lib.getExe' pkgs.coreutils "chgrp"} -R wheel /sys/%p/'", \
         RUN+="${lib.getExe' pkgs.coreutils "chmod"} -R g+r /sys/%p/"
   '';
+
+  # Service allowing applications to interract with storage devices (used by udiskie)
+  services.udisks2.enable = true;
 }
