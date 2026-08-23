@@ -48,6 +48,12 @@
     options = [ "subvol=nix" ];
   };
 
+  fileSystems."/swap" = {
+    device = "/dev/mapper/luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
+    fsType = "btrfs";
+    options = [ "subvol=swap" ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/2413-2D41";
     fsType = "vfat";

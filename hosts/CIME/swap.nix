@@ -2,7 +2,7 @@
   # Add swap file for hibernation
   swapDevices = [
     {
-      device = "/var/lib/swapfile";
+      device = "/swap/swapfile";
       size = 32 * 1024; # 32GiB
     }
   ];

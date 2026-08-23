@@ -37,6 +37,7 @@
     ./theme.nix
 
     # Host specific
+    ./btrfs.nix
     ./data-disk.nix
     ./keymap.nix
     ./openrgb.nix
