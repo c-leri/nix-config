@@ -9,6 +9,7 @@
     # Harware modules
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-cpu-amd-pstate
+    inputs.hardware.nixosModules.common-cpu-amd-zenpower
     inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc
     inputs.hardware.nixosModules.common-pc-ssd
@@ -18,7 +19,6 @@
     ../common/core
 
     # Optional
-    ../common/optional/cachyos-kernels.nix
     ../common/optional/regreet.nix
     ../common/optional/niri.nix
     ../common/optional/noctalia.nix
@@ -47,7 +47,11 @@
   networking.hostName = "CIME";
 
   # Latest kernel
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelModules = [
+    "amd_3d_vcache"
+    "ntsync"
+  ];
 
   hardware.enableRedistributableFirmware = true;
 

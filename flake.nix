@@ -39,8 +39,6 @@
       };
     };
 
-    cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
