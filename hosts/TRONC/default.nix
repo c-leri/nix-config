@@ -31,6 +31,7 @@
     ./theme.nix
 
     # Host specific
+    ./btrfs.nix
     ./keymap.nix
     ./power-management
     ./swap.nix
