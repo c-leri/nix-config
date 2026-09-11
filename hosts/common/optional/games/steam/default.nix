@@ -10,6 +10,10 @@
     ./millenium.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    mangohud
+  ];
+
   sops.secrets.steam_api_key = {
     sopsFile = ../../../../../secrets/hosts/common/steam_api_key;
     format = "binary";
@@ -22,6 +26,9 @@
     extraPackages = with pkgs; [
       # Needed to update the steam controller's firmware
       hidapi
+    ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
     ];
 
     remotePlay.openFirewall = true;
