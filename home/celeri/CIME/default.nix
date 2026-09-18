@@ -8,6 +8,7 @@
     ../common/optional/noctalia.nix
     ../common/optional/music.nix
     ../common/optional/godot.nix
+    ../common/optional/steamvr.nix
 
     # Host specific
     ./niri.nix
