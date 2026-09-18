@@ -1,4 +1,4 @@
-{
+{ config, lib, ... }: {
   programs.noctalia = {
     settings = {
       # Startup apps (megasync, keepassxc, mullvad-vpn, steam)
@@ -13,6 +13,11 @@
         "vesktop"
         "cider-2"
       ];
+      # Wallpaper
+      wallpaper.default.path = lib.mkForce "${config.programs.noctalia.settings.wallpaper.directory}/CIME.jpg";
+      # Opacity
+      bar.default.background_opacity = 0.9;
+      shell.panel.transparency_mode = "soft";
     };
   };
 

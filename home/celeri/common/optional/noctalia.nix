@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   ...
@@ -14,6 +15,11 @@
     wl-mirror # Mirror screen
   ];
 
+  home.file."${config.programs.noctalia.settings.wallpaper.directory}" = {
+    source = ../../../../public/wallpapers;
+    recursive = true;
+  };
+
   programs.noctalia = {
     enable = true;
     settings = {
@@ -22,6 +28,7 @@
         polkit_agent = true;
       };
       backdrop.enabled = true;
+      wallpaper.directory = "${config.xdg.userDirs.pictures}/Wallpapers";
       # Get location from ip
       location.auto_locate = true;
       # Control external monitor brightness
@@ -29,6 +36,7 @@
       # Bar
       bar.default = {
         capsule = true;
+        radius = 0;
         margin_ends = 0;
         start = [
           "workspaces"
@@ -51,7 +59,6 @@
         capsule_group = [
           {
             id = "g1";
-            enable = true;
             members = [
               "cpu"
               "temp"
@@ -68,7 +75,7 @@
       # Widgets
       widget = {
         clock = {
-          format = "{:%x - %R}";
+          format = "{:%R - %x}";
         };
         cpu = {
           show_value = false;

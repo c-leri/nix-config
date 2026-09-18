@@ -27,7 +27,7 @@
   home.file = {
     face = {
       target = ".face";
-      source = ./face.jpg;
+      source = ../../../../public/users/celeri/face.jpg;
     };
   };
 
