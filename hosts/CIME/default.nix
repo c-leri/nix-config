@@ -9,7 +9,6 @@
     # Harware modules
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-cpu-amd-pstate
-    inputs.hardware.nixosModules.common-cpu-amd-zenpower
     inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc
     inputs.hardware.nixosModules.common-pc-ssd
@@ -40,6 +39,7 @@
     ./btrfs.nix
     ./data-disk.nix
     ./keymap.nix
+    ./lact.nix
     ./openrgb.nix
     ./regreet.nix
     ./swap.nix
