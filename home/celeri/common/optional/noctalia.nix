@@ -33,6 +33,48 @@
       location.auto_locate = true;
       # Control external monitor brightness
       brightness.enable_ddcutil = true;
+      # Lockscreen
+      lockscreen.blurred_desktop = true;
+      # Session menu
+      shell.panel = {
+        session_placement = "floating";
+        session_position = "center";
+      };
+      shell.session = {
+        grid = true;
+        grid_columns = 2;
+        actions = [
+          {
+
+            action = "lock";
+            shortcut = "1";
+          }
+          {
+            action = "logout";
+            shortcut = "2";
+          }
+          {
+            action = "lock_and_suspend";
+            shortcut = "3";
+          }
+          {
+            action = "command";
+            command = "noctalia msg session lock & systemctl hibernate";
+            glyph = "hibernate";
+            label = "Vérouiller et hiberner";
+            shortcut = "4";
+          }
+          {
+            action = "reboot";
+            shortcut = "5";
+          }
+          {
+            action = "shutdown";
+            shortcut = "6";
+            variant = "destructive";
+          }
+        ];
+      };
       # Bar
       bar.default = {
         capsule = true;
@@ -95,6 +137,9 @@
           actions = {
             middle = "exec missioncenter";
           };
+        };
+        audio_visualizer.actions = {
+          left = "panel-toggle control-center media";
         };
         volume.actions = {
           middle = "exec pwvucontrol";
