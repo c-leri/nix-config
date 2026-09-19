@@ -99,6 +99,7 @@
           "volume"
           "brightness"
           "battery"
+          "nix-monitor"
           "control-center"
         ];
         capsule_group = [
@@ -151,6 +152,13 @@
           type = "aristides/udiskie";
           hide_when_empty = true;
         };
+        nix-monitor = {
+          type = "avivbintangaringga/nix-monitor:nix-monitor";
+          show_text = false;
+          up_to_date_color = "tertiary";
+          checking_color = "primary";
+          update_available_color = "secondary";
+        };
       };
       # Dock
       dock = {
@@ -197,12 +205,18 @@
           "elijaharch/wl-screen-mirror"
           "whyoolw/sharednd"
           "aristides/udiskie"
+          "avivbintangaringga/nix-monitor"
         ];
       };
       # Plugins settings
       plugin_settings = {
         "aristides/udiskie" = {
           file_manager_cmd = "nautilus";
+        };
+        "avivbintangaringga/nix-monitor" = {
+          branch = "nixos-unstable";
+          clean_command = "nh clean all";
+          update_command = "nh os boot -ua";
         };
       };
     };
