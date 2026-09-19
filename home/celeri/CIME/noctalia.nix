@@ -2,7 +2,8 @@
   programs.noctalia = {
     settings = {
       # Startup apps (megasync, keepassxc, mullvad-vpn, steam)
-      hooks.started = "megasync & keepassxc & mullvad-vpn & steam -silent &";
+      # Sleep a bit before launching the apps because the hook is executed before the tray is ready
+      hooks.started = "(sleep 1 && (megasync & keepassxc & mullvad-vpn & steam -silent)) &";
       # Dock pinned apps
       dock.pinned = [
         "zen-beta"

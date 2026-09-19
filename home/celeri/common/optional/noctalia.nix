@@ -33,6 +33,9 @@
       location.auto_locate = true;
       # Control external monitor brightness
       brightness.enable_ddcutil = true;
+      # Control center
+      control_center.width = 800;
+      shell.panel.open_near_click_control_center = true;
       # Lockscreen
       lockscreen.blurred_desktop = true;
       # Session menu
@@ -152,7 +155,7 @@
       # Dock
       dock = {
         enabled = true;
-        margin_edge = 8;
+        margin_edge = 12;
         main_axis_padding = 8;
         active_monitor_only = true;
         smart_auto_hide = true;
