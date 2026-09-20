@@ -10,9 +10,6 @@
     # Nix helper config
     ./nh.nix
 
-    # Auto-upgrade service
-    ./services/auto-upgrade.nix
-
     # Sops config
     ./sops.nix
 
