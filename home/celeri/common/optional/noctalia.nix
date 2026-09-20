@@ -34,8 +34,24 @@
       # Control external monitor brightness
       brightness.enable_ddcutil = true;
       # Control center
-      control_center.width = 800;
+      control_center = {
+        width = 800;
+        sidebar_section = "none";
+        shortcuts = [
+          { type = "wifi"; }
+          { type = "bluetooth"; }
+          { type = "clipboard"; }
+          { type = "power_profile"; }
+          { type = "caffeine"; }
+          { type = "nightlight"; }
+        ];
+      };
       shell.panel.open_near_click_control_center = true;
+      # Calendar
+      calendar = {
+        enabled = true;
+        account.google.type = "google";
+      };
       # Lockscreen
       lockscreen.blurred_desktop = true;
       # Session menu
@@ -142,6 +158,10 @@
             middle = "exec missioncenter";
           };
         };
+        active_window = {
+          min_length = 0;
+          title_scroll = "on_hover";
+        };
         audio_visualizer.actions = {
           left = "panel-toggle control-center media";
         };
@@ -170,15 +190,6 @@
         reserve_space = false;
         show_dots = true;
       };
-      # Control center shortcuts
-      control_center.shortcuts = [
-        { type = "wifi"; }
-        { type = "bluetooth"; }
-        { type = "clipboard"; }
-        { type = "power_profile"; }
-        { type = "caffeine"; }
-        { type = "nightlight"; }
-      ];
       # Night light
       nightlight = {
         enabled = true;

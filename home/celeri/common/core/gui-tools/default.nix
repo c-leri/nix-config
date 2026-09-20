@@ -14,6 +14,7 @@
     cider-2
     megasync
     notesnook
+    onlyoffice-desktopeditors
     qbittorrent
     stremio-linux-shell
   ];
