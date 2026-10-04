@@ -53,11 +53,13 @@
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
-    monique.url = "github:ToRvaLDz/monique";
+    steam-presence.url = "github:JustTemmie/steam-presence";
 
     nixcord.url = "github:FlameFlag/nixcord";
 
-    steam-presence.url = "github:JustTemmie/steam-presence";
+    reaper-flake.url = "github:9Prestidigitator/reaper-flake";
+
+    monique.url = "github:ToRvaLDz/monique";
   };
 
   outputs =

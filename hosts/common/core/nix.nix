@@ -2,8 +2,8 @@
 {
   # Nix settings
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
+      nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
       trusted-users = [ "root" ];
       experimental-features = [
         "nix-command"

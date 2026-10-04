@@ -87,6 +87,27 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "reaper-flake",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
           "stylix",
           "nixpkgs"
         ]
@@ -518,6 +539,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1789344334,
+        "narHash": "sha256-vdhpDJ3Lr24lkZ+fDCjmBRRtw9/vcSzkqGJOJyF5h2U=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c3eea5b2156db11c7eeeada3dc737711255b253e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1757745802,
         "narHash": "sha256-hLEO2TPj55KcUFUU1vgtHE9UEIOjRcH/4QbmfHNF820=",
         "owner": "NixOS",
@@ -597,6 +634,25 @@
         "type": "github"
       }
     },
+    "reaper-flake": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1790806188,
+        "narHash": "sha256-wlmzjThtWG/rTVW+Hrkil4GF9LSHSECOM9WLbfppIUw=",
+        "owner": "9Prestidigitator",
+        "repo": "reaper-flake",
+        "rev": "ff1aa9d8707fc29e9668744298a652d179a5b96c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "9Prestidigitator",
+        "repo": "reaper-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "hardware": "hardware",
@@ -609,6 +665,7 @@
         "nixpkgs": "nixpkgs_6",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
+        "reaper-flake": "reaper-flake",
         "sops-nix": "sops-nix",
         "steam-presence": "steam-presence",
         "stylix": "stylix",
@@ -639,7 +696,7 @@
     "steam-presence": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1786128276,
@@ -662,7 +719,7 @@
         "base16-helix": "base16-helix",
         "base16-vim": "base16-vim",
         "firefox-gnome-theme": "firefox-gnome-theme",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
           "nixpkgs"
