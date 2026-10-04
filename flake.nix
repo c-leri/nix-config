@@ -39,13 +39,19 @@
       };
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
-
-    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
 
     monique.url = "github:ToRvaLDz/monique";
 
