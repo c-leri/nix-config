@@ -5,6 +5,10 @@ let
   };
 in
 {
+  environment.systemPackages = with pkgs; [
+    bs-manager
+  ];
+
   boot = {
     # Patch amdgpu yo allow any application to create high priority contexts (needed for SteamVR asynchronous reprojection)
     extraModulePackages = [

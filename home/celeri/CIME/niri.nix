@@ -36,7 +36,7 @@
             default-floating-position._props = {
               relative-to = "bottom";
               x = 0;
-              y = 10;
+              y = 0;
             };
             open-focused = false;
           };

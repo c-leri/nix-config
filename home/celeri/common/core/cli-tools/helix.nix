@@ -4,9 +4,6 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      # C
-      clang-tools
-
       # Nix
       nil
       nixd
@@ -16,16 +13,8 @@
       bash-language-server
       shfmt
 
-      # Typescript
-      typescript
-      typescript-language-server
-
       # Javascript/HTML/CSS
       vscode-langservers-extracted
-
-      # Python
-      ruff
-      ty
 
       # Toml
       tombi
@@ -56,20 +45,6 @@
           command = "nixd";
         };
 
-        ruff = {
-          command = "ruff";
-          args = [ "server" ];
-        };
-
-        rust-analyzer.config.check = {
-          command = "clippy";
-        };
-
-        ty = {
-          command = "ty";
-          args = [ "server" ];
-        };
-
         yaml-language-server.config.yaml = {
           validation = true;
           schemas = {
@@ -95,14 +70,6 @@
           formatter = {
             command = "nixfmt";
           };
-          auto-format = true;
-        }
-        {
-          name = "python";
-          language-servers = [
-            "ruff"
-            "ty"
-          ];
           auto-format = true;
         }
       ];
