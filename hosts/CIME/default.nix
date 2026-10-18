@@ -18,7 +18,7 @@
     ../common/core
 
     # Optional
-    ../common/optional/niri.nix
+    ../common/optional/umbriel.nix
     ../common/optional/noctalia.nix
     ../common/optional/noctalia-greeter.nix
     ../common/optional/mullvad-vpn.nix

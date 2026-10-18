@@ -20,6 +20,22 @@
           inactive-color = base03;
         };
       };
+      _children = [
+        # Rounded window corners
+        {
+          window-rule = {
+            geometry-corner-radius = 20;
+            clip-to-geometry = true;
+          };
+        }
+        # Include monique generated output config
+        {
+          include = {
+            _props.optional = true;
+            _args = [ "monitors.kdl" ];
+          };
+        }
+      ];
       binds = {
         "Mod+F1" = {
           show-hotkey-overlay = { };

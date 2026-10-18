@@ -10,7 +10,8 @@
 
     # Optional
     ../common/optional/niri.nix
-    ../common/optional/noctalia.nix
+    ../common/optional/noctalia
+    ../common/optional/noctalia/niri.nix
 
     # Host specific
     ./noctalia.nix

@@ -49,6 +49,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
+
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";

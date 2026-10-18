@@ -10,9 +10,8 @@
     trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
   };
 
-  imports = with inputs; [
-    noctalia.nixosModules.default
-    monique.nixosModules.default
+  imports = [
+    inputs.noctalia.nixosModules.default
   ];
 
   programs.noctalia = {
@@ -20,12 +19,14 @@
     recommendedServices.enable = true;
   };
 
-  # Monitors management gui
-  programs.monique.enable = true;
-
   environment.systemPackages = with pkgs; [
+    baobab # Disk usage gui
     ddcutil # Get and update external monitors brightness
+    file-roller # Archive viewer
+    gnome-disk-utility # Disk format gui
     mission-center # System monitor gui
+    nautilus # File explorer
+    ristretto # Image viewer
     udiskie # Usb drive automounter
   ];
 
@@ -46,4 +47,10 @@
 
   # Service allowing applications to interract with storage devices (used by udiskie)
   services.udisks2.enable = true;
+
+  # Allows MTP file transfer
+  services.gvfs.enable = true;
+
+  # Tumbnail service for ristretto
+  services.tumbler.enable = true;
 }

@@ -1,12 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  imports = [
+    inputs.monique.nixosModules.default
+  ];
+
   environment.systemPackages = with pkgs; [
-    # Disk format gui
-    gnome-disk-utility
-    # File explorer
-    nautilus
-    # Image viewer
-    ristretto
     # XWayland support
     xwayland-satellite
   ];
@@ -20,9 +18,6 @@
 
   programs.niri.enable = true;
 
-  # Allows MTP file transfer
-  services.gvfs.enable = true;
-
-  # Tumbnail service for ristretto
-  services.tumbler.enable = true;
+  # Monitors management gui
+  programs.monique.enable = true;
 }
