@@ -203,7 +203,7 @@
             enabled = true;
             name = "official";
             kind = "git";
-            location = "https://github.com/noctalia-dev/noctalia-plugins";
+            location = "https://github.com/noctalia-dev/official-plugins";
           }
           {
             enabled = true;

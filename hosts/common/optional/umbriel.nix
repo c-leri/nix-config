@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   imports = [
     inputs.umbriel.nixosModules.default
   ];
@@ -10,11 +10,6 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # XWayland support
-    xwayland
-  ];
-
   environment.sessionVariables = {
     # Support dead keys in GTK4 applications
     GTK_IM_MODULE = "simple";
@@ -23,6 +18,8 @@
   };
 
   programs.umbriel.enable = true;
+
+  programs.xwayland.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
 }

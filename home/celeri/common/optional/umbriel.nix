@@ -65,6 +65,15 @@
             anchor = "bottom_right";
           };
         }
+        {
+          match.app_id = "^(MEGAsync|mullvad-vpn)$";
+          default_floating = true;
+          default_position = {
+            x = 10;
+            y = 10;
+            anchor = "top_right";
+          };
+        }
       ];
       keybinds = {
         "Mod+F1" = {
