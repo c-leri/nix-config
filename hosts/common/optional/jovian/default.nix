@@ -10,7 +10,10 @@ let
       config.programs.steam.extraCompatPackages;
 in
 {
-  imports = [ inputs.jovian.nixosModules.jovian ];
+  imports = [
+    inputs.jovian.nixosModules.jovian
+    ./millennium.nix
+  ];
 
   jovian = {
     steam = {

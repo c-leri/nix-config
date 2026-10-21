@@ -7,7 +7,7 @@
 {
   imports = [
     inputs.steam-presence.nixosModules.steam-presence
-    ./millenium.nix
+    ./millennium.nix
   ];
 
   environment.systemPackages = with pkgs; [

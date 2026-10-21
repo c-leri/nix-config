@@ -26,7 +26,7 @@
     ../common/optional/flatpak.nix
     ../common/optional/games
     ../common/optional/vr
-    ../common/optional/jovian.nix
+    ../common/optional/jovian
     ../common/optional/solaar.nix
     ../common/optional/music.nix
 
