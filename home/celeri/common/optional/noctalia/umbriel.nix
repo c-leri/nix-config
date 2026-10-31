@@ -31,61 +31,61 @@
     ];
     keybinds = {
       "Mod+X" = {
-        action = "spawn:noctalia msg panel-toggle session";
+        action = "spawn noctalia msg panel-toggle session";
         repeat = false;
       };
       "Mod+Space" = {
-        action = "spawn:noctalia msg panel-toggle launcher";
+        action = "spawn noctalia msg panel-toggle launcher";
         repeat = false;
       };
       "Mod+L" = {
-        action = "spawn:noctalia msg session lock";
+        action = "spawn noctalia msg session lock";
         repeat = false;
       };
       # Screenshot
       "Print" = {
-        action = "spawn:noctalia msg screenshot-region";
+        action = "spawn noctalia msg screenshot-region";
         repeat = false;
       };
       "Ctrl+Print" = {
-        action = "spawn:noctalia msg screenshot-fullscreen pick";
+        action = "spawn noctalia msg screenshot-fullscreen pick";
         repeat = false;
       };
       # Volume
       "XF86AudioRaiseVolume" = {
-        action = "spawn:noctalia msg volume-up";
+        action = "spawn noctalia msg volume-up";
         allow_when_locked = true;
       };
       "XF86AudioLowerVolume" = {
-        action = "spawn:noctalia msg volume-down";
+        action = "spawn noctalia msg volume-down";
         allow_when_locked = true;
       };
       "XF86AudioMute" = {
-        action = "spawn:noctalia msg volume-mute";
+        action = "spawn noctalia msg volume-mute";
         allow_when_locked = true;
         repeat = false;
       };
       # Media
       "XF86AudioPlay" = {
-        action = "spawn:noctalia msg media toggle";
+        action = "spawn noctalia msg media toggle";
         allow_when_locked = true;
         repeat = false;
       };
       "XF86AudioNext" = {
-        action = "spawn:noctalia msg media next";
+        action = "spawn noctalia msg media next";
         allow_when_locked = true;
       };
       "XF86AudioPrev" = {
-        action = "spawn:noctalia msg media previous";
+        action = "spawn noctalia msg media previous";
         allow_when_locked = true;
       };
       # Brightness
       "XF86MonBrightnessUp" = {
-        action = "spawn:noctalia msg brightness-up";
+        action = "spawn noctalia msg brightness-up";
         allow_when_locked = true;
       };
       "XF86MonBrightnessDown" = {
-        action = "spawn:noctalia msg brightness-down";
+        action = "spawn noctalia msg brightness-down";
         allow_when_locked = true;
       };
     };

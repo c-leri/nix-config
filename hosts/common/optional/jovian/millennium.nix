@@ -5,11 +5,14 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.millennium.overlays.default
+    inputs.jovian.overlays.default
+  ];
 
   programs.steam.package = lib.mkForce (
-    inputs.jovian.legacyPackages.${pkgs.stdenv.hostPlatform.system}.steam.override {
-      steam' = pkgs.millennium-steam;
+    pkgs.millennium-steam.override {
+      steam = pkgs.jovianPackages.steam;
     }
   );
 }

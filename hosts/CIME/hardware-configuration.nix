@@ -30,7 +30,6 @@
     fsType = "btrfs";
   };
 
-  boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices."luks-7a4f1e9f-ebfc-469f-8d7a-b20dea492540" = {
     device = "/dev/disk/by-uuid/7a4f1e9f-ebfc-469f-8d7a-b20dea492540";
     crypttabExtraOpts = [ "tpm1-device=auto" ];

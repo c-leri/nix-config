@@ -31,7 +31,6 @@
     options = [ "subvol=@" ];
   };
 
-  boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices."luks-d5bc6a41-a746-42e3-81ac-c3c4bc67b4d4" = {
     device = "/dev/disk/by-uuid/d5bc6a41-a746-42e3-81ac-c3c4bc67b4d4";
     crypttabExtraOpts = [ "tpm2-device=auto" ];
